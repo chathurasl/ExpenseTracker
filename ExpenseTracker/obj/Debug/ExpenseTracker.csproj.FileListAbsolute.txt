@@ -1,0 +1,12 @@
+E:\My Workz\MSc\Semester_3\ASD\CW2\Test\ExpenseTracker\ExpenseTracker\bin\Debug\ExpenseTracker.exe.config
+E:\My Workz\MSc\Semester_3\ASD\CW2\Test\ExpenseTracker\ExpenseTracker\bin\Debug\ExpenseTracker.exe
+E:\My Workz\MSc\Semester_3\ASD\CW2\Test\ExpenseTracker\ExpenseTracker\bin\Debug\ExpenseTracker.pdb
+E:\My Workz\MSc\Semester_3\ASD\CW2\Test\ExpenseTracker\ExpenseTracker\obj\Debug\ExpenseTracker.csproj.AssemblyReference.cache
+E:\My Workz\MSc\Semester_3\ASD\CW2\Test\ExpenseTracker\ExpenseTracker\obj\Debug\ExpenseTracker.csproj.SuggestedBindingRedirects.cache
+E:\My Workz\MSc\Semester_3\ASD\CW2\Test\ExpenseTracker\ExpenseTracker\obj\Debug\ExpenseTracker.Form1.resources
+E:\My Workz\MSc\Semester_3\ASD\CW2\Test\ExpenseTracker\ExpenseTracker\obj\Debug\ExpenseTracker.Properties.Resources.resources
+E:\My Workz\MSc\Semester_3\ASD\CW2\Test\ExpenseTracker\ExpenseTracker\obj\Debug\ExpenseTracker.csproj.GenerateResource.cache
+E:\My Workz\MSc\Semester_3\ASD\CW2\Test\ExpenseTracker\ExpenseTracker\obj\Debug\ExpenseTracker.csproj.CoreCompileInputs.cache
+E:\My Workz\MSc\Semester_3\ASD\CW2\Test\ExpenseTracker\ExpenseTracker\obj\Debug\ExpenseTracker.exe
+E:\My Workz\MSc\Semester_3\ASD\CW2\Test\ExpenseTracker\ExpenseTracker\obj\Debug\ExpenseTracker.pdb
+E:\My Workz\MSc\Semester_3\ASD\CW2\Test\ExpenseTracker\ExpenseTracker\obj\Debug\ExpenseTracker.TransactionView.resources
