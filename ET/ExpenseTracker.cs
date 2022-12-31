@@ -9,6 +9,7 @@ namespace ET
 
         int trId = 1000;
         double amount;
+        string date;
         string type;
         string category;
         string recurring;
@@ -52,6 +53,7 @@ namespace ET
 
             //Data view columns
             dt.Columns.Add("ID");
+            dt.Columns.Add("Date");
             dt.Columns.Add("Amount");
             dt.Columns.Add("Type");
             dt.Columns.Add("Category");
@@ -129,6 +131,7 @@ namespace ET
             else
             {
                 amount = currAmount;
+                date = fb_date.Text;
                 type = cb_type.Text;
                 category = cb_category.Text;
                 notes = fb_notes.Text;
@@ -146,11 +149,12 @@ namespace ET
             trId = trId + 1;
             DataRow dr = dt.NewRow();
             dr[0] = trId;
-            dr[1] = amount;
-            dr[2] = type;
-            dr[3] = category;
-            dr[4] = recurring;
-            dr[5] = notes;
+            dr[1] = date;
+            dr[2] = amount;
+            dr[3] = type;
+            dr[4] = category;
+            dr[5] = recurring;
+            dr[6] = notes;
 
             dt.Rows.Add(dr);
             tr_data.DataSource = dt;
@@ -163,6 +167,7 @@ namespace ET
         {
 
             fb_amount.Text = "";
+            fb_date.Text = "";
             cb_type.Text = "";
             cb_category.Text = "";
             cb_recurring.Checked = false;
@@ -175,13 +180,14 @@ namespace ET
 
             fb_tr_edit_index.Text = e.RowIndex.ToString();
             fb_tr_edit_id.Text = tr_data.Rows[e.RowIndex].Cells[0].Value.ToString();
-            fb_tr_edit_amount.Text = tr_data.Rows[e.RowIndex].Cells[1].Value.ToString();
-            fb_tr_edit_type.Text = tr_data.Rows[e.RowIndex].Cells[2].Value.ToString();
-            fb_tr_edit_category.Text = tr_data.Rows[e.RowIndex].Cells[3].Value.ToString();
-            fb_tr_edit_notes.Text = tr_data.Rows[e.RowIndex].Cells[5].Value.ToString();
+            fb_tr_edit_date.Text = tr_data.Rows[e.RowIndex].Cells[1].Value.ToString();
+            fb_tr_edit_amount.Text = tr_data.Rows[e.RowIndex].Cells[2].Value.ToString();
+            fb_tr_edit_type.Text = tr_data.Rows[e.RowIndex].Cells[3].Value.ToString();
+            fb_tr_edit_category.Text = tr_data.Rows[e.RowIndex].Cells[4].Value.ToString();
+            fb_tr_edit_notes.Text = tr_data.Rows[e.RowIndex].Cells[6].Value.ToString();
             fb_tr_edit_recurring.Checked = false;
 
-            if (tr_data.Rows[e.RowIndex].Cells[4].Value.ToString() == "Yes")
+            if (tr_data.Rows[e.RowIndex].Cells[5].Value.ToString() == "Yes")
             {
                 fb_tr_edit_recurring.Checked = true;
             }
@@ -194,14 +200,17 @@ namespace ET
         {
             int index = int.Parse(fb_tr_edit_index.Text);
             tr_data.Rows[index].Cells[0].Value = fb_tr_edit_id.Text;
-            tr_data.Rows[index].Cells[1].Value = fb_tr_edit_amount.Text;
-            tr_data.Rows[index].Cells[2].Value = fb_tr_edit_type.Text;
-            tr_data.Rows[index].Cells[3].Value = fb_tr_edit_category.Text;
-            tr_data.Rows[index].Cells[5].Value = fb_tr_edit_notes.Text;
-            tr_data.Rows[index].Cells[4].Value = (fb_tr_edit_recurring.Checked) ? "Yes" : "No";
+            tr_data.Rows[index].Cells[1].Value = fb_tr_edit_date.Text;
+            tr_data.Rows[index].Cells[2].Value = fb_tr_edit_amount.Text;
+            tr_data.Rows[index].Cells[3].Value = fb_tr_edit_type.Text;
+            tr_data.Rows[index].Cells[4].Value = fb_tr_edit_category.Text;
+            tr_data.Rows[index].Cells[6].Value = fb_tr_edit_notes.Text;
+            tr_data.Rows[index].Cells[5].Value = (fb_tr_edit_recurring.Checked) ? "Yes" : "No";
 
             MessageBox.Show("Transaction successfully updated.", "Update Transaction");
 
         }
+
+    
     }
 }
