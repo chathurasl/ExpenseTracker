@@ -1,11 +1,18 @@
 using System.Data;
+using System.Windows.Forms;
+using System.Drawing;
+
 
 namespace ET
 {
     public partial class ExpenseTracker : Form
     {
 
+       // private Dictionary<int, Category> currentCategories = new Dictionary<int, Category>();
         DataTable dt = new DataTable();
+        DataTable catData = new DataTable();
+
+        CategoryFactory categoryFactory = new CategoryFactory();
 
         int trId = 1000;
         double amount;
@@ -23,11 +30,26 @@ namespace ET
 
         static void Main()
         {
+
+           // ExpenseTracker ET = new ExpenseTracker();
+
+
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new ExpenseTracker());
+
+
+
+
+
+
+           
+           //
+
+           // 
         }
+
 
         public void hidePanels()
         {
@@ -39,16 +61,46 @@ namespace ET
             group_tr_edit.Hide();
         }
 
+        public void fillCategoryData()
+        {
+
+            fb_tr_add_category.Items.Clear();
+            fb_tr_edit_category.Items.Clear();
+
+            foreach (Category currCat in categoryFactory.getCategories())
+            {
+                fb_tr_add_category.Items.Add(currCat.getCategoryName());
+                fb_tr_edit_category.Items.Add(currCat.getCategoryName());
+
+                DataRow catRow = catData.NewRow();
+                catRow[0] = currCat.getId(); ;
+                catRow[1] = currCat.getCategoryName();
+                catRow[2] = currCat.getBudget();
+
+                catData.Rows.Add(catRow);
+                cat_data.DataSource = catData;
+            }
+
+        }   
+        
+        
+        public void fillTransactionTypes()
+        {
+
+            fb_tr_add_type.Items.Add("Income");
+            fb_tr_add_type.Items.Add("Expense");
+
+            fb_tr_edit_type.Items.Add("Income");
+            fb_tr_edit_type.Items.Add("Expense");
+
+        }
+
         private void ExpenseTracker_Load(object sender, EventArgs e)
         {
-            cb_type.Items.Add("Income");
-            cb_type.Items.Add("Expense");
 
-            cb_category.Items.Add("Salary");
-            cb_category.Items.Add("Shopping");
-            cb_category.Items.Add("Food");
-            cb_category.Items.Add("Fuel");
-            cb_category.Items.Add("Other");
+            //ExpenseTracker ET = new ExpenseTracker();
+
+
 
 
             //Data view columns
@@ -59,6 +111,34 @@ namespace ET
             dt.Columns.Add("Category");
             dt.Columns.Add("Recurring");
             dt.Columns.Add("Notes");
+
+            //Category table colimns
+            catData.Columns.Add("ID");
+            catData.Columns.Add("Name");
+            catData.Columns.Add("Budget");
+
+
+            //Fill category dropdowns.
+            fillCategoryData();
+
+            //Fill type dropdowns
+            fillTransactionTypes();
+
+
+            /* DataGridViewButtonColumn btnColumn = new DataGridViewButtonColumn();
+
+             btnColumn.DataPropertyName = "id";
+
+             btnColumn.Width = 50;
+             btnColumn.Text = "Delete";
+
+             btnColumn.ReadOnly = true;
+
+             tr_data.Columns.Add(btnColumn);*/
+
+
+
+
 
         }
 
@@ -111,14 +191,14 @@ namespace ET
             string mzg = "";
             double currAmount;
 
-            if (!Double.TryParse(fb_amount.Text, out currAmount))
+            if (!Double.TryParse(fb_tr_add_amount.Text, out currAmount))
             {
                 mzg = "Please enter valid Amount";
-            }else if (cb_type.Text == "")
+            }else if (fb_tr_add_type.Text == "")
             {
                 mzg = "Please select a Type";
             }
-            else if (cb_category.Text == "")
+            else if (fb_tr_add_category.Text == "")
             {
                 mzg = "Please select a Category";
             }
@@ -131,11 +211,11 @@ namespace ET
             else
             {
                 amount = currAmount;
-                date = fb_date.Text;
-                type = cb_type.Text;
-                category = cb_category.Text;
-                notes = fb_notes.Text;
-                recurring = (cb_recurring.Checked) ? "Yes" : "No";
+                date = fb_tr_add_date.Text;
+                type = fb_tr_add_type.Text;
+                category = fb_tr_add_category.Text;
+                notes = fb_tr_add_notes.Text;
+                recurring = (fb_tr_add_recurring.Checked) ? "Yes" : "No";
 
                 setAddTr();
                 resetAddTr();
@@ -156,8 +236,23 @@ namespace ET
             dr[5] = recurring;
             dr[6] = notes;
 
+
+
             dt.Rows.Add(dr);
             tr_data.DataSource = dt;
+
+            /* // Add a button column. 
+             DataGridViewButtonColumn buttonColumn =  new DataGridViewButtonColumn();
+             buttonColumn.HeaderText = "";
+             buttonColumn.Name = "Status Request";
+             buttonColumn.Text = "Request Status";
+             buttonColumn.UseColumnTextForButtonValue = true;
+
+
+             tr_data.Columns.Add(buttonColumn);*/
+
+            //dr[7] = buttonColumn;
+
 
             MessageBox.Show("Transaction successfully added.", "Add Transaction");
         }
@@ -166,11 +261,15 @@ namespace ET
         public void resetAddTr()
         {
 
-            fb_amount.Text = "";
-            fb_date.Text = "";
-            cb_type.Text = "";
-            cb_category.Text = "";
-            cb_recurring.Checked = false;
+            fb_tr_add_amount.Text = "";
+            fb_tr_add_date.Text = "";
+            fb_tr_add_type.Text = "";
+            fb_tr_add_category.Text = "";
+            fb_tr_add_notes.Text = "";
+            fb_tr_add_recurring.Checked = false;
+
+            fb_tr_add_type.SelectedIndex = 0;
+            fb_tr_add_category.SelectedIndex = 0;
 
         }
 
@@ -211,6 +310,37 @@ namespace ET
 
         }
 
-    
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+            string mzg = "";
+            double currBudget = 0;
+
+            if (cat_add_name.Text == "")
+            {
+                mzg = "Please enter a name";
+            }
+            else if (!Double.TryParse(cat_add_budget.Text, out currBudget))
+            {
+                mzg = "Please enter valid budget";
+            }
+
+
+            if (mzg != "")
+            {
+                MessageBox.Show(mzg, "Add Category");
+            }
+            else
+            {
+                bool response = categoryFactory.addCategory(cat_add_name.Text, currBudget);
+                if (response)
+                {
+                    //RE-fill category dropdowns.
+                    fillCategoryData();
+                }
+            }
+            
+           
+        }
     }
 }
