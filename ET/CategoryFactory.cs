@@ -55,8 +55,76 @@ namespace ET
 
                 MessageBox.Show("Category sucessfully added to the list.");
                 rtn = true;
-                //Reload category dropdowns
-                // fillCategoryData();
+            }
+
+            return rtn;
+
+        }     
+        
+        
+        //Update Category method
+        public bool updateCategory(int id, String name, double budget)
+        {
+
+            bool found = false; //set flag
+            bool rtn = false;
+
+            //Loop Category Dictionary
+            foreach (Category currCat in currentCategories)
+            {
+
+                //Check if given id is exist in the category list
+                if (id == currCat.getId())
+                {
+                    found = true;
+                    rtn = true;
+
+                    currCat.changeName(name);
+                    currCat.changeBudget(budget);
+
+                    MessageBox.Show("Category data successfully updated.");
+                    break;
+                }
+            }
+
+            //If not exist, show error message
+            if (!found)
+            {
+                MessageBox.Show("Sorry, this category is not in the system, please try again.");
+            }
+
+            return rtn;
+
+        } 
+        
+        
+        //Dwlete Category method
+        public bool deleteCategory(int id)
+        {
+
+            bool found = false; //set flag
+            bool rtn = false;
+
+            //Loop Category Dictionary
+            foreach (Category currCat in currentCategories)
+            {
+
+                //Check if given id is exist in the category list
+                if (id == currCat.getId())
+                {
+                    found = true;
+                    rtn = true;
+
+                    currentCategories.Remove(currCat);
+                    MessageBox.Show("Category successfully deleted.");
+                    break;
+                }
+            }
+
+            //If not exist, show error message
+            if (!found)
+            {
+                MessageBox.Show("Sorry, this category is not in the system, please try again.");
             }
 
             return rtn;

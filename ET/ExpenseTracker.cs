@@ -66,6 +66,7 @@ namespace ET
 
             fb_tr_add_category.Items.Clear();
             fb_tr_edit_category.Items.Clear();
+            catData.Rows.Clear();
 
             foreach (Category currCat in categoryFactory.getCategories())
             {
@@ -271,7 +272,23 @@ namespace ET
             fb_tr_add_type.SelectedIndex = 0;
             fb_tr_add_category.SelectedIndex = 0;
 
+        }        
+        
+        public void resetCategroyForm()
+        {
+
+            btn_cat_add.Show();
+            btn_cat_update.Hide();
+            btn_cat_delete.Hide();
+            btn_cat_update_cancel.Hide();
+
+            cat_id.Text = "";
+            cat_add_name.Text = "";
+            cat_add_budget.Text = "";
+
         }
+
+
 
         private void tr_data_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -341,6 +358,75 @@ namespace ET
             }
             
            
+        }
+
+        private void cat_data_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            cat_id.Text = cat_data.Rows[e.RowIndex].Cells[0].Value.ToString();
+            cat_add_name.Text = cat_data.Rows[e.RowIndex].Cells[1].Value.ToString();
+            cat_add_budget.Text = cat_data.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+            btn_cat_add.Hide();
+            btn_cat_update.Show();
+            btn_cat_delete.Show();
+            btn_cat_update_cancel.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string mzg = "";
+            double currBudget = 0;
+
+            if (cat_add_name.Text == "")
+            {
+                mzg = "Please enter a name";
+            }
+            else if (!Double.TryParse(cat_add_budget.Text, out currBudget))
+            {
+                mzg = "Please enter valid budget";
+            }
+
+
+            if (mzg != "")
+            {
+                MessageBox.Show(mzg, "Update Category");
+            }
+            else
+            {
+                bool response = categoryFactory.updateCategory(int.Parse(cat_id.Text), cat_add_name.Text, currBudget);
+                if (response)
+                {
+                    //RE-fill category dropdowns.
+                    fillCategoryData();
+
+                    //Reset category form data.
+                    resetCategroyForm();
+                }
+            }
+        }
+
+        private void btn_cat_update_cancel_Click(object sender, EventArgs e)
+        {
+            //Reset category form data.
+            resetCategroyForm();
+        }
+
+        private void btn_cat_delete_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this category?", "Confirm Delete", MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                bool response = categoryFactory.deleteCategory(int.Parse(cat_id.Text));
+                if (response)
+                {
+                    //RE-fill category dropdowns.
+                    fillCategoryData();
+
+                    //Reset category form data.
+                    resetCategroyForm();
+                }
+            }
+
         }
     }
 }

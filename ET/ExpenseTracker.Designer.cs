@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExpenseTracker));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_settings = new System.Windows.Forms.Button();
+            this.btn_view_transactions = new System.Windows.Forms.Button();
+            this.btn_add_transactions = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.group_tr_add = new System.Windows.Forms.GroupBox();
             this.fb_tr_add_date = new System.Windows.Forms.DateTimePicker();
@@ -49,15 +49,19 @@
             this.fb_tr_add_amount = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.group_cat_add = new System.Windows.Forms.GroupBox();
+            this.btn_cat_update_cancel = new System.Windows.Forms.Button();
+            this.cat_id = new System.Windows.Forms.TextBox();
+            this.btn_cat_delete = new System.Windows.Forms.Button();
+            this.btn_cat_update = new System.Windows.Forms.Button();
+            this.cat_data = new System.Windows.Forms.DataGridView();
             this.cat_add_budget = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.cat_add_submit = new System.Windows.Forms.Button();
+            this.btn_cat_add = new System.Windows.Forms.Button();
             this.cat_add_name = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.group_setting = new System.Windows.Forms.GroupBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btn_manage_categories = new System.Windows.Forms.Button();
+            this.btn_about = new System.Windows.Forms.Button();
             this.group_tr_view = new System.Windows.Forms.GroupBox();
             this.tr_data = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -84,27 +88,24 @@
             this.fb_tr_edit_type = new System.Windows.Forms.ComboBox();
             this.fb_tr_edit_amount = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.cat_data = new System.Windows.Forms.DataGridView();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.group_tr_add.SuspendLayout();
             this.group_cat_add.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cat_data)).BeginInit();
             this.group_setting.SuspendLayout();
             this.group_tr_view.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tr_data)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.group_tr_edit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cat_data)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btn_settings);
+            this.panel1.Controls.Add(this.btn_view_transactions);
+            this.panel1.Controls.Add(this.btn_add_transactions);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -112,47 +113,47 @@
             this.panel1.Size = new System.Drawing.Size(174, 448);
             this.panel1.TabIndex = 0;
             // 
-            // button5
+            // btn_settings
             // 
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button5.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(12, 203);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(148, 40);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "SETTINGS";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btn_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_settings.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_settings.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_settings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_settings.Location = new System.Drawing.Point(12, 203);
+            this.btn_settings.Name = "btn_settings";
+            this.btn_settings.Size = new System.Drawing.Size(148, 40);
+            this.btn_settings.TabIndex = 4;
+            this.btn_settings.Text = "SETTINGS";
+            this.btn_settings.UseVisualStyleBackColor = false;
+            this.btn_settings.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button2
+            // btn_view_transactions
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(12, 158);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(148, 40);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "VIEW ALL";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_view_transactions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_view_transactions.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_view_transactions.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_view_transactions.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_view_transactions.Location = new System.Drawing.Point(12, 158);
+            this.btn_view_transactions.Name = "btn_view_transactions";
+            this.btn_view_transactions.Size = new System.Drawing.Size(148, 40);
+            this.btn_view_transactions.TabIndex = 2;
+            this.btn_view_transactions.Text = "VIEW ALL";
+            this.btn_view_transactions.UseVisualStyleBackColor = false;
+            this.btn_view_transactions.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // btn_add_transactions
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(12, 112);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 40);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "ADD NEW";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_add_transactions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add_transactions.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_add_transactions.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_add_transactions.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_add_transactions.Location = new System.Drawing.Point(12, 112);
+            this.btn_add_transactions.Name = "btn_add_transactions";
+            this.btn_add_transactions.Size = new System.Drawing.Size(148, 40);
+            this.btn_add_transactions.TabIndex = 1;
+            this.btn_add_transactions.Text = "ADD NEW";
+            this.btn_add_transactions.UseVisualStyleBackColor = false;
+            this.btn_add_transactions.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
@@ -326,14 +327,17 @@
             // 
             // group_cat_add
             // 
-            this.group_cat_add.Controls.Add(this.button4);
-            this.group_cat_add.Controls.Add(this.button3);
+            this.group_cat_add.Controls.Add(this.btn_cat_update_cancel);
+            this.group_cat_add.Controls.Add(this.cat_id);
+            this.group_cat_add.Controls.Add(this.btn_cat_delete);
+            this.group_cat_add.Controls.Add(this.btn_cat_update);
             this.group_cat_add.Controls.Add(this.cat_data);
             this.group_cat_add.Controls.Add(this.cat_add_budget);
             this.group_cat_add.Controls.Add(this.label5);
-            this.group_cat_add.Controls.Add(this.cat_add_submit);
+            this.group_cat_add.Controls.Add(this.btn_cat_add);
             this.group_cat_add.Controls.Add(this.cat_add_name);
             this.group_cat_add.Controls.Add(this.label8);
+            this.group_cat_add.Cursor = System.Windows.Forms.Cursors.Default;
             this.group_cat_add.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_cat_add.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.group_cat_add.Location = new System.Drawing.Point(194, 10);
@@ -344,13 +348,80 @@
             this.group_cat_add.Text = "Manage Categories";
             this.group_cat_add.Visible = false;
             // 
+            // btn_cat_update_cancel
+            // 
+            this.btn_cat_update_cancel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_cat_update_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cat_update_cancel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_cat_update_cancel.ForeColor = System.Drawing.Color.Black;
+            this.btn_cat_update_cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_cat_update_cancel.Location = new System.Drawing.Point(266, 135);
+            this.btn_cat_update_cancel.Name = "btn_cat_update_cancel";
+            this.btn_cat_update_cancel.Size = new System.Drawing.Size(82, 32);
+            this.btn_cat_update_cancel.TabIndex = 13;
+            this.btn_cat_update_cancel.Text = "CANCEL";
+            this.btn_cat_update_cancel.UseVisualStyleBackColor = false;
+            this.btn_cat_update_cancel.Visible = false;
+            this.btn_cat_update_cancel.Click += new System.EventHandler(this.btn_cat_update_cancel_Click);
+            // 
+            // cat_id
+            // 
+            this.cat_id.Location = new System.Drawing.Point(527, 54);
+            this.cat_id.Name = "cat_id";
+            this.cat_id.ReadOnly = true;
+            this.cat_id.Size = new System.Drawing.Size(100, 25);
+            this.cat_id.TabIndex = 12;
+            this.cat_id.Visible = false;
+            // 
+            // btn_cat_delete
+            // 
+            this.btn_cat_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.btn_cat_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cat_delete.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_cat_delete.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_cat_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_cat_delete.Location = new System.Drawing.Point(178, 135);
+            this.btn_cat_delete.Name = "btn_cat_delete";
+            this.btn_cat_delete.Size = new System.Drawing.Size(82, 32);
+            this.btn_cat_delete.TabIndex = 11;
+            this.btn_cat_delete.Text = "DELETE";
+            this.btn_cat_delete.UseVisualStyleBackColor = false;
+            this.btn_cat_delete.Visible = false;
+            this.btn_cat_delete.Click += new System.EventHandler(this.btn_cat_delete_Click);
+            // 
+            // btn_cat_update
+            // 
+            this.btn_cat_update.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.btn_cat_update.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cat_update.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_cat_update.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_cat_update.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_cat_update.Location = new System.Drawing.Point(90, 135);
+            this.btn_cat_update.Name = "btn_cat_update";
+            this.btn_cat_update.Size = new System.Drawing.Size(82, 32);
+            this.btn_cat_update.TabIndex = 10;
+            this.btn_cat_update.Text = "UPDATE";
+            this.btn_cat_update.UseVisualStyleBackColor = false;
+            this.btn_cat_update.Visible = false;
+            this.btn_cat_update.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // cat_data
+            // 
+            this.cat_data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.cat_data.Location = new System.Drawing.Point(6, 195);
+            this.cat_data.Name = "cat_data";
+            this.cat_data.RowTemplate.Height = 25;
+            this.cat_data.Size = new System.Drawing.Size(642, 219);
+            this.cat_data.TabIndex = 9;
+            this.cat_data.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cat_data_CellDoubleClick);
+            // 
             // cat_add_budget
             // 
             this.cat_add_budget.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cat_add_budget.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.cat_add_budget.Location = new System.Drawing.Point(90, 90);
             this.cat_add_budget.Name = "cat_add_budget";
-            this.cat_add_budget.Size = new System.Drawing.Size(181, 25);
+            this.cat_add_budget.Size = new System.Drawing.Size(258, 25);
             this.cat_add_budget.TabIndex = 6;
             // 
             // label5
@@ -363,20 +434,20 @@
             this.label5.TabIndex = 5;
             this.label5.Text = "Budget:";
             // 
-            // cat_add_submit
+            // btn_cat_add
             // 
-            this.cat_add_submit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
-            this.cat_add_submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cat_add_submit.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cat_add_submit.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cat_add_submit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cat_add_submit.Location = new System.Drawing.Point(310, 68);
-            this.cat_add_submit.Name = "cat_add_submit";
-            this.cat_add_submit.Size = new System.Drawing.Size(82, 32);
-            this.cat_add_submit.TabIndex = 4;
-            this.cat_add_submit.Text = "ADD";
-            this.cat_add_submit.UseVisualStyleBackColor = false;
-            this.cat_add_submit.Click += new System.EventHandler(this.button8_Click);
+            this.btn_cat_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.btn_cat_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cat_add.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_cat_add.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_cat_add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_cat_add.Location = new System.Drawing.Point(90, 135);
+            this.btn_cat_add.Name = "btn_cat_add";
+            this.btn_cat_add.Size = new System.Drawing.Size(82, 32);
+            this.btn_cat_add.TabIndex = 4;
+            this.btn_cat_add.Text = "ADD";
+            this.btn_cat_add.UseVisualStyleBackColor = false;
+            this.btn_cat_add.Click += new System.EventHandler(this.button8_Click);
             // 
             // cat_add_name
             // 
@@ -384,7 +455,7 @@
             this.cat_add_name.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.cat_add_name.Location = new System.Drawing.Point(90, 54);
             this.cat_add_name.Name = "cat_add_name";
-            this.cat_add_name.Size = new System.Drawing.Size(181, 25);
+            this.cat_add_name.Size = new System.Drawing.Size(258, 25);
             this.cat_add_name.TabIndex = 1;
             // 
             // label8
@@ -399,9 +470,8 @@
             // 
             // group_setting
             // 
-            this.group_setting.Controls.Add(this.button9);
-            this.group_setting.Controls.Add(this.button7);
-            this.group_setting.Controls.Add(this.button6);
+            this.group_setting.Controls.Add(this.btn_manage_categories);
+            this.group_setting.Controls.Add(this.btn_about);
             this.group_setting.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_setting.Location = new System.Drawing.Point(194, 10);
             this.group_setting.Name = "group_setting";
@@ -411,48 +481,34 @@
             this.group_setting.Text = "Settings";
             this.group_setting.Visible = false;
             // 
-            // button9
+            // btn_manage_categories
             // 
-            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button9.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(29, 46);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(120, 112);
-            this.button9.TabIndex = 7;
-            this.button9.Text = "ADD CATEGORY";
-            this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.btn_manage_categories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.btn_manage_categories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_manage_categories.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_manage_categories.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_manage_categories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_manage_categories.Location = new System.Drawing.Point(29, 46);
+            this.btn_manage_categories.Name = "btn_manage_categories";
+            this.btn_manage_categories.Size = new System.Drawing.Size(120, 112);
+            this.btn_manage_categories.TabIndex = 7;
+            this.btn_manage_categories.Text = "MANAGE CATEGORIES";
+            this.btn_manage_categories.UseVisualStyleBackColor = false;
+            this.btn_manage_categories.Click += new System.EventHandler(this.button9_Click);
             // 
-            // button7
+            // btn_about
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button7.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(332, 47);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(118, 111);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "ABOUT";
-            this.button7.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button6.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(178, 47);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(126, 111);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "MANAGE CATEGORIES";
-            this.button6.UseVisualStyleBackColor = false;
+            this.btn_about.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.btn_about.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_about.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_about.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_about.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_about.Location = new System.Drawing.Point(172, 48);
+            this.btn_about.Name = "btn_about";
+            this.btn_about.Size = new System.Drawing.Size(118, 111);
+            this.btn_about.TabIndex = 6;
+            this.btn_about.Text = "ABOUT";
+            this.btn_about.UseVisualStyleBackColor = false;
             // 
             // group_tr_view
             // 
@@ -743,43 +799,6 @@
             this.label21.TabIndex = 0;
             this.label21.Text = "Amount:";
             // 
-            // cat_data
-            // 
-            this.cat_data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.cat_data.Location = new System.Drawing.Point(6, 195);
-            this.cat_data.Name = "cat_data";
-            this.cat_data.RowTemplate.Height = 25;
-            this.cat_data.Size = new System.Drawing.Size(642, 219);
-            this.cat_data.TabIndex = 9;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(398, 68);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(82, 32);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "UPDATE";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button4.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(486, 68);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(82, 32);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "DELETE";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
             // ExpenseTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -804,6 +823,7 @@
             this.group_tr_add.PerformLayout();
             this.group_cat_add.ResumeLayout(false);
             this.group_cat_add.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cat_data)).EndInit();
             this.group_setting.ResumeLayout(false);
             this.group_tr_view.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tr_data)).EndInit();
@@ -811,7 +831,6 @@
             this.groupBox1.PerformLayout();
             this.group_tr_edit.ResumeLayout(false);
             this.group_tr_edit.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cat_data)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -819,9 +838,9 @@
         #endregion
 
         private Panel panel1;
-        private Button button1;
+        private Button btn_add_transactions;
         private PictureBox pictureBox1;
-        private Button button2;
+        private Button btn_view_transactions;
         private GroupBox group_tr_add;
         private Label label1;
         private TextBox fb_tr_add_amount;
@@ -832,15 +851,14 @@
         private CheckBox fb_tr_add_recurring;
         private Label label4;
         private Button fb_tr_add_submit;
-        private Button button5;
+        private Button btn_settings;
         private GroupBox group_setting;
-        private Button button9;
-        private Button button7;
-        private Button button6;
+        private Button btn_manage_categories;
+        private Button btn_about;
         private GroupBox group_cat_add;
         private TextBox cat_add_budget;
         private Label label5;
-        private Button cat_add_submit;
+        private Button btn_cat_add;
         private TextBox cat_add_name;
         private Label label8;
         private GroupBox group_tr_view;
@@ -873,8 +891,10 @@
         private Label label11;
         private ComboBox comboBox3;
         private GroupBox groupBox1;
-        private Button button4;
-        private Button button3;
+        private Button btn_cat_delete;
+        private Button btn_cat_update;
         private DataGridView cat_data;
+        private TextBox cat_id;
+        private Button btn_cat_update_cancel;
     }
 }

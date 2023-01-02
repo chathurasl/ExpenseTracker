@@ -26,6 +26,13 @@ namespace ET
 
         }
 
+        //Update category name
+        public void changeName(string name)
+        {
+            this.categroyName = name;
+        }
+           
+        
         //Update category budget
         public void changeBudget(double amount)
         {
