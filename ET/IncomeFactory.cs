@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace ET
 {
     public class IncomeFactory:TransactionFactory
     {
 
-        private List<Transaction> currentTransactions = new List<Transaction>();
+        private List<Transaction> currentTransactions;
 
 
         public IncomeFactory(List<Transaction>  currentTransactions)
@@ -23,31 +18,59 @@ namespace ET
         public bool createTransaction(Transaction t)
         {
 
-     
-            //Adding new Transaction to Current Transaction list
+            //Adding new Transaction to Transactions list
             currentTransactions.Add(t);
-            MessageBox.Show("Category sucessfully added to the list.");
             return true;
 
         }
 
-        //Get Transaction()
-        public Transaction getTransaction() {
-        
-            return null;
-        }
-
-
         //Edit Transaction method
-        public void editTransaction(Transaction t)
+        public bool editTransaction(Transaction t)
         {
+            bool rtn = false;
+            bool found = true;
 
+            //Loop Transactions
+            foreach (Transaction currTr in currentTransactions)
+            {
+
+                //Check if given id is exist in the Transaction list
+                if (t.getId() == currTr.getId())
+                {
+                    found = true;
+                    rtn = true;
+
+                    int index = currentTransactions.IndexOf(currTr);
+                    currentTransactions[index] = t;
+                    break;
+                }
+            }
+
+            return rtn;
         }
 
         //Delete Transaction method
-        public void deleteTransaction(Transaction t)
+        public bool deleteTransaction(int id)
         {
+            bool found = false; //set flag
+            bool rtn = false;
 
+            //Loop Transactions
+            foreach (Transaction currTr in currentTransactions)
+            {
+
+                //Check if given id is exist in the Transaction list
+                if (id == currTr.getId())
+                {
+                    found = true;
+                    rtn = true;
+
+                    currentTransactions.Remove(currTr);
+                    break;
+                }
+            }
+
+            return rtn;
         }
     }
 }

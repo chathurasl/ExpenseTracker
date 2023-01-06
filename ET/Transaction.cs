@@ -57,9 +57,9 @@ namespace ET
         }   
         
         //Get Date
-        public DateTime getDate()
+        public string getDate()
         {
-            return this.date;
+            return this.date.ToShortDateString();
         }
 
 
@@ -74,6 +74,8 @@ namespace ET
         {
             return this.categroyId;
         }
+
+        public abstract string getType();
 
     }
 }

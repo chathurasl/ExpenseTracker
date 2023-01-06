@@ -72,6 +72,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.group_tr_edit = new System.Windows.Forms.GroupBox();
+            this.btn_tr_update_cancle = new System.Windows.Forms.Button();
+            this.btn_tr_delete = new System.Windows.Forms.Button();
             this.fb_tr_edit_index = new System.Windows.Forms.TextBox();
             this.fb_tr_edit_id = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -79,7 +81,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.fb_tr_edit_notes = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.tr_edit_submit = new System.Windows.Forms.Button();
+            this.btn_tr_update = new System.Windows.Forms.Button();
             this.fb_tr_edit_recurring = new System.Windows.Forms.CheckBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -139,7 +141,7 @@
             this.btn_view_transactions.TabIndex = 2;
             this.btn_view_transactions.Text = "VIEW ALL";
             this.btn_view_transactions.UseVisualStyleBackColor = false;
-            this.btn_view_transactions.Click += new System.EventHandler(this.button2_Click);
+            this.btn_view_transactions.Click += new System.EventHandler(this.btn_view_transactions_Click);
             // 
             // btn_add_transactions
             // 
@@ -403,7 +405,7 @@
             this.btn_cat_update.Text = "UPDATE";
             this.btn_cat_update.UseVisualStyleBackColor = false;
             this.btn_cat_update.Visible = false;
-            this.btn_cat_update.Click += new System.EventHandler(this.button3_Click);
+            this.btn_cat_update.Click += new System.EventHandler(this.btn_cat_update_Click);
             // 
             // cat_data
             // 
@@ -447,7 +449,7 @@
             this.btn_cat_add.TabIndex = 4;
             this.btn_cat_add.Text = "ADD";
             this.btn_cat_add.UseVisualStyleBackColor = false;
-            this.btn_cat_add.Click += new System.EventHandler(this.button8_Click);
+            this.btn_cat_add.Click += new System.EventHandler(this.btn_cat_add_Click);
             // 
             // cat_add_name
             // 
@@ -611,6 +613,8 @@
             // 
             // group_tr_edit
             // 
+            this.group_tr_edit.Controls.Add(this.btn_tr_update_cancle);
+            this.group_tr_edit.Controls.Add(this.btn_tr_delete);
             this.group_tr_edit.Controls.Add(this.fb_tr_edit_index);
             this.group_tr_edit.Controls.Add(this.fb_tr_edit_id);
             this.group_tr_edit.Controls.Add(this.label14);
@@ -618,7 +622,7 @@
             this.group_tr_edit.Controls.Add(this.label16);
             this.group_tr_edit.Controls.Add(this.fb_tr_edit_notes);
             this.group_tr_edit.Controls.Add(this.label17);
-            this.group_tr_edit.Controls.Add(this.tr_edit_submit);
+            this.group_tr_edit.Controls.Add(this.btn_tr_update);
             this.group_tr_edit.Controls.Add(this.fb_tr_edit_recurring);
             this.group_tr_edit.Controls.Add(this.label18);
             this.group_tr_edit.Controls.Add(this.label19);
@@ -636,6 +640,36 @@
             this.group_tr_edit.TabStop = false;
             this.group_tr_edit.Text = "Edit Transaction";
             this.group_tr_edit.Visible = false;
+            // 
+            // btn_tr_update_cancle
+            // 
+            this.btn_tr_update_cancle.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_tr_update_cancle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tr_update_cancle.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_tr_update_cancle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.btn_tr_update_cancle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_tr_update_cancle.Location = new System.Drawing.Point(527, 342);
+            this.btn_tr_update_cancle.Name = "btn_tr_update_cancle";
+            this.btn_tr_update_cancle.Size = new System.Drawing.Size(100, 40);
+            this.btn_tr_update_cancle.TabIndex = 18;
+            this.btn_tr_update_cancle.Text = "CANCLE";
+            this.btn_tr_update_cancle.UseVisualStyleBackColor = false;
+            this.btn_tr_update_cancle.Click += new System.EventHandler(this.btn_tr_update_cancle_Click);
+            // 
+            // btn_tr_delete
+            // 
+            this.btn_tr_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.btn_tr_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tr_delete.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_tr_delete.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_tr_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_tr_delete.Location = new System.Drawing.Point(421, 342);
+            this.btn_tr_delete.Name = "btn_tr_delete";
+            this.btn_tr_delete.Size = new System.Drawing.Size(100, 40);
+            this.btn_tr_delete.TabIndex = 17;
+            this.btn_tr_delete.Text = "DELETE";
+            this.btn_tr_delete.UseVisualStyleBackColor = false;
+            this.btn_tr_delete.Click += new System.EventHandler(this.btn_tr_delete_Click);
             // 
             // fb_tr_edit_index
             // 
@@ -708,20 +742,20 @@
             this.label17.TabIndex = 9;
             this.label17.Text = "Notes:";
             // 
-            // tr_edit_submit
+            // btn_tr_update
             // 
-            this.tr_edit_submit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
-            this.tr_edit_submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tr_edit_submit.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tr_edit_submit.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.tr_edit_submit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tr_edit_submit.Location = new System.Drawing.Point(479, 342);
-            this.tr_edit_submit.Name = "tr_edit_submit";
-            this.tr_edit_submit.Size = new System.Drawing.Size(148, 40);
-            this.tr_edit_submit.TabIndex = 4;
-            this.tr_edit_submit.Text = "UPDATE";
-            this.tr_edit_submit.UseVisualStyleBackColor = false;
-            this.tr_edit_submit.Click += new System.EventHandler(this.tr_edit_submit_Click);
+            this.btn_tr_update.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.btn_tr_update.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tr_update.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_tr_update.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_tr_update.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_tr_update.Location = new System.Drawing.Point(316, 342);
+            this.btn_tr_update.Name = "btn_tr_update";
+            this.btn_tr_update.Size = new System.Drawing.Size(100, 40);
+            this.btn_tr_update.TabIndex = 4;
+            this.btn_tr_update.Text = "UPDATE";
+            this.btn_tr_update.UseVisualStyleBackColor = false;
+            this.btn_tr_update.Click += new System.EventHandler(this.btn_tr_update_Click);
             // 
             // fb_tr_edit_recurring
             // 
@@ -806,11 +840,11 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(870, 448);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.group_cat_add);
             this.Controls.Add(this.group_tr_add);
             this.Controls.Add(this.group_setting);
             this.Controls.Add(this.group_tr_edit);
             this.Controls.Add(this.group_tr_view);
-            this.Controls.Add(this.group_cat_add);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ExpenseTracker";
@@ -872,7 +906,7 @@
         private Label label16;
         private TextBox fb_tr_edit_notes;
         private Label label17;
-        private Button tr_edit_submit;
+        private Button btn_tr_update;
         private CheckBox fb_tr_edit_recurring;
         private Label label18;
         private Label label19;
@@ -896,5 +930,7 @@
         private DataGridView cat_data;
         private TextBox cat_id;
         private Button btn_cat_update_cancel;
+        private Button btn_tr_update_cancle;
+        private Button btn_tr_delete;
     }
 }

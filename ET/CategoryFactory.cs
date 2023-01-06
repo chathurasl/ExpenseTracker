@@ -43,7 +43,6 @@ namespace ET
                 if (name == currCat.getCategoryName())
                 {
                     newCategory = false;
-                    MessageBox.Show("Sorry, please check the category name, provided name already exist in the system.");
                     break;
                 }
             }
@@ -52,8 +51,6 @@ namespace ET
             if (newCategory)
             {
                 currentCategories.Add(new Category( name, budget));
-
-                MessageBox.Show("Category sucessfully added to the list.");
                 rtn = true;
             }
 
@@ -82,15 +79,8 @@ namespace ET
                     currCat.changeName(name);
                     currCat.changeBudget(budget);
 
-                    MessageBox.Show("Category data successfully updated.");
                     break;
                 }
-            }
-
-            //If not exist, show error message
-            if (!found)
-            {
-                MessageBox.Show("Sorry, this category is not in the system, please try again.");
             }
 
             return rtn;
@@ -116,15 +106,30 @@ namespace ET
                     rtn = true;
 
                     currentCategories.Remove(currCat);
-                    MessageBox.Show("Category successfully deleted.");
                     break;
                 }
             }
 
-            //If not exist, show error message
-            if (!found)
+            return rtn;
+
+        }
+
+        //Get Category Name by ID
+        public string getCategroyNameById(int id)
+        {
+
+            string rtn = "";
+            //Loop Categories
+            foreach (Category currCat in currentCategories)
             {
-                MessageBox.Show("Sorry, this category is not in the system, please try again.");
+
+                //Check if given id is exist in the category list
+                if (id == currCat.getId())
+                {
+
+                    rtn = currCat.getCategoryName();
+                    break;
+                }
             }
 
             return rtn;

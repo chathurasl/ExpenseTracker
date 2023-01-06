@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace ET
 {
-    public class Expense
+    //Expense subclass of Transaction
+    public class Expense : Transaction
     {
+
+        private string transactionType = "Expense";
+
+        //Constractor
+        public Expense(int id, double amount, bool isRecurring, DateTime date, string transactionDescription, int categroyId) : base(id, amount, isRecurring, date, transactionDescription, categroyId)
+        {
+        }
+
+        public override string getType()
+        {
+            return transactionType;
+        }
+
     }
 }

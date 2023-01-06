@@ -32,7 +32,7 @@ namespace ET
         {
             InitializeComponent();
             incomeFactory = new IncomeFactory(currentTransactions);
-            expenseFactory = new ExpenseFactory();
+            expenseFactory = new ExpenseFactory(currentTransactions);
         }
 
 
@@ -47,15 +47,6 @@ namespace ET
             ApplicationConfiguration.Initialize();
             Application.Run(new ExpenseTracker());
 
-
-
-
-
-
-
-            //
-
-            // 
         }
 
 
@@ -79,6 +70,8 @@ namespace ET
 
             fb_tr_add_category.DisplayMember = "Text";
             fb_tr_add_category.ValueMember = "Value";
+            fb_tr_edit_category.DisplayMember = "Text";
+            fb_tr_edit_category.ValueMember = "Value";
 
             foreach (Category currCat in categoryFactory.getCategories())
             {
@@ -100,14 +93,16 @@ namespace ET
 
         public void fillTransactionData(){
 
+            dt.Rows.Clear();
+
             foreach (Transaction currTr in currentTransactions)
             {
                 DataRow dr = dt.NewRow();
-                dr[0] = currTr.getId();
+                dr[0] = Math.Abs(currTr.getId());
                 dr[1] = currTr.getDate();
                 dr[2] = currTr.getAmount();
-                dr[3] = type;
-                dr[4] = currTr.getCategroyId();
+                dr[3] = currTr.getType();
+                dr[4] = categoryFactory.getCategroyNameById(currTr.getCategroyId());
                 dr[5] = currTr.getRecurrence();
                 dr[6] = currTr.getDescription();
 
@@ -177,6 +172,46 @@ namespace ET
 
         }
 
+        public void resetTrForms()
+        {
+
+            fb_tr_add_amount.Text = "";
+            fb_tr_add_date.Text = "";
+            fb_tr_add_type.Text = "";
+            fb_tr_add_category.Text = "";
+            fb_tr_add_notes.Text = "";
+            fb_tr_add_recurring.Checked = false;
+
+            fb_tr_add_type.SelectedIndex = 0;
+            fb_tr_add_category.SelectedIndex = 0;
+
+            fb_tr_edit_amount.Text = "";
+            fb_tr_edit_date.Text = "";
+            fb_tr_edit_type.Text = "";
+            fb_tr_edit_category.Text = "";
+            fb_tr_edit_notes.Text = "";
+            fb_tr_edit_recurring.Checked = false;
+
+            fb_tr_edit_type.SelectedIndex = 0;
+            fb_tr_edit_category.SelectedIndex = 0;
+
+        }
+
+        public void resetCategroyForm()
+        {
+
+            btn_cat_add.Show();
+            btn_cat_update.Hide();
+            btn_cat_delete.Hide();
+            btn_cat_update_cancel.Hide();
+
+            cat_id.Text = "";
+            cat_add_name.Text = "";
+            cat_add_budget.Text = "";
+
+        }
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             hidePanels();
@@ -228,156 +263,190 @@ namespace ET
 
             if (!Double.TryParse(fb_tr_add_amount.Text, out currAmount))
             {
-                mzg = "Please enter valid Amount";
+                mzg = "Please enter valid amount";
             }else if (fb_tr_add_type.Text == "")
             {
-                mzg = "Please select a Type";
+                mzg = "Please select a type";
             }
             else if (fb_tr_add_category.Text == "")
             {
-                mzg = "Please select a Category";
+                mzg = "Please select a category";
             }
 
 
             if (mzg != "")
             {
-                MessageBox.Show(mzg, "Add Transaction");
+                MessageBox.Show(mzg, "Add Transaction", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                amount = currAmount;
-                date = fb_tr_add_date.Text;
-                type = fb_tr_add_type.Text;
-                category = fb_tr_add_category.Text;
-                notes = fb_tr_add_notes.Text;
-                recurring = (fb_tr_add_recurring.Checked) ? "Yes" : "No";
-
-              //  setAddTr();
-                resetAddTr();
-                int catKey = (fb_tr_add_category.SelectedItem as dynamic).Value;
-
-
-               // MessageBox.Show(catKey);
                 bool response = false;
+                int catKey = (fb_tr_add_category.SelectedItem as dynamic).Value;
                 int id = (int) DateTime.Now.ToFileTime();
-               // int catKey = int.Parse(((KeyValuePair<int, string>)fb_tr_add_category.SelectedItem).Value);
-
-              
-
-                if (type == "Income")
-                {
-
-                   
-                    Transaction tempIncome = new Income(id, amount, fb_tr_add_recurring.Checked, fb_tr_add_date.Value, notes, catKey);
-                     response = incomeFactory.createTransaction(tempIncome);
-                   
-                   
-                }
                
+
+                if (fb_tr_add_type.Text == "Income")
+                {
+                    response = incomeFactory.createTransaction(new Income(id, currAmount, fb_tr_add_recurring.Checked, fb_tr_add_date.Value, fb_tr_add_notes.Text, catKey));
+
+                }
+                else
+                {
+                    response = expenseFactory.createTransaction(new Expense(id, currAmount, fb_tr_add_recurring.Checked, fb_tr_add_date.Value, fb_tr_add_notes.Text, catKey));
+                }
+
                 if (response)
                 {
-                    MessageBox.Show(currentTransactions.Count().ToString());
-                    //Show Transaction Data;
+                    MessageBox.Show("Transaction sucessfully added to the list.", "Add Transaction", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //List Transaction Data;
                     fillTransactionData();
+                    resetTrForms();
+
+
+
                 }
             }
 
         }
 
-        public void setAddTr()
+        private void btn_tr_update_Click(object sender, EventArgs e)
         {
 
-            trId = trId + 1;
-            DataRow dr = dt.NewRow();
-            dr[0] = trId;
-            dr[1] = date;
-            dr[2] = amount;
-            dr[3] = type;
-            dr[4] = category;
-            dr[5] = recurring;
-            dr[6] = notes;
+            string mzg = "";
+            double currAmount;
+
+            if (!Double.TryParse(fb_tr_edit_amount.Text, out currAmount))
+            {
+                mzg = "Please enter valid amount";
+            }
+            else if (fb_tr_edit_type.Text == "")
+            {
+                mzg = "Please select a type";
+            }
+            else if (fb_tr_edit_category.Text == "")
+            {
+                mzg = "Please select a category";
+            }
 
 
+            if (mzg != "")
+            {
+                MessageBox.Show(mzg, "Update Transaction", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                bool response = false;
+                int catKey = (fb_tr_edit_category.SelectedItem as dynamic).Value;
 
-            dt.Rows.Add(dr);
-            tr_data.DataSource = dt;
+                if (fb_tr_edit_type.Text == "Income")
+                {
+                    response = incomeFactory.editTransaction(new Income(int.Parse(fb_tr_edit_id.Text), currAmount, fb_tr_edit_recurring.Checked, fb_tr_edit_date.Value, fb_tr_edit_notes.Text, catKey));
 
-         
+                }
+                else
+                {
+                    response = expenseFactory.editTransaction(new Expense(int.Parse(fb_tr_edit_id.Text), currAmount, fb_tr_edit_recurring.Checked, fb_tr_edit_date.Value, fb_tr_edit_notes.Text, catKey));
+                }
+
+                if (response)
+                {
+                    //List Transaction Data;
+                    fillTransactionData();
+
+                    MessageBox.Show("Transaction successfully updated.", "Update Transaction", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //Clear forms
+                    resetTrForms();
+
+                    //Show transaction list
+                    hidePanels();
+                    group_tr_view.Show();
 
 
-            MessageBox.Show("Transaction successfully added.", "Add Transaction");
+                }
+                else
+                {
+                    MessageBox.Show("Sorry, This Transaction ID does not exist in the system.", "Update Transaction", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
         }
 
-
-        public void resetAddTr()
+        private void btn_tr_delete_Click(object sender, EventArgs e)
         {
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this transaction?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (confirmResult == DialogResult.Yes)
+            {
+                bool response = false;
 
-            fb_tr_add_amount.Text = "";
-            fb_tr_add_date.Text = "";
-            fb_tr_add_type.Text = "";
-            fb_tr_add_category.Text = "";
-            fb_tr_add_notes.Text = "";
-            fb_tr_add_recurring.Checked = false;
+                if (fb_tr_edit_type.Text == "Income")
+                {
+                    response = incomeFactory.deleteTransaction(int.Parse(fb_tr_edit_id.Text));
 
-            fb_tr_add_type.SelectedIndex = 0;
-            fb_tr_add_category.SelectedIndex = 0;
+                }
+                else
+                {
+                    response = expenseFactory.deleteTransaction(int.Parse(fb_tr_edit_id.Text));
+                }
 
-        }        
-        
-        public void resetCategroyForm()
-        {
+                if (response)
+                {
 
-            btn_cat_add.Show();
-            btn_cat_update.Hide();
-            btn_cat_delete.Hide();
-            btn_cat_update_cancel.Hide();
+                    MessageBox.Show("Transaction successfully deleted.", "Delete Transaction", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            cat_id.Text = "";
-            cat_add_name.Text = "";
-            cat_add_budget.Text = "";
+                    //List Transaction Data;
+                    fillTransactionData();
 
+                    //Clear forms
+                    resetTrForms();
+
+                    //Show transaction list
+                    hidePanels();
+                    group_tr_view.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Sorry, This Transaction ID does not exist in the system.", "Delete Transaction", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
-
+   
 
         private void tr_data_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //int id = int.Parse(tr_data.Rows[e.RowIndex].Cells[0].Value.ToString());
 
-            fb_tr_edit_index.Text = e.RowIndex.ToString();
-            fb_tr_edit_id.Text = tr_data.Rows[e.RowIndex].Cells[0].Value.ToString();
-            fb_tr_edit_date.Text = tr_data.Rows[e.RowIndex].Cells[1].Value.ToString();
-            fb_tr_edit_amount.Text = tr_data.Rows[e.RowIndex].Cells[2].Value.ToString();
-            fb_tr_edit_type.Text = tr_data.Rows[e.RowIndex].Cells[3].Value.ToString();
-            fb_tr_edit_category.Text = tr_data.Rows[e.RowIndex].Cells[4].Value.ToString();
-            fb_tr_edit_notes.Text = tr_data.Rows[e.RowIndex].Cells[6].Value.ToString();
-            fb_tr_edit_recurring.Checked = false;
-
-            if (tr_data.Rows[e.RowIndex].Cells[5].Value.ToString() == "Yes")
+            if (tr_data.Rows[e.RowIndex].Cells[0].Value.ToString() != "")
             {
-                fb_tr_edit_recurring.Checked = true;
+
+                fb_tr_edit_id.Text = tr_data.Rows[e.RowIndex].Cells[0].Value.ToString();
+                fb_tr_edit_date.Text = tr_data.Rows[e.RowIndex].Cells[1].Value.ToString();
+                fb_tr_edit_amount.Text = tr_data.Rows[e.RowIndex].Cells[2].Value.ToString();
+                fb_tr_edit_type.Text = tr_data.Rows[e.RowIndex].Cells[3].Value.ToString();
+                fb_tr_edit_category.Text = tr_data.Rows[e.RowIndex].Cells[4].Value.ToString();
+                fb_tr_edit_notes.Text = tr_data.Rows[e.RowIndex].Cells[6].Value.ToString();
+                fb_tr_edit_recurring.Checked = false;
+
+                if (tr_data.Rows[e.RowIndex].Cells[5].Value.ToString() == "True")
+                {
+                    fb_tr_edit_recurring.Checked = true;
+                }
+
+                hidePanels();
+                group_tr_edit.Show();
+
             }
-
-            hidePanels();
-            group_tr_edit.Show();
+            else
+            {
+                MessageBox.Show("Invalid Transaction data.", "Update Transaction", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
         }
 
-        private void tr_edit_submit_Click(object sender, EventArgs e)
-        {
-            int index = int.Parse(fb_tr_edit_index.Text);
-            tr_data.Rows[index].Cells[0].Value = fb_tr_edit_id.Text;
-            tr_data.Rows[index].Cells[1].Value = fb_tr_edit_date.Text;
-            tr_data.Rows[index].Cells[2].Value = fb_tr_edit_amount.Text;
-            tr_data.Rows[index].Cells[3].Value = fb_tr_edit_type.Text;
-            tr_data.Rows[index].Cells[4].Value = fb_tr_edit_category.Text;
-            tr_data.Rows[index].Cells[6].Value = fb_tr_edit_notes.Text;
-            tr_data.Rows[index].Cells[5].Value = (fb_tr_edit_recurring.Checked) ? "Yes" : "No";
 
-            MessageBox.Show("Transaction successfully updated.", "Update Transaction");
 
-        }
-
-        private void button8_Click(object sender, EventArgs e)
+        private void btn_cat_add_Click(object sender, EventArgs e)
         {
 
             string mzg = "";
@@ -395,15 +464,21 @@ namespace ET
 
             if (mzg != "")
             {
-                MessageBox.Show(mzg, "Add Category");
+                MessageBox.Show(mzg, "Add Category", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 bool response = categoryFactory.addCategory(cat_add_name.Text, currBudget);
                 if (response)
                 {
+                    MessageBox.Show("Category sucessfully added to the list.", "Add Category", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     //RE-fill category dropdowns.
                     fillCategoryData();
+                }
+                else
+                {
+                    MessageBox.Show("Sorry, The Provided category name already exists in the system.", "Add Category", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             
@@ -412,17 +487,28 @@ namespace ET
 
         private void cat_data_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            cat_id.Text = cat_data.Rows[e.RowIndex].Cells[0].Value.ToString();
-            cat_add_name.Text = cat_data.Rows[e.RowIndex].Cells[1].Value.ToString();
-            cat_add_budget.Text = cat_data.Rows[e.RowIndex].Cells[2].Value.ToString();
+           
 
-            btn_cat_add.Hide();
-            btn_cat_update.Show();
-            btn_cat_delete.Show();
-            btn_cat_update_cancel.Show();
+            if (cat_data.Rows[e.RowIndex].Cells[0].Value.ToString() != "")
+            {
+
+                cat_id.Text = cat_data.Rows[e.RowIndex].Cells[0].Value.ToString();
+                cat_add_name.Text = cat_data.Rows[e.RowIndex].Cells[1].Value.ToString();
+                cat_add_budget.Text = cat_data.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+                btn_cat_add.Hide();
+                btn_cat_update.Show();
+                btn_cat_delete.Show();
+                btn_cat_update_cancel.Show();
+
+            }
+            else
+            {
+                MessageBox.Show("Invalid Category data.", "Update Category", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btn_cat_update_Click(object sender, EventArgs e)
         {
             string mzg = "";
             double currBudget = 0;
@@ -439,18 +525,24 @@ namespace ET
 
             if (mzg != "")
             {
-                MessageBox.Show(mzg, "Update Category");
+                MessageBox.Show(mzg, "Update Category", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 bool response = categoryFactory.updateCategory(int.Parse(cat_id.Text), cat_add_name.Text, currBudget);
                 if (response)
                 {
+                    MessageBox.Show("Category data successfully updated.", "Update Category", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     //RE-fill category dropdowns.
                     fillCategoryData();
 
                     //Reset category form data.
                     resetCategroyForm();
+                }
+                else
+                {
+                    MessageBox.Show("Sorry, The provided category does not exist in the system.", "Update Category", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -463,20 +555,43 @@ namespace ET
 
         private void btn_cat_delete_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("Are you sure you want to delete this category?", "Confirm Delete", MessageBoxButtons.YesNo);
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this category?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirmResult == DialogResult.Yes)
             {
                 bool response = categoryFactory.deleteCategory(int.Parse(cat_id.Text));
                 if (response)
                 {
+
+                    MessageBox.Show("Category successfully deleted.", "Delete Category", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     //RE-fill category dropdowns.
                     fillCategoryData();
 
                     //Reset category form data.
                     resetCategroyForm();
                 }
+                else
+                {
+                    MessageBox.Show("Sorry, The provided category does not exist in the system.", "Delete Category", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
         }
+
+        private void btn_view_transactions_Click(object sender, EventArgs e)
+        {
+            //Show transaction list
+            hidePanels();
+            group_tr_view.Show();
+        }
+
+        private void btn_tr_update_cancle_Click(object sender, EventArgs e)
+        {
+            //Show transaction list
+            hidePanels();
+            group_tr_view.Show();
+        }
+
+
     }
 }

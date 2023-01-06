@@ -12,14 +12,11 @@ namespace ET
         //Create Transaction method
         public bool createTransaction(Transaction t);
 
-        //Get Transaction()
-        public Transaction getTransaction();
-
         //Edit Transaction method
-        public void editTransaction(Transaction t);
+        public bool editTransaction(Transaction t);
 
         //Delete Transaction method
-        public void deleteTransaction(Transaction t);
+        public bool deleteTransaction(int id);
 
     }
 }

@@ -10,12 +10,18 @@ namespace ET
     //Income subclass of Transaction
     public class Income : Transaction
     {
-        private string transactionType = "income";
+        private string transactionType = "Income";
 
         //Constractor
         public Income(int id, double amount, bool isRecurring, DateTime date, string transactionDescription, int categroyId) : base(id, amount, isRecurring, date, transactionDescription, categroyId)
         {
         }
+
+        public override string getType()
+        {
+            return transactionType;
+        }
+    
 
     }
 }
