@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace ET
 {
-    public class Income
+
+    //Income subclass of Transaction
+    public class Income : Transaction
     {
+        private string transactionType = "income";
+
+        //Constractor
+        public Income(int id, double amount, bool isRecurring, DateTime date, string transactionDescription, int categroyId) : base(id, amount, isRecurring, date, transactionDescription, categroyId)
+        {
+        }
+
     }
 }

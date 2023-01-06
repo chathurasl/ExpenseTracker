@@ -806,11 +806,11 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(870, 448);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.group_cat_add);
             this.Controls.Add(this.group_tr_add);
             this.Controls.Add(this.group_setting);
             this.Controls.Add(this.group_tr_edit);
             this.Controls.Add(this.group_tr_view);
+            this.Controls.Add(this.group_cat_add);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ExpenseTracker";
