@@ -48,7 +48,7 @@ namespace ET
         public void hidePanels()
         {
             group_tr_add.Hide();
-            // group_tr_list.Hide();
+            group_tr_list.Hide();
             group_setting.Hide();
             group_cat_add.Hide();
             group_tr_view.Hide();
@@ -108,7 +108,7 @@ namespace ET
                 dr[7] = currTr.getNotes();
 
                 dt.Rows.Add(dr);
-                //tr_data.DataSource = dt;
+                tr_data.DataSource = dt;
             }
               
           
@@ -139,13 +139,14 @@ namespace ET
         public void fillRecurrenceOptions()
         {
 
-            for (int i = 1; i < 13; i++)
+            for (int i = 1; i < 101; i++)
             {
                 fb_tr_add_rec_count.Items.Add(i);
             }
 
             
             fb_tr_add_rec_type.Items.Add("months");
+            fb_tr_add_rec_type.Items.Add("days");
 
             fb_tr_add_rec_count.SelectedIndex = 0;
             fb_tr_add_rec_type.SelectedIndex = 0;
@@ -198,6 +199,7 @@ namespace ET
             fb_tr_add_category.Text = "";
             fb_tr_add_notes.Text = "";
             fb_tr_add_recurring.Checked = false;
+            fb_tr_add_rec_untill.Text = "";
 
             fb_tr_add_type.SelectedIndex = 0;
             fb_tr_add_category.SelectedIndex = 0;
@@ -210,8 +212,22 @@ namespace ET
             fb_tr_edit_notes.Text = "";
             fb_tr_edit_recurring.Checked = false;
 
+
+
+
+
             fb_tr_edit_type.SelectedIndex = 0;
             fb_tr_edit_category.SelectedIndex = 0;
+
+            fb_tr_add_rec_count.SelectedIndex = 0;
+            fb_tr_add_rec_type.SelectedIndex = 0;
+
+            label_tr_add_rec_count.Hide();
+            label_tr_add_rec_untill.Hide();
+            fb_tr_add_rec_count.Hide();
+            fb_tr_add_rec_type.Hide();
+            fb_tr_add_rec_untill.Hide();
+
 
         }
 
@@ -306,31 +322,25 @@ namespace ET
                     //Set recurrences
                     if (fb_tr_add_recurring.Checked)
                     {
-                        //double dateGap = (fb_tr_add_rec_untill.Value.Date - fb_tr_add_date.Value.Date).TotalDays;
                         int count = int.Parse(fb_tr_add_rec_count.Text);
                         string recType = fb_tr_add_rec_type.Text;
-                        int repeatDiv = (recType == "months") ? 30* count : 1* count;
 
-                        MessageBox.Show(recType.ToString());
+                        TransactionRecurrence tempRec = new TransactionRecurrence(id, fb_tr_add_date.Value.Date, fb_tr_add_rec_untill.Value.Date, recType, count);
+                        List<DateTime> recDates = tempRec.getRecurringDates();
 
-                        DateTime tempDate = fb_tr_add_date.Value.Date.AddDays(repeatDiv);
-                        while (tempDate < fb_tr_add_rec_untill.Value.Date)
+                        foreach (DateTime d in recDates)
                         {
-                            //
                             id = Math.Abs((int)DateTime.Now.ToFileTime());
 
                             if (type == "Income")
                             {
-                                response = incomeFactory.createTransaction(new Income(id, fb_tr_add_description.Text, currAmount, fb_tr_add_recurring.Checked, tempDate, fb_tr_add_notes.Text, catKey));
-
+                                response = incomeFactory.createTransaction(new Income(id, fb_tr_add_description.Text, currAmount, false, d, fb_tr_add_notes.Text, catKey));
                             }
                             else
                             {
-                                response = expenseFactory.createTransaction(new Expense(id, fb_tr_add_description.Text, currAmount, fb_tr_add_recurring.Checked, tempDate, fb_tr_add_notes.Text, catKey));
+                                response = expenseFactory.createTransaction(new Expense(id, fb_tr_add_description.Text, currAmount, false, d, fb_tr_add_notes.Text, catKey));
                             }
-                            MessageBox.Show(id.ToString());
 
-                            tempDate = tempDate.AddDays(repeatDiv);
                         }
 
                     }
@@ -465,7 +475,7 @@ namespace ET
         private void tr_data_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-           /* if (tr_data.Rows[e.RowIndex].Cells[0].Value.ToString() != "")
+           if (tr_data.Rows[e.RowIndex].Cells[0].Value.ToString() != "")
             {
 
                 fb_tr_edit_id.Text = tr_data.Rows[e.RowIndex].Cells[0].Value.ToString();
@@ -490,7 +500,7 @@ namespace ET
             {
                 MessageBox.Show("Invalid Transaction data.", "Update Transaction", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-           */
+           
             
         }
 
@@ -841,6 +851,33 @@ namespace ET
             return filteredTransaction;
 
 
+        }
+
+        private void btn_tr_list_Click(object sender, EventArgs e)
+        {
+            hidePanels();
+            group_tr_list.Show();
+        }
+
+        private void fb_tr_add_recurring_CheckedChanged(object sender, EventArgs e)
+        {
+            if (fb_tr_add_recurring.Checked)
+            {
+                label_tr_add_rec_count.Show();
+                label_tr_add_rec_untill.Show();
+                fb_tr_add_rec_count.Show();
+                fb_tr_add_rec_type.Show();
+                fb_tr_add_rec_untill.Show();
+            }
+            else
+            {
+                label_tr_add_rec_count.Hide();
+                label_tr_add_rec_untill.Hide();
+                fb_tr_add_rec_count.Hide();
+                fb_tr_add_rec_type.Hide();
+                fb_tr_add_rec_untill.Hide();
+            }
+           
         }
     }
 }
