@@ -347,9 +347,11 @@ namespace ET
             else
             {
                 bool response = false;
+                currAmount = Double.Parse(fb_tr_edit_amount.Text);
 
                 if (type == "Income")
                 {
+
                     response = incomeFactory.editTransaction(new Income(int.Parse(fb_tr_edit_id.Text), fb_tr_edit_description.Text, currAmount, fb_tr_edit_recurring.Checked, fb_tr_edit_date.Value, fb_tr_edit_notes.Text, catKey));
 
                 }
@@ -361,7 +363,8 @@ namespace ET
                 if (response)
                 {
                     //List Transaction Data;
-                    fillTransactionData();
+                    //fillTransactionData();
+                    
 
                     MessageBox.Show("Transaction successfully updated.", "Update Transaction", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -371,6 +374,7 @@ namespace ET
                     //Show transaction list
                     hidePanels();
                     group_tr_view.Show();
+                    btn_view_transactions_Click(sender, e);
 
 
                 }
@@ -413,6 +417,7 @@ namespace ET
                     //Show transaction list
                     hidePanels();
                     group_tr_view.Show();
+                    btn_view_transactions_Click(sender, e);
                 }
                 else
                 {
