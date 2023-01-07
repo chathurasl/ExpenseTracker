@@ -303,11 +303,43 @@ namespace ET
                 {
                     MessageBox.Show("Transaction sucessfully added to the list.", "Add Transaction", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    //Set recurrences
+                    if (fb_tr_add_recurring.Checked)
+                    {
+                        //double dateGap = (fb_tr_add_rec_untill.Value.Date - fb_tr_add_date.Value.Date).TotalDays;
+                        int count = int.Parse(fb_tr_add_rec_count.Text);
+                        string recType = fb_tr_add_rec_type.Text;
+                        int repeatDiv = (recType == "months") ? 30* count : 1* count;
+
+                        MessageBox.Show(recType.ToString());
+
+                        DateTime tempDate = fb_tr_add_date.Value.Date.AddDays(repeatDiv);
+                        while (tempDate < fb_tr_add_rec_untill.Value.Date)
+                        {
+                            //
+                            id = Math.Abs((int)DateTime.Now.ToFileTime());
+
+                            if (type == "Income")
+                            {
+                                response = incomeFactory.createTransaction(new Income(id, fb_tr_add_description.Text, currAmount, fb_tr_add_recurring.Checked, tempDate, fb_tr_add_notes.Text, catKey));
+
+                            }
+                            else
+                            {
+                                response = expenseFactory.createTransaction(new Expense(id, fb_tr_add_description.Text, currAmount, fb_tr_add_recurring.Checked, tempDate, fb_tr_add_notes.Text, catKey));
+                            }
+                            MessageBox.Show(id.ToString());
+
+                            tempDate = tempDate.AddDays(repeatDiv);
+                        }
+
+                    }
+
                     //List Transaction Data;
                     fillTransactionData();
                     resetTrForms();
 
-
+                   
 
                 }
             }
@@ -347,6 +379,8 @@ namespace ET
             else
             {
                 bool response = false;
+
+                MessageBox.Show(currAmount.ToString());
 
                 if (type == "Income")
                 {
