@@ -47,6 +47,7 @@ namespace ET
 
         public void hidePanels()
         {
+            group_home.Hide();
             group_tr_add.Hide();
             group_tr_list.Hide();
             group_setting.Hide();
@@ -878,6 +879,17 @@ namespace ET
                 fb_tr_add_rec_untill.Hide();
             }
            
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            hidePanels();
+            group_home.Show();
+        }
+
+        private void label25_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

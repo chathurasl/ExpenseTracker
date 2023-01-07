@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExpenseTracker));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.btn_tr_list = new System.Windows.Forms.Button();
             this.btn_settings = new System.Windows.Forms.Button();
             this.btn_view_transactions = new System.Windows.Forms.Button();
@@ -108,6 +109,24 @@
             this.dateTimLabel = new System.Windows.Forms.Label();
             this.group_tr_list = new System.Windows.Forms.GroupBox();
             this.tr_data = new System.Windows.Forms.DataGridView();
+            this.group_home = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.group_setting.SuspendLayout();
@@ -119,11 +138,15 @@
             this.groupBox1.SuspendLayout();
             this.group_tr_list.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tr_data)).BeginInit();
+            this.group_home.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.btn_tr_list);
             this.panel1.Controls.Add(this.btn_settings);
             this.panel1.Controls.Add(this.btn_view_transactions);
@@ -135,17 +158,31 @@
             this.panel1.Size = new System.Drawing.Size(174, 448);
             this.panel1.TabIndex = 0;
             // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(12, 112);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(148, 40);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "HOME";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // btn_tr_list
             // 
             this.btn_tr_list.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_tr_list.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_tr_list.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_tr_list.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btn_tr_list.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_tr_list.Location = new System.Drawing.Point(12, 249);
+            this.btn_tr_list.Location = new System.Drawing.Point(12, 295);
             this.btn_tr_list.Name = "btn_tr_list";
             this.btn_tr_list.Size = new System.Drawing.Size(148, 40);
             this.btn_tr_list.TabIndex = 5;
-            this.btn_tr_list.Text = "ALL DATA";
+            this.btn_tr_list.Text = "ALL TRANSACTIONS";
             this.btn_tr_list.UseVisualStyleBackColor = false;
             this.btn_tr_list.Click += new System.EventHandler(this.btn_tr_list_Click);
             // 
@@ -155,7 +192,7 @@
             this.btn_settings.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_settings.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btn_settings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_settings.Location = new System.Drawing.Point(12, 203);
+            this.btn_settings.Location = new System.Drawing.Point(12, 249);
             this.btn_settings.Name = "btn_settings";
             this.btn_settings.Size = new System.Drawing.Size(148, 40);
             this.btn_settings.TabIndex = 4;
@@ -169,7 +206,7 @@
             this.btn_view_transactions.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_view_transactions.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btn_view_transactions.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_view_transactions.Location = new System.Drawing.Point(12, 158);
+            this.btn_view_transactions.Location = new System.Drawing.Point(12, 204);
             this.btn_view_transactions.Name = "btn_view_transactions";
             this.btn_view_transactions.Size = new System.Drawing.Size(148, 40);
             this.btn_view_transactions.TabIndex = 2;
@@ -183,7 +220,7 @@
             this.btn_add_transactions.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_add_transactions.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btn_add_transactions.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_add_transactions.Location = new System.Drawing.Point(12, 112);
+            this.btn_add_transactions.Location = new System.Drawing.Point(12, 158);
             this.btn_add_transactions.Name = "btn_add_transactions";
             this.btn_add_transactions.Size = new System.Drawing.Size(148, 40);
             this.btn_add_transactions.TabIndex = 1;
@@ -1062,19 +1099,230 @@
             this.tr_data.Size = new System.Drawing.Size(660, 393);
             this.tr_data.TabIndex = 0;
             // 
+            // group_home
+            // 
+            this.group_home.Controls.Add(this.groupBox3);
+            this.group_home.Controls.Add(this.label34);
+            this.group_home.Controls.Add(this.groupBox2);
+            this.group_home.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.group_home.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.group_home.Location = new System.Drawing.Point(180, 8);
+            this.group_home.Name = "group_home";
+            this.group_home.Size = new System.Drawing.Size(683, 431);
+            this.group_home.TabIndex = 8;
+            this.group_home.TabStop = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label26);
+            this.groupBox3.Controls.Add(this.label27);
+            this.groupBox3.Controls.Add(this.label29);
+            this.groupBox3.Controls.Add(this.label30);
+            this.groupBox3.Controls.Add(this.label35);
+            this.groupBox3.Controls.Add(this.label36);
+            this.groupBox3.Controls.Add(this.label37);
+            this.groupBox3.Location = new System.Drawing.Point(11, 248);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(661, 166);
+            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabStop = false;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label26.Location = new System.Drawing.Point(541, 117);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(105, 30);
+            this.label26.TabIndex = 7;
+            this.label26.Text = "BALANCE";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label27.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.label27.Location = new System.Drawing.Point(485, 49);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(174, 65);
+            this.label27.TabIndex = 6;
+            this.label27.Text = "79,000";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label29.Location = new System.Drawing.Point(250, 118);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(160, 30);
+            this.label29.TabIndex = 5;
+            this.label29.Text = "TOTAL INCOME";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label30.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label30.Location = new System.Drawing.Point(12, 19);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(118, 21);
+            this.label30.TabIndex = 3;
+            this.label30.Text = "Total Summary";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label35.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
+            this.label35.Location = new System.Drawing.Point(243, 51);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(175, 65);
+            this.label35.TabIndex = 1;
+            this.label35.Text = "93,000";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label36.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
+            this.label36.Location = new System.Drawing.Point(7, 52);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(205, 65);
+            this.label36.TabIndex = 4;
+            this.label36.Text = "1,56,799";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label37.Location = new System.Drawing.Point(13, 119);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(175, 30);
+            this.label37.TabIndex = 2;
+            this.label37.Text = "TOTAL EXPENSES";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label34.Location = new System.Drawing.Point(525, 24);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(146, 25);
+            this.label34.TabIndex = 5;
+            this.label34.Text = "January 8, 2023";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.label25);
+            this.groupBox2.Controls.Add(this.label32);
+            this.groupBox2.Controls.Add(this.label28);
+            this.groupBox2.Controls.Add(this.label33);
+            this.groupBox2.Controls.Add(this.label31);
+            this.groupBox2.Location = new System.Drawing.Point(11, 68);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(661, 166);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(541, 117);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(105, 30);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "BALANCE";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label22.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(94)))), ((int)(((byte)(32)))));
+            this.label22.Location = new System.Drawing.Point(485, 49);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(175, 65);
+            this.label22.TabIndex = 6;
+            this.label22.Text = "25,000";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label25.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label25.Location = new System.Drawing.Point(254, 118);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(160, 30);
+            this.label25.TabIndex = 5;
+            this.label25.Text = "TOTAL INCOME";
+            this.label25.Click += new System.EventHandler(this.label25_Click);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label32.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label32.Location = new System.Drawing.Point(12, 19);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(144, 21);
+            this.label32.TabIndex = 3;
+            this.label32.Text = "Monthly Overview";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label28.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
+            this.label28.Location = new System.Drawing.Point(247, 51);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(176, 65);
+            this.label28.TabIndex = 1;
+            this.label28.Text = "43,000";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label33.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
+            this.label33.Location = new System.Drawing.Point(7, 52);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(176, 65);
+            this.label33.TabIndex = 4;
+            this.label33.Text = "24,999";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label31.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label31.Location = new System.Drawing.Point(13, 119);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(175, 30);
+            this.label31.TabIndex = 2;
+            this.label31.Text = "TOTAL EXPENSES";
+            // 
             // ExpenseTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(870, 448);
+            this.Controls.Add(this.group_home);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.group_tr_add);
             this.Controls.Add(this.group_tr_list);
             this.Controls.Add(this.group_tr_view);
             this.Controls.Add(this.group_tr_edit);
             this.Controls.Add(this.group_cat_add);
             this.Controls.Add(this.group_setting);
+            this.Controls.Add(this.group_tr_add);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ExpenseTracker";
@@ -1096,6 +1344,12 @@
             this.groupBox1.PerformLayout();
             this.group_tr_list.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tr_data)).EndInit();
+            this.group_home.ResumeLayout(false);
+            this.group_home.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1182,6 +1436,25 @@
         private Label label24;
         private Button btn_tr_list;
         private GroupBox group_tr_list;
+        private Button button2;
         private DataGridView tr_data;
+        private GroupBox group_home;
+        private GroupBox groupBox2;
+        private Label label34;
+        private Label label25;
+        private Label label32;
+        private Label label28;
+        private Label label33;
+        private Label label31;
+        private GroupBox groupBox3;
+        private Label label26;
+        private Label label27;
+        private Label label29;
+        private Label label30;
+        private Label label35;
+        private Label label36;
+        private Label label37;
+        private Label label13;
+        private Label label22;
     }
 }
