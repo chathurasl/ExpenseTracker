@@ -28,7 +28,7 @@ namespace ET
         public bool editTransaction(Transaction t)
         {
             bool rtn = false;
-            bool found = true;
+            bool found = false;
 
             //Loop Transactions
             foreach (Transaction currTr in currentTransactions)
