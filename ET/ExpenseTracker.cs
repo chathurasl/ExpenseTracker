@@ -127,6 +127,26 @@ namespace ET
 
         }
 
+
+        public void fillRecurrenceOptions()
+        {
+
+            for (int i = 1; i < 13; i++)
+            {
+                fb_tr_add_rec_count.Items.Add(i);
+            }
+
+            
+            fb_tr_add_rec_type.Items.Add("months");
+
+            fb_tr_add_rec_count.SelectedIndex = 0;
+            fb_tr_add_rec_type.SelectedIndex = 0;
+
+        }
+
+
+
+
         private void ExpenseTracker_Load(object sender, EventArgs e)
         {
 
@@ -154,20 +174,8 @@ namespace ET
             //Fill type dropdowns
             fillTransactionTypes();
 
-
-            /* DataGridViewButtonColumn btnColumn = new DataGridViewButtonColumn();
-
-             btnColumn.DataPropertyName = "id";
-
-             btnColumn.Width = 50;
-             btnColumn.Text = "Delete";
-
-             btnColumn.ReadOnly = true;
-
-             tr_data.Columns.Add(btnColumn);*/
-
-
-
+            //Fill recurrence options
+            fillRecurrenceOptions();
 
 
         }
