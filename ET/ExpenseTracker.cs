@@ -23,15 +23,6 @@ namespace ET
         IncomeFactory incomeFactory;
         ExpenseFactory expenseFactory;
 
-        int trId = 1000;
-        double amount;
-        string date;
-        string type;
-        string category;
-        string recurring;
-        string notes;
-
-
         public ExpenseTracker()
         {
             InitializeComponent();
@@ -42,10 +33,6 @@ namespace ET
 
         static void Main()
         {
-
-            // ExpenseTracker ET = new ExpenseTracker();
-
-
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
@@ -77,6 +64,9 @@ namespace ET
             fb_tr_edit_category.DisplayMember = "Text";
             fb_tr_edit_category.ValueMember = "Value";
 
+            fb_tr_add_category.Items.Add(new { Text = "--Please select--", Value = 0 });
+
+
             foreach (Category currCat in categoryFactory.getCategories())
             {
                 // fb_tr_add_category.Items.Add(currCat.getCategoryName());
@@ -92,6 +82,8 @@ namespace ET
                 cat_data.DataSource = catData;
             }
 
+            fb_tr_add_category.SelectedIndex = 0;
+
         }
 
 
@@ -102,13 +94,14 @@ namespace ET
             foreach (Transaction currTr in currentTransactions)
             {
                 DataRow dr = dt.NewRow();
-                dr[0] = Math.Abs(currTr.getId());
-                dr[1] = currTr.getDate();
-                dr[2] = currTr.getAmount();
-                dr[3] = currTr.getType();
-                dr[4] = categoryFactory.getCategroyNameById(currTr.getCategroyId());
-                dr[5] = currTr.getRecurrence();
-                dr[6] = currTr.getDescription();
+                dr[0] = currTr.getId();
+                dr[1] = currTr.getDescription();
+                dr[2] = currTr.getDate();
+                dr[3] = currTr.getAmount();
+                dr[4] = currTr.getType();
+                dr[5] = categoryFactory.getCategroyNameById(currTr.getCategroyId());
+                dr[6] = currTr.getRecurrence();
+                dr[7] = currTr.getNotes();
 
                 dt.Rows.Add(dr);
                 //tr_data.DataSource = dt;
@@ -121,24 +114,51 @@ namespace ET
         public void fillTransactionTypes()
         {
 
-            fb_tr_add_type.Items.Add("Income");
-            fb_tr_add_type.Items.Add("Expense");
+            fb_tr_add_type.DisplayMember = "Text";
+            fb_tr_add_type.ValueMember = "Value";
+            fb_tr_edit_type.DisplayMember = "Text";
+            fb_tr_edit_type.ValueMember = "Value";
 
-            fb_tr_edit_type.Items.Add("Income");
-            fb_tr_edit_type.Items.Add("Expense");
+            fb_tr_add_type.Items.Add(new { Text = "--Please select--", Value = "" });
+            fb_tr_add_type.Items.Add(new { Text = "Income", Value = "Income" });
+            fb_tr_add_type.Items.Add(new { Text = "Expense", Value = "Expense" });
+
+            fb_tr_edit_type.Items.Add(new { Text = "Income", Value = "Income" });
+            fb_tr_edit_type.Items.Add(new { Text = "Expense", Value = "Expense" });
+
+
+            fb_tr_add_type.SelectedIndex = 0;
 
         }
+
+
+        public void fillRecurrenceOptions()
+        {
+
+            for (int i = 1; i < 13; i++)
+            {
+                fb_tr_add_rec_count.Items.Add(i);
+            }
+
+            
+            fb_tr_add_rec_type.Items.Add("months");
+
+            fb_tr_add_rec_count.SelectedIndex = 0;
+            fb_tr_add_rec_type.SelectedIndex = 0;
+
+        }
+
+
+
 
         private void ExpenseTracker_Load(object sender, EventArgs e)
         {
 
             //ExpenseTracker ET = new ExpenseTracker();
 
-
-
-
             //Data view columns
             dt.Columns.Add("ID");
+            dt.Columns.Add("Description");
             dt.Columns.Add("Date");
             dt.Columns.Add("Amount");
             dt.Columns.Add("Type");
@@ -158,20 +178,8 @@ namespace ET
             //Fill type dropdowns
             fillTransactionTypes();
 
-
-            /* DataGridViewButtonColumn btnColumn = new DataGridViewButtonColumn();
-
-             btnColumn.DataPropertyName = "id";
-
-             btnColumn.Width = 50;
-             btnColumn.Text = "Delete";
-
-             btnColumn.ReadOnly = true;
-
-             tr_data.Columns.Add(btnColumn);*/
-
-
-
+            //Fill recurrence options
+            fillRecurrenceOptions();
 
 
         }
@@ -179,6 +187,7 @@ namespace ET
         public void resetTrForms()
         {
 
+            fb_tr_add_description.Text = "";
             fb_tr_add_amount.Text = "";
             fb_tr_add_date.Text = "";
             fb_tr_add_type.Text = "";
@@ -189,6 +198,7 @@ namespace ET
             fb_tr_add_type.SelectedIndex = 0;
             fb_tr_add_category.SelectedIndex = 0;
 
+            fb_tr_edit_description.Text = "";
             fb_tr_edit_amount.Text = "";
             fb_tr_edit_date.Text = "";
             fb_tr_edit_type.Text = "";
@@ -228,20 +238,6 @@ namespace ET
             group_tr_view.Show();
         }
 
-        private void group_tr_add_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -255,24 +251,26 @@ namespace ET
             group_cat_add.Show();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void btn_add_tr_Click(object sender, EventArgs e)
         {
             string mzg = "";
-            double currAmount;
+            double currAmount = 0;
+            int catKey = (fb_tr_add_category.SelectedItem as dynamic).Value;
+            string type = (fb_tr_add_type.SelectedItem as dynamic).Value;
 
-            if (!Double.TryParse(fb_tr_add_amount.Text, out currAmount))
+            if (fb_tr_add_description.Text == "")
             {
-                mzg = "Please enter valid amount";
-            }else if (fb_tr_add_type.Text == "")
+                mzg = "Please enter the transaction description";
+            }
+            else if (!Double.TryParse(fb_tr_add_amount.Text, out currAmount))
+            {
+                mzg = "Please enter a valid transaction amount";
+            }else if (type == "")
             {
                 mzg = "Please select a type";
             }
-            else if (fb_tr_add_category.Text == "")
+            else if (catKey == 0)
             {
                 mzg = "Please select a category";
             }
@@ -285,18 +283,16 @@ namespace ET
             else
             {
                 bool response = false;
-                int catKey = (fb_tr_add_category.SelectedItem as dynamic).Value;
-                int id = (int) DateTime.Now.ToFileTime();
-               
+                int id = Math.Abs((int) DateTime.Now.ToFileTime());
 
-                if (fb_tr_add_type.Text == "Income")
+                if (type == "Income")
                 {
-                    response = incomeFactory.createTransaction(new Income(id, currAmount, fb_tr_add_recurring.Checked, fb_tr_add_date.Value, fb_tr_add_notes.Text, catKey));
+                    response = incomeFactory.createTransaction(new Income(id, fb_tr_add_description.Text, currAmount, fb_tr_add_recurring.Checked, fb_tr_add_date.Value, fb_tr_add_notes.Text, catKey));
 
                 }
                 else
                 {
-                    response = expenseFactory.createTransaction(new Expense(id, currAmount, fb_tr_add_recurring.Checked, fb_tr_add_date.Value, fb_tr_add_notes.Text, catKey));
+                    response = expenseFactory.createTransaction(new Expense(id, fb_tr_add_description.Text, currAmount, fb_tr_add_recurring.Checked, fb_tr_add_date.Value, fb_tr_add_notes.Text, catKey));
                 }
 
                 if (response)
@@ -318,17 +314,23 @@ namespace ET
         {
 
             string mzg = "";
-            double currAmount;
+            double currAmount = 0;
+            int catKey = (fb_tr_edit_category.SelectedItem as dynamic).Value;
+            string type = (fb_tr_edit_type.SelectedItem as dynamic).Value;
 
-            if (!Double.TryParse(fb_tr_edit_amount.Text, out currAmount))
+
+            if (fb_tr_edit_description.Text == "")
             {
-                mzg = "Please enter valid amount";
+                mzg = "Please enter the transaction description";
             }
-            else if (fb_tr_edit_type.Text == "")
+            else if (!Double.TryParse(fb_tr_edit_amount.Text, out currAmount))
+            {
+                mzg = "Please enter a valid transaction amount";
+            }else if (type == "")
             {
                 mzg = "Please select a type";
             }
-            else if (fb_tr_edit_category.Text == "")
+            else if (catKey == 0)
             {
                 mzg = "Please select a category";
             }
@@ -341,16 +343,15 @@ namespace ET
             else
             {
                 bool response = false;
-                int catKey = (fb_tr_edit_category.SelectedItem as dynamic).Value;
 
-                if (fb_tr_edit_type.Text == "Income")
+                if (type == "Income")
                 {
-                    response = incomeFactory.editTransaction(new Income(int.Parse(fb_tr_edit_id.Text), currAmount, fb_tr_edit_recurring.Checked, fb_tr_edit_date.Value, fb_tr_edit_notes.Text, catKey));
+                    response = incomeFactory.editTransaction(new Income(int.Parse(fb_tr_edit_id.Text), fb_tr_edit_description.Text, currAmount, fb_tr_edit_recurring.Checked, fb_tr_edit_date.Value, fb_tr_edit_notes.Text, catKey));
 
                 }
                 else
                 {
-                    response = expenseFactory.editTransaction(new Expense(int.Parse(fb_tr_edit_id.Text), currAmount, fb_tr_edit_recurring.Checked, fb_tr_edit_date.Value, fb_tr_edit_notes.Text, catKey));
+                    response = expenseFactory.editTransaction(new Expense(int.Parse(fb_tr_edit_id.Text), fb_tr_edit_description.Text, currAmount, fb_tr_edit_recurring.Checked, fb_tr_edit_date.Value, fb_tr_edit_notes.Text, catKey));
                 }
 
                 if (response)
@@ -425,14 +426,15 @@ namespace ET
             {
 
                 fb_tr_edit_id.Text = tr_data.Rows[e.RowIndex].Cells[0].Value.ToString();
-                fb_tr_edit_date.Text = tr_data.Rows[e.RowIndex].Cells[1].Value.ToString();
-                fb_tr_edit_amount.Text = tr_data.Rows[e.RowIndex].Cells[2].Value.ToString();
-                fb_tr_edit_type.Text = tr_data.Rows[e.RowIndex].Cells[3].Value.ToString();
-                fb_tr_edit_category.Text = tr_data.Rows[e.RowIndex].Cells[4].Value.ToString();
-                fb_tr_edit_notes.Text = tr_data.Rows[e.RowIndex].Cells[6].Value.ToString();
+                fb_tr_edit_description.Text = tr_data.Rows[e.RowIndex].Cells[1].Value.ToString();
+                fb_tr_edit_date.Text = tr_data.Rows[e.RowIndex].Cells[2].Value.ToString();
+                fb_tr_edit_amount.Text = tr_data.Rows[e.RowIndex].Cells[3].Value.ToString();
+                fb_tr_edit_type.Text = tr_data.Rows[e.RowIndex].Cells[4].Value.ToString();
+                fb_tr_edit_category.Text = tr_data.Rows[e.RowIndex].Cells[5].Value.ToString();
+                fb_tr_edit_notes.Text = tr_data.Rows[e.RowIndex].Cells[7].Value.ToString();
                 fb_tr_edit_recurring.Checked = false;
 
-                if (tr_data.Rows[e.RowIndex].Cells[5].Value.ToString() == "True")
+                if (tr_data.Rows[e.RowIndex].Cells[6].Value.ToString() == "True")
                 {
                     fb_tr_edit_recurring.Checked = true;
                 }
@@ -492,9 +494,7 @@ namespace ET
 
         private void cat_data_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-           
-
-            if (cat_data.Rows[e.RowIndex].Cells[0].Value.ToString() != "")
+            if (e.RowIndex >= 0 && cat_data.Rows[e.RowIndex].Cells[0].Value.ToString() != "")
             {
 
                 cat_id.Text = cat_data.Rows[e.RowIndex].Cells[0].Value.ToString();
@@ -614,7 +614,7 @@ namespace ET
                 Font = new Font("Segoe UI", 12),
             });
 
-            Transaction tr = new Income(123, 123, false, new DateTime(), "wewe", 1);
+            Transaction tr = new Income(123, "",123, false, new DateTime(), "wewe", 1);
 
             // TableLayoutPanel Initialization
             tableLayoutPanel1.ColumnCount = 3;
@@ -747,6 +747,57 @@ namespace ET
 
         private void btn_about_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void label6_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label23_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label24_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label23_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void getTransactionsOfGivenMonth(DateTime date)
+        {
+
+            //Get last date of the month, year
+            int lastDay = DateTime.DaysInMonth(date.Year, date.Month);
+            DateTime lastDate = new DateTime(date.Year, date.Month, lastDay);
+
+            //Get the first date of the month year
+            DateTime firstDate = new DateTime(date.Year, date.Month, 1);
+
+
+            //Get all the expenses matching this year
+            List<Transaction> filteredTransaction = new List<Transaction>();
+
+            foreach (Transaction tr in currentTransactions) {
+                if (DateTime.Parse(tr.getDate()) >= firstDate && DateTime.Parse(tr.getDate()) <= lastDate) { 
+                    filteredTransaction.Add(tr);
+                }
+            }
+
+            filteredTransaction.Sort();
+
+            //Get all the incomes matching this date
+
+            //Sort the transactions by date
+
+            //return the list 
+
 
         }
     }

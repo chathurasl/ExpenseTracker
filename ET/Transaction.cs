@@ -15,18 +15,19 @@ namespace ET
         private DateTime date;
         //private string transactionType;
         private string transactionDescription;
+        private string otherNotes;
         private int categroyId;
 
 
         //Constractor
-        public Transaction(int id, double amount, bool isRecurring, DateTime date, string transactionDescription, int categroyId)
+        public Transaction(int id, string transactionDescription, double amount, bool isRecurring, DateTime date, string otherNotes, int categroyId)
         {
             this.id = id;
+            this.transactionDescription = transactionDescription;
             this.amount = amount;
             this.isRecurring = isRecurring;
             this.date = date;
-            //this.transactionType = transactionType;
-            this.transactionDescription = transactionDescription;
+            this.otherNotes = otherNotes;
             this.categroyId = categroyId;
         }
 
@@ -67,6 +68,12 @@ namespace ET
         public string getDescription()
         {
             return this.transactionDescription;
+        }
+
+        //Get Notes
+        public string getNotes()
+        {
+            return this.otherNotes;
         }
 
         //Get Categroy Id
