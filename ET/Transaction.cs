@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ET
 {
-    public abstract class Transaction
+    public abstract class Transaction : IComparable<Transaction>
     {
 
         private int id;
@@ -83,6 +83,15 @@ namespace ET
         }
 
         public abstract string getType();
+
+        public int CompareTo(Transaction compareTransaction) {
+
+            if (compareTransaction == null)
+                return 1;
+
+            else
+                return this.date.CompareTo(DateTime.Parse(compareTransaction.getDate()));
+        }
 
     }
 }

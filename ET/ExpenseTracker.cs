@@ -5,6 +5,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Net;
 using System.Reflection.Metadata;
 using static System.Net.Mime.MediaTypeNames;
+using System.Security.Cryptography;
 
 
 namespace ET
@@ -22,6 +23,9 @@ namespace ET
         CategoryFactory categoryFactory = new CategoryFactory();
         IncomeFactory incomeFactory;
         ExpenseFactory expenseFactory;
+
+        double totalIncome = 0;
+        double totalExpense = 0;
 
         public ExpenseTracker()
         {
@@ -600,81 +604,48 @@ namespace ET
             tableLayoutPanel1.Controls.Clear();
             tableLayoutPanel1.RowStyles.Clear();
 
+            DateTime month = dateTimePicker1.Value;
+            DateTime year = dateTimePicker2.Value;
+
+            DateTime filteredDate = new DateTime(year.Year, month.Month, 1);
+
+            List<Transaction> list = getTransactionsOfGivenMonth(filteredDate);
+
+
             panel2.Controls.Add(
                 new Label()
                 {
-                    Text = "10000",
+                    Text = totalIncome.ToString(),
                     TextAlign = ContentAlignment.TopRight,
                     Size = panel2.Size,
                     Font = new Font("Segoe UI", 12),
                 });
-            panel3.Controls.Add(new Label() { Text = "10000",
+            panel3.Controls.Add(new Label() { Text = totalExpense.ToString(),
                 TextAlign = ContentAlignment.TopRight,
                 Size = panel3.Size,
                 Font = new Font("Segoe UI", 12),
             });
 
-            Transaction tr = new Income(123, "",123, false, new DateTime(), "wewe", 1);
-
-            // TableLayoutPanel Initialization
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            tableLayoutPanel1.Controls.Add(new Label()
-            { Text = "Salary",
-                ForeColor = Color.DarkGreen,
-                Font = new Font("Segoe UI", 12),
-                TextAlign = ContentAlignment.TopLeft,
-                //Size = new System.Drawing.Size(900, 26)
-        }, 0, 0);
-            tableLayoutPanel1.Controls.Add(new Label() { 
-                Text = "01/01/2021" , 
-                TextAlign = ContentAlignment.TopLeft,
-                Font = new Font("Segoe UI", 8),
-            }, 0, 1);
-            tableLayoutPanel1.Controls.Add(new Label() { 
-                Text = "10000", 
-                ForeColor = Color.DarkGreen, Font = new Font("Segoe UI", 15) ,
-                Size = new System.Drawing.Size(900, 30),
-                TextAlign = ContentAlignment.BottomRight}, 1, 0);
-                tableLayoutPanel1.SetRowSpan(tableLayoutPanel1.GetControlFromPosition(1, 0), 2);
-            tableLayoutPanel1.Controls.Add(
-            new Button()
-            {
-                BackgroundImage = ET.Properties.Resources.arrow_right,
-                BackgroundImageLayout = ImageLayout.Zoom,
-                FlatStyle = FlatStyle.Flat,
-                FlatAppearance = { BorderSize = 0 },
-                Size = new System.Drawing.Size(40, 30),
-                ImageAlign = ContentAlignment.BottomRight,
-            }, 2, 0) ;
-            tableLayoutPanel1.SetRowSpan(tableLayoutPanel1.GetControlFromPosition(2, 0), 2);
-            tableLayoutPanel1.GetControlFromPosition(2,0).Click += (object sender, EventArgs e) =>
-            {
-                //you can use your variables inside event
-                loadEditTransaction(tr);
-            };
-            for (int i = 2; i < 10; i+=2) {
+            int count = -1;
+            foreach (Transaction tr in list) {
+                count++;
                 tableLayoutPanel1.RowCount = tableLayoutPanel1.RowCount + 2;
                 tableLayoutPanel1.Controls.Add(new Label()
-                { Text = "Salary",
+                { Text = tr.getDescription(),
                     ForeColor = Color.DarkGreen,
                     Font = new Font("Segoe UI", 12),
                     TextAlign = ContentAlignment.TopLeft,
                     //Size = new System.Drawing.Size(900, 26)
-                }, 0, i);
+                }, 0, count);
                 tableLayoutPanel1.Controls.Add(new Label() {
-                    Text = "10000",
+                    Text = tr.getAmount().ToString(),
                     ForeColor = Color.DarkGreen,
                     Font = new Font("Segoe UI", 15),
                     Size = new System.Drawing.Size(900, 30),
                     TextAlign = ContentAlignment.BottomRight
                 
-                }, 1, i);
-                tableLayoutPanel1.Controls.Add(new Label() {
-                    Text = "01/01/2021",
-                    TextAlign = ContentAlignment.TopLeft,
-                    Font = new Font("Segoe UI", 8),
-                }, 0, i+1);
+                }, 1, count);
+
                 tableLayoutPanel1.Controls.Add(
                 new Button()
                 {
@@ -684,13 +655,23 @@ namespace ET
                     FlatAppearance = { BorderSize = 0 },
                     Size = new System.Drawing.Size(40, 30),
                     ImageAlign = ContentAlignment.BottomRight,
-                }, 2, i);
-                tableLayoutPanel1.SetRowSpan(tableLayoutPanel1.GetControlFromPosition(2, i), 2);
-                tableLayoutPanel1.GetControlFromPosition(2, i).Click += (object sender, EventArgs e) =>
+                }, 2, count);
+                tableLayoutPanel1.SetRowSpan(tableLayoutPanel1.GetControlFromPosition(2, count), 2);
+
+                tableLayoutPanel1.GetControlFromPosition(2, count).Click += (object sender, EventArgs e) =>
                 {
                     //you can use your variables inside event
                     loadEditTransaction(tr);
                 };
+                count++;
+                
+                tableLayoutPanel1.Controls.Add(new Label()
+                {
+                    Text = tr.getDate(),
+                    TextAlign = ContentAlignment.TopLeft,
+                    Font = new Font("Segoe UI", 8),
+                }, 0, count);
+                
             }
             
             tableLayoutPanel1.Show();
@@ -738,6 +719,20 @@ namespace ET
         {
             hidePanels();
             group_tr_edit.Show();
+
+            fb_tr_edit_id.Text = tr.getId().ToString();
+
+            fb_tr_edit_description.Text = tr.getDescription();
+            fb_tr_edit_amount.Text = tr.getAmount().ToString();
+
+            fb_tr_edit_recurring.Checked = tr.getRecurrence();
+            fb_tr_edit_date.Value = DateTime.Parse(tr.getDate());
+            fb_tr_edit_notes.Text = tr.getNotes();
+
+            fb_tr_add_category.SelectedItem = tr.getCategroyId();
+
+
+
         }
 
         private void label12_Click_1(object sender, EventArgs e)
@@ -770,7 +765,7 @@ namespace ET
 
         }
 
-        private void getTransactionsOfGivenMonth(DateTime date)
+        private List<Transaction> getTransactionsOfGivenMonth(DateTime date)
         {
 
             //Get last date of the month, year
@@ -787,16 +782,24 @@ namespace ET
             foreach (Transaction tr in currentTransactions) {
                 if (DateTime.Parse(tr.getDate()) >= firstDate && DateTime.Parse(tr.getDate()) <= lastDate) { 
                     filteredTransaction.Add(tr);
+
+                    if (tr.getType() == "Income")
+                    {
+
+                        totalIncome += tr.getAmount();
+
+                    }
+                    else {
+
+                        totalExpense += tr.getAmount();
+                    }
                 }
             }
 
             filteredTransaction.Sort();
+            filteredTransaction.Reverse();
 
-            //Get all the incomes matching this date
-
-            //Sort the transactions by date
-
-            //return the list 
+            return filteredTransaction;
 
 
         }
