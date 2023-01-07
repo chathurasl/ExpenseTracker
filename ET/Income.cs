@@ -13,7 +13,7 @@ namespace ET
         private string transactionType = "Income";
 
         //Constractor
-        public Income(int id, double amount, bool isRecurring, DateTime date, string transactionDescription, int categroyId) : base(id, amount, isRecurring, date, transactionDescription, categroyId)
+        public Income(int id, string transactionDescription, double amount, bool isRecurring, DateTime date, string otherNotes, int categroyId) : base(id, transactionDescription, amount, isRecurring, date, otherNotes, categroyId)
         {
         }
 

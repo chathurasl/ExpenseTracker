@@ -35,6 +35,8 @@
             this.btn_add_transactions = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.group_tr_add = new System.Windows.Forms.GroupBox();
+            this.fb_tr_add_description = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.fb_tr_add_date = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
             this.fb_tr_add_notes = new System.Windows.Forms.TextBox();
@@ -72,9 +74,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.group_tr_edit = new System.Windows.Forms.GroupBox();
+            this.fb_tr_edit_description = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.btn_tr_update_cancle = new System.Windows.Forms.Button();
             this.btn_tr_delete = new System.Windows.Forms.Button();
-            this.fb_tr_edit_index = new System.Windows.Forms.TextBox();
             this.fb_tr_edit_id = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.fb_tr_edit_date = new System.Windows.Forms.DateTimePicker();
@@ -169,6 +172,8 @@
             // 
             // group_tr_add
             // 
+            this.group_tr_add.Controls.Add(this.fb_tr_add_description);
+            this.group_tr_add.Controls.Add(this.label6);
             this.group_tr_add.Controls.Add(this.fb_tr_add_date);
             this.group_tr_add.Controls.Add(this.label15);
             this.group_tr_add.Controls.Add(this.fb_tr_add_notes);
@@ -191,24 +196,42 @@
             this.group_tr_add.TabStop = false;
             this.group_tr_add.Text = "Add Transaction";
             this.group_tr_add.Visible = false;
-            this.group_tr_add.Enter += new System.EventHandler(this.group_tr_add_Enter);
+            // 
+            // fb_tr_add_description
+            // 
+            this.fb_tr_add_description.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.fb_tr_add_description.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.fb_tr_add_description.Location = new System.Drawing.Point(121, 42);
+            this.fb_tr_add_description.Name = "fb_tr_add_description";
+            this.fb_tr_add_description.Size = new System.Drawing.Size(505, 25);
+            this.fb_tr_add_description.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(22, 44);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(81, 19);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Description:";
             // 
             // fb_tr_add_date
             // 
             this.fb_tr_add_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.fb_tr_add_date.Location = new System.Drawing.Point(108, 61);
+            this.fb_tr_add_date.Location = new System.Drawing.Point(121, 88);
             this.fb_tr_add_date.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fb_tr_add_date.MaxDate = new System.DateTime(2025, 12, 31, 0, 0, 0, 0);
             this.fb_tr_add_date.MinDate = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             this.fb_tr_add_date.Name = "fb_tr_add_date";
-            this.fb_tr_add_date.Size = new System.Drawing.Size(196, 25);
+            this.fb_tr_add_date.Size = new System.Drawing.Size(183, 25);
             this.fb_tr_add_date.TabIndex = 12;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(22, 62);
+            this.label15.Location = new System.Drawing.Point(22, 89);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(41, 19);
             this.label15.TabIndex = 11;
@@ -218,17 +241,17 @@
             // 
             this.fb_tr_add_notes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fb_tr_add_notes.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.fb_tr_add_notes.Location = new System.Drawing.Point(108, 160);
+            this.fb_tr_add_notes.Location = new System.Drawing.Point(121, 187);
             this.fb_tr_add_notes.Multiline = true;
             this.fb_tr_add_notes.Name = "fb_tr_add_notes";
-            this.fb_tr_add_notes.Size = new System.Drawing.Size(518, 94);
+            this.fb_tr_add_notes.Size = new System.Drawing.Size(505, 94);
             this.fb_tr_add_notes.TabIndex = 10;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(22, 158);
+            this.label7.Location = new System.Drawing.Point(22, 185);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 19);
             this.label7.TabIndex = 9;
@@ -241,7 +264,7 @@
             this.fb_tr_add_submit.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.fb_tr_add_submit.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.fb_tr_add_submit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.fb_tr_add_submit.Location = new System.Drawing.Point(479, 311);
+            this.fb_tr_add_submit.Location = new System.Drawing.Point(479, 338);
             this.fb_tr_add_submit.Name = "fb_tr_add_submit";
             this.fb_tr_add_submit.Size = new System.Drawing.Size(148, 40);
             this.fb_tr_add_submit.TabIndex = 4;
@@ -252,29 +275,27 @@
             // fb_tr_add_recurring
             // 
             this.fb_tr_add_recurring.AutoSize = true;
-            this.fb_tr_add_recurring.Location = new System.Drawing.Point(108, 277);
+            this.fb_tr_add_recurring.Location = new System.Drawing.Point(121, 304);
             this.fb_tr_add_recurring.Name = "fb_tr_add_recurring";
             this.fb_tr_add_recurring.Size = new System.Drawing.Size(15, 14);
             this.fb_tr_add_recurring.TabIndex = 8;
             this.fb_tr_add_recurring.UseVisualStyleBackColor = true;
-            this.fb_tr_add_recurring.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(26, 272);
+            this.label4.Location = new System.Drawing.Point(26, 299);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 19);
             this.label4.TabIndex = 7;
             this.label4.Text = "Recurring:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(348, 112);
+            this.label3.Location = new System.Drawing.Point(348, 139);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 19);
             this.label3.TabIndex = 5;
@@ -284,7 +305,7 @@
             // 
             this.fb_tr_add_category.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.fb_tr_add_category.FormattingEnabled = true;
-            this.fb_tr_add_category.Location = new System.Drawing.Point(430, 111);
+            this.fb_tr_add_category.Location = new System.Drawing.Point(430, 138);
             this.fb_tr_add_category.Name = "fb_tr_add_category";
             this.fb_tr_add_category.Size = new System.Drawing.Size(196, 25);
             this.fb_tr_add_category.TabIndex = 4;
@@ -293,7 +314,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(22, 117);
+            this.label2.Location = new System.Drawing.Point(22, 144);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 19);
             this.label2.TabIndex = 3;
@@ -303,16 +324,16 @@
             // 
             this.fb_tr_add_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.fb_tr_add_type.FormattingEnabled = true;
-            this.fb_tr_add_type.Location = new System.Drawing.Point(108, 111);
+            this.fb_tr_add_type.Location = new System.Drawing.Point(121, 138);
             this.fb_tr_add_type.Name = "fb_tr_add_type";
-            this.fb_tr_add_type.Size = new System.Drawing.Size(196, 25);
+            this.fb_tr_add_type.Size = new System.Drawing.Size(183, 25);
             this.fb_tr_add_type.TabIndex = 2;
             // 
             // fb_tr_add_amount
             // 
             this.fb_tr_add_amount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fb_tr_add_amount.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.fb_tr_add_amount.Location = new System.Drawing.Point(430, 62);
+            this.fb_tr_add_amount.Location = new System.Drawing.Point(430, 89);
             this.fb_tr_add_amount.Name = "fb_tr_add_amount";
             this.fb_tr_add_amount.Size = new System.Drawing.Size(196, 25);
             this.fb_tr_add_amount.TabIndex = 1;
@@ -321,7 +342,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(348, 64);
+            this.label1.Location = new System.Drawing.Point(348, 91);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 19);
             this.label1.TabIndex = 0;
@@ -409,9 +430,15 @@
             // 
             // cat_data
             // 
+            this.cat_data.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.cat_data.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
+            this.cat_data.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.cat_data.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.cat_data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.cat_data.Location = new System.Drawing.Point(6, 195);
             this.cat_data.Name = "cat_data";
+            this.cat_data.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.cat_data.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.cat_data.RowTemplate.Height = 25;
             this.cat_data.Size = new System.Drawing.Size(642, 219);
             this.cat_data.TabIndex = 9;
@@ -528,6 +555,8 @@
             // 
             // tr_data
             // 
+            this.tr_data.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
+            this.tr_data.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tr_data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tr_data.Location = new System.Drawing.Point(6, 102);
             this.tr_data.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -613,9 +642,10 @@
             // 
             // group_tr_edit
             // 
+            this.group_tr_edit.Controls.Add(this.fb_tr_edit_description);
+            this.group_tr_edit.Controls.Add(this.label12);
             this.group_tr_edit.Controls.Add(this.btn_tr_update_cancle);
             this.group_tr_edit.Controls.Add(this.btn_tr_delete);
-            this.group_tr_edit.Controls.Add(this.fb_tr_edit_index);
             this.group_tr_edit.Controls.Add(this.fb_tr_edit_id);
             this.group_tr_edit.Controls.Add(this.label14);
             this.group_tr_edit.Controls.Add(this.fb_tr_edit_date);
@@ -640,6 +670,25 @@
             this.group_tr_edit.TabStop = false;
             this.group_tr_edit.Text = "Edit Transaction";
             this.group_tr_edit.Visible = false;
+            // 
+            // fb_tr_edit_description
+            // 
+            this.fb_tr_edit_description.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.fb_tr_edit_description.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.fb_tr_edit_description.Location = new System.Drawing.Point(120, 42);
+            this.fb_tr_edit_description.Name = "fb_tr_edit_description";
+            this.fb_tr_edit_description.Size = new System.Drawing.Size(196, 25);
+            this.fb_tr_edit_description.TabIndex = 20;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(22, 44);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(81, 19);
+            this.label12.TabIndex = 19;
+            this.label12.Text = "Description:";
             // 
             // btn_tr_update_cancle
             // 
@@ -671,21 +720,11 @@
             this.btn_tr_delete.UseVisualStyleBackColor = false;
             this.btn_tr_delete.Click += new System.EventHandler(this.btn_tr_delete_Click);
             // 
-            // fb_tr_edit_index
-            // 
-            this.fb_tr_edit_index.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.fb_tr_edit_index.Location = new System.Drawing.Point(430, 43);
-            this.fb_tr_edit_index.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.fb_tr_edit_index.Name = "fb_tr_edit_index";
-            this.fb_tr_edit_index.Size = new System.Drawing.Size(110, 25);
-            this.fb_tr_edit_index.TabIndex = 16;
-            this.fb_tr_edit_index.Visible = false;
-            // 
             // fb_tr_edit_id
             // 
             this.fb_tr_edit_id.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fb_tr_edit_id.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.fb_tr_edit_id.Location = new System.Drawing.Point(108, 43);
+            this.fb_tr_edit_id.Location = new System.Drawing.Point(431, 42);
             this.fb_tr_edit_id.Name = "fb_tr_edit_id";
             this.fb_tr_edit_id.ReadOnly = true;
             this.fb_tr_edit_id.Size = new System.Drawing.Size(196, 25);
@@ -695,7 +734,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(22, 44);
+            this.label14.Location = new System.Drawing.Point(345, 43);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(26, 19);
             this.label14.TabIndex = 14;
@@ -704,7 +743,7 @@
             // fb_tr_edit_date
             // 
             this.fb_tr_edit_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.fb_tr_edit_date.Location = new System.Drawing.Point(108, 92);
+            this.fb_tr_edit_date.Location = new System.Drawing.Point(120, 92);
             this.fb_tr_edit_date.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fb_tr_edit_date.MaxDate = new System.DateTime(2025, 12, 31, 0, 0, 0, 0);
             this.fb_tr_edit_date.MinDate = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
@@ -726,10 +765,10 @@
             // 
             this.fb_tr_edit_notes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fb_tr_edit_notes.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.fb_tr_edit_notes.Location = new System.Drawing.Point(108, 191);
+            this.fb_tr_edit_notes.Location = new System.Drawing.Point(120, 191);
             this.fb_tr_edit_notes.Multiline = true;
             this.fb_tr_edit_notes.Name = "fb_tr_edit_notes";
-            this.fb_tr_edit_notes.Size = new System.Drawing.Size(518, 94);
+            this.fb_tr_edit_notes.Size = new System.Drawing.Size(506, 94);
             this.fb_tr_edit_notes.TabIndex = 10;
             // 
             // label17
@@ -809,7 +848,7 @@
             // 
             this.fb_tr_edit_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.fb_tr_edit_type.FormattingEnabled = true;
-            this.fb_tr_edit_type.Location = new System.Drawing.Point(108, 142);
+            this.fb_tr_edit_type.Location = new System.Drawing.Point(120, 142);
             this.fb_tr_edit_type.Name = "fb_tr_edit_type";
             this.fb_tr_edit_type.Size = new System.Drawing.Size(196, 25);
             this.fb_tr_edit_type.TabIndex = 2;
@@ -837,14 +876,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(870, 448);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.group_cat_add);
-            this.Controls.Add(this.group_tr_add);
-            this.Controls.Add(this.group_setting);
-            this.Controls.Add(this.group_tr_edit);
             this.Controls.Add(this.group_tr_view);
+            this.Controls.Add(this.group_cat_add);
+            this.Controls.Add(this.group_setting);
+            this.Controls.Add(this.group_tr_add);
+            this.Controls.Add(this.group_tr_edit);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ExpenseTracker";
@@ -915,7 +954,6 @@
         private ComboBox fb_tr_edit_type;
         private TextBox fb_tr_edit_amount;
         private Label label21;
-        private TextBox fb_tr_edit_index;
         private TextBox fb_tr_edit_id;
         private Label label14;
         private DateTimePicker dateTimePicker1;
@@ -932,5 +970,9 @@
         private Button btn_cat_update_cancel;
         private Button btn_tr_update_cancle;
         private Button btn_tr_delete;
+        private TextBox fb_tr_add_description;
+        private Label label6;
+        private TextBox fb_tr_edit_description;
+        private Label label12;
     }
 }
