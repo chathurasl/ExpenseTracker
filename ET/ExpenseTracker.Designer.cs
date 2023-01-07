@@ -34,6 +34,9 @@
             this.btn_view_transactions = new System.Windows.Forms.Button();
             this.btn_add_transactions = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.group_setting = new System.Windows.Forms.GroupBox();
+            this.btn_manage_categories = new System.Windows.Forms.Button();
+            this.btn_about = new System.Windows.Forms.Button();
             this.group_tr_add = new System.Windows.Forms.GroupBox();
             this.fb_tr_add_date = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
@@ -48,6 +51,7 @@
             this.fb_tr_add_type = new System.Windows.Forms.ComboBox();
             this.fb_tr_add_amount = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.group_tr_edit = new System.Windows.Forms.GroupBox();
             this.group_cat_add = new System.Windows.Forms.GroupBox();
             this.btn_cat_update_cancel = new System.Windows.Forms.Button();
             this.cat_id = new System.Windows.Forms.TextBox();
@@ -59,19 +63,6 @@
             this.btn_cat_add = new System.Windows.Forms.Button();
             this.cat_add_name = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.group_setting = new System.Windows.Forms.GroupBox();
-            this.btn_manage_categories = new System.Windows.Forms.Button();
-            this.btn_about = new System.Windows.Forms.Button();
-            this.group_tr_view = new System.Windows.Forms.GroupBox();
-            this.tr_data = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.group_tr_edit = new System.Windows.Forms.GroupBox();
             this.btn_tr_update_cancle = new System.Windows.Forms.Button();
             this.btn_tr_delete = new System.Windows.Forms.Button();
             this.fb_tr_edit_index = new System.Windows.Forms.TextBox();
@@ -90,16 +81,31 @@
             this.fb_tr_edit_type = new System.Windows.Forms.ComboBox();
             this.fb_tr_edit_amount = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
+            this.group_tr_view = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.group_setting.SuspendLayout();
             this.group_tr_add.SuspendLayout();
+            this.group_tr_edit.SuspendLayout();
             this.group_cat_add.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cat_data)).BeginInit();
-            this.group_setting.SuspendLayout();
             this.group_tr_view.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tr_data)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.group_tr_edit.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -167,6 +173,50 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // group_setting
+            // 
+            this.group_setting.Controls.Add(this.btn_manage_categories);
+            this.group_setting.Controls.Add(this.btn_about);
+            this.group_setting.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.group_setting.Location = new System.Drawing.Point(194, 7);
+            this.group_setting.Name = "group_setting";
+            this.group_setting.Size = new System.Drawing.Size(678, 429);
+            this.group_setting.TabIndex = 2;
+            this.group_setting.TabStop = false;
+            this.group_setting.Text = "Settings";
+            this.group_setting.Visible = false;
+            // 
+            // btn_manage_categories
+            // 
+            this.btn_manage_categories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.btn_manage_categories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_manage_categories.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_manage_categories.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_manage_categories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_manage_categories.Location = new System.Drawing.Point(29, 46);
+            this.btn_manage_categories.Name = "btn_manage_categories";
+            this.btn_manage_categories.Size = new System.Drawing.Size(120, 112);
+            this.btn_manage_categories.TabIndex = 7;
+            this.btn_manage_categories.Text = "MANAGE CATEGORIES";
+            this.btn_manage_categories.UseVisualStyleBackColor = false;
+            this.btn_manage_categories.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // btn_about
+            // 
+            this.btn_about.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.btn_about.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_about.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_about.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_about.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_about.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_about.Location = new System.Drawing.Point(172, 48);
+            this.btn_about.Name = "btn_about";
+            this.btn_about.Size = new System.Drawing.Size(118, 111);
+            this.btn_about.TabIndex = 6;
+            this.btn_about.Text = "ABOUT";
+            this.btn_about.UseVisualStyleBackColor = false;
+            this.btn_about.Click += new System.EventHandler(this.btn_about_Click);
+            // 
             // group_tr_add
             // 
             this.group_tr_add.Controls.Add(this.fb_tr_add_date);
@@ -184,7 +234,7 @@
             this.group_tr_add.Controls.Add(this.label1);
             this.group_tr_add.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_tr_add.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_tr_add.Location = new System.Drawing.Point(194, 14);
+            this.group_tr_add.Location = new System.Drawing.Point(194, 17);
             this.group_tr_add.Name = "group_tr_add";
             this.group_tr_add.Size = new System.Drawing.Size(654, 421);
             this.group_tr_add.TabIndex = 1;
@@ -327,6 +377,37 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Amount:";
             // 
+            // group_tr_edit
+            // 
+            this.group_tr_edit.Controls.Add(this.group_cat_add);
+            this.group_tr_edit.Controls.Add(this.btn_tr_update_cancle);
+            this.group_tr_edit.Controls.Add(this.btn_tr_delete);
+            this.group_tr_edit.Controls.Add(this.fb_tr_edit_index);
+            this.group_tr_edit.Controls.Add(this.fb_tr_edit_id);
+            this.group_tr_edit.Controls.Add(this.label14);
+            this.group_tr_edit.Controls.Add(this.fb_tr_edit_date);
+            this.group_tr_edit.Controls.Add(this.label16);
+            this.group_tr_edit.Controls.Add(this.fb_tr_edit_notes);
+            this.group_tr_edit.Controls.Add(this.label17);
+            this.group_tr_edit.Controls.Add(this.btn_tr_update);
+            this.group_tr_edit.Controls.Add(this.fb_tr_edit_recurring);
+            this.group_tr_edit.Controls.Add(this.label18);
+            this.group_tr_edit.Controls.Add(this.label19);
+            this.group_tr_edit.Controls.Add(this.fb_tr_edit_category);
+            this.group_tr_edit.Controls.Add(this.label20);
+            this.group_tr_edit.Controls.Add(this.fb_tr_edit_type);
+            this.group_tr_edit.Controls.Add(this.fb_tr_edit_amount);
+            this.group_tr_edit.Controls.Add(this.label21);
+            this.group_tr_edit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.group_tr_edit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.group_tr_edit.Location = new System.Drawing.Point(0, 0);
+            this.group_tr_edit.Name = "group_tr_edit";
+            this.group_tr_edit.Size = new System.Drawing.Size(677, 438);
+            this.group_tr_edit.TabIndex = 6;
+            this.group_tr_edit.TabStop = false;
+            this.group_tr_edit.Text = "Edit Transaction";
+            this.group_tr_edit.Visible = false;
+            // 
             // group_cat_add
             // 
             this.group_cat_add.Controls.Add(this.btn_cat_update_cancel);
@@ -339,12 +420,11 @@
             this.group_cat_add.Controls.Add(this.btn_cat_add);
             this.group_cat_add.Controls.Add(this.cat_add_name);
             this.group_cat_add.Controls.Add(this.label8);
-            this.group_cat_add.Cursor = System.Windows.Forms.Cursors.Default;
             this.group_cat_add.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_cat_add.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_cat_add.Location = new System.Drawing.Point(194, 10);
+            this.group_cat_add.Location = new System.Drawing.Point(0, 0);
             this.group_cat_add.Name = "group_cat_add";
-            this.group_cat_add.Size = new System.Drawing.Size(654, 421);
+            this.group_cat_add.Size = new System.Drawing.Size(664, 432);
             this.group_cat_add.TabIndex = 3;
             this.group_cat_add.TabStop = false;
             this.group_cat_add.Text = "Manage Categories";
@@ -469,177 +549,6 @@
             this.label8.Size = new System.Drawing.Size(48, 19);
             this.label8.TabIndex = 0;
             this.label8.Text = "Name:";
-            // 
-            // group_setting
-            // 
-            this.group_setting.Controls.Add(this.btn_manage_categories);
-            this.group_setting.Controls.Add(this.btn_about);
-            this.group_setting.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.group_setting.Location = new System.Drawing.Point(194, 10);
-            this.group_setting.Name = "group_setting";
-            this.group_setting.Size = new System.Drawing.Size(654, 421);
-            this.group_setting.TabIndex = 2;
-            this.group_setting.TabStop = false;
-            this.group_setting.Text = "Settings";
-            this.group_setting.Visible = false;
-            // 
-            // btn_manage_categories
-            // 
-            this.btn_manage_categories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
-            this.btn_manage_categories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_manage_categories.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_manage_categories.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_manage_categories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_manage_categories.Location = new System.Drawing.Point(29, 46);
-            this.btn_manage_categories.Name = "btn_manage_categories";
-            this.btn_manage_categories.Size = new System.Drawing.Size(120, 112);
-            this.btn_manage_categories.TabIndex = 7;
-            this.btn_manage_categories.Text = "MANAGE CATEGORIES";
-            this.btn_manage_categories.UseVisualStyleBackColor = false;
-            this.btn_manage_categories.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // btn_about
-            // 
-            this.btn_about.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
-            this.btn_about.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_about.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_about.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_about.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_about.Location = new System.Drawing.Point(172, 48);
-            this.btn_about.Name = "btn_about";
-            this.btn_about.Size = new System.Drawing.Size(118, 111);
-            this.btn_about.TabIndex = 6;
-            this.btn_about.Text = "ABOUT";
-            this.btn_about.UseVisualStyleBackColor = false;
-            // 
-            // group_tr_view
-            // 
-            this.group_tr_view.Controls.Add(this.tr_data);
-            this.group_tr_view.Controls.Add(this.groupBox1);
-            this.group_tr_view.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.group_tr_view.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_tr_view.Location = new System.Drawing.Point(194, 10);
-            this.group_tr_view.Name = "group_tr_view";
-            this.group_tr_view.Size = new System.Drawing.Size(654, 428);
-            this.group_tr_view.TabIndex = 4;
-            this.group_tr_view.TabStop = false;
-            this.group_tr_view.Text = "Transactions";
-            this.group_tr_view.Visible = false;
-            // 
-            // tr_data
-            // 
-            this.tr_data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tr_data.Location = new System.Drawing.Point(6, 102);
-            this.tr_data.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tr_data.Name = "tr_data";
-            this.tr_data.RowHeadersWidth = 51;
-            this.tr_data.RowTemplate.Height = 29;
-            this.tr_data.Size = new System.Drawing.Size(642, 318);
-            this.tr_data.TabIndex = 0;
-            this.tr_data.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tr_data_CellDoubleClick);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Location = new System.Drawing.Point(6, 27);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(642, 68);
-            this.groupBox1.TabIndex = 19;
-            this.groupBox1.TabStop = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(25, 29);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 19);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Date:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(74, 27);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2025, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker1.MinDate = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(105, 25);
-            this.dateTimePicker1.TabIndex = 18;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(231, 27);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(133, 25);
-            this.comboBox3.TabIndex = 13;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(183, 29);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(40, 19);
-            this.label11.TabIndex = 14;
-            this.label11.Text = "Type:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(372, 29);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(68, 19);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "Category:";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(450, 26);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(138, 25);
-            this.comboBox2.TabIndex = 15;
-            // 
-            // group_tr_edit
-            // 
-            this.group_tr_edit.Controls.Add(this.btn_tr_update_cancle);
-            this.group_tr_edit.Controls.Add(this.btn_tr_delete);
-            this.group_tr_edit.Controls.Add(this.fb_tr_edit_index);
-            this.group_tr_edit.Controls.Add(this.fb_tr_edit_id);
-            this.group_tr_edit.Controls.Add(this.label14);
-            this.group_tr_edit.Controls.Add(this.fb_tr_edit_date);
-            this.group_tr_edit.Controls.Add(this.label16);
-            this.group_tr_edit.Controls.Add(this.fb_tr_edit_notes);
-            this.group_tr_edit.Controls.Add(this.label17);
-            this.group_tr_edit.Controls.Add(this.btn_tr_update);
-            this.group_tr_edit.Controls.Add(this.fb_tr_edit_recurring);
-            this.group_tr_edit.Controls.Add(this.label18);
-            this.group_tr_edit.Controls.Add(this.label19);
-            this.group_tr_edit.Controls.Add(this.fb_tr_edit_category);
-            this.group_tr_edit.Controls.Add(this.label20);
-            this.group_tr_edit.Controls.Add(this.fb_tr_edit_type);
-            this.group_tr_edit.Controls.Add(this.fb_tr_edit_amount);
-            this.group_tr_edit.Controls.Add(this.label21);
-            this.group_tr_edit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.group_tr_edit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_tr_edit.Location = new System.Drawing.Point(194, 14);
-            this.group_tr_edit.Name = "group_tr_edit";
-            this.group_tr_edit.Size = new System.Drawing.Size(654, 421);
-            this.group_tr_edit.TabIndex = 6;
-            this.group_tr_edit.TabStop = false;
-            this.group_tr_edit.Text = "Edit Transaction";
-            this.group_tr_edit.Visible = false;
             // 
             // btn_tr_update_cancle
             // 
@@ -833,18 +742,182 @@
             this.label21.TabIndex = 0;
             this.label21.Text = "Amount:";
             // 
+            // group_tr_view
+            // 
+            this.group_tr_view.Controls.Add(this.group_tr_edit);
+            this.group_tr_view.Controls.Add(this.panel3);
+            this.group_tr_view.Controls.Add(this.panel2);
+            this.group_tr_view.Controls.Add(this.tableLayoutPanel1);
+            this.group_tr_view.Controls.Add(this.groupBox1);
+            this.group_tr_view.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.group_tr_view.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.group_tr_view.Location = new System.Drawing.Point(194, 10);
+            this.group_tr_view.Name = "group_tr_view";
+            this.group_tr_view.Size = new System.Drawing.Size(654, 428);
+            this.group_tr_view.TabIndex = 4;
+            this.group_tr_view.TabStop = false;
+            this.group_tr_view.Text = "Transactions";
+            this.group_tr_view.Visible = false;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.LightCoral;
+            this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panel3.Location = new System.Drawing.Point(311, 120);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(337, 22);
+            this.panel3.TabIndex = 22;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.SpringGreen;
+            this.panel2.ForeColor = System.Drawing.Color.Green;
+            this.panel2.Location = new System.Drawing.Point(7, 120);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(298, 22);
+            this.panel2.TabIndex = 21;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoScroll = true;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.50501F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.49499F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel1.Controls.Add(this.label12, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 148);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(632, 274);
+            this.tableLayoutPanel1.TabIndex = 20;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(3, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(0, 21);
+            this.label12.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.dateTimePicker2);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.comboBox3);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Location = new System.Drawing.Point(6, 27);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(642, 92);
+            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.Location = new System.Drawing.Point(494, 64);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(138, 23);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Search";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(97, 51);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(119, 25);
+            this.dateTimePicker2.TabIndex = 21;
+            this.dateTimePicker2.UseWaitCursor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(9, 57);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 19);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Year:";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(97, 18);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(119, 25);
+            this.dateTimePicker1.TabIndex = 19;
+            this.dateTimePicker1.UseWaitCursor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(7, 17);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 19);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Month:";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(281, 26);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(133, 25);
+            this.comboBox3.TabIndex = 13;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(235, 29);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(40, 19);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "Type:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(420, 29);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(68, 19);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Category:";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(494, 26);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(138, 25);
+            this.comboBox2.TabIndex = 15;
+            // 
             // ExpenseTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(870, 448);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.group_cat_add);
-            this.Controls.Add(this.group_tr_add);
             this.Controls.Add(this.group_setting);
-            this.Controls.Add(this.group_tr_edit);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.group_tr_view);
+            this.Controls.Add(this.group_tr_add);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ExpenseTracker";
@@ -853,18 +926,19 @@
             this.Load += new System.EventHandler(this.ExpenseTracker_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.group_setting.ResumeLayout(false);
             this.group_tr_add.ResumeLayout(false);
             this.group_tr_add.PerformLayout();
+            this.group_tr_edit.ResumeLayout(false);
+            this.group_tr_edit.PerformLayout();
             this.group_cat_add.ResumeLayout(false);
             this.group_cat_add.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cat_data)).EndInit();
-            this.group_setting.ResumeLayout(false);
             this.group_tr_view.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tr_data)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.group_tr_edit.ResumeLayout(false);
-            this.group_tr_edit.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -896,7 +970,6 @@
         private TextBox cat_add_name;
         private Label label8;
         private GroupBox group_tr_view;
-        private DataGridView tr_data;
         private TextBox fb_tr_add_notes;
         private Label label7;
         private DateTimePicker fb_tr_add_date;
@@ -918,8 +991,6 @@
         private TextBox fb_tr_edit_index;
         private TextBox fb_tr_edit_id;
         private Label label14;
-        private DateTimePicker dateTimePicker1;
-        private Label label9;
         private Label label10;
         private ComboBox comboBox2;
         private Label label11;
@@ -932,5 +1003,15 @@
         private Button btn_cat_update_cancel;
         private Button btn_tr_update_cancle;
         private Button btn_tr_delete;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Label label9;
+        private VScrollBar vScrollBar1;
+        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimePicker2;
+        private Label label6;
+        private Button button1;
+        private Panel panel3;
+        private Panel panel2;
+        private Label label12;
     }
 }

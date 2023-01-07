@@ -1,6 +1,10 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Drawing;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Net;
+using System.Reflection.Metadata;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace ET
@@ -45,7 +49,7 @@ namespace ET
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new ExpenseTracker());
+            System.Windows.Forms.Application.Run(new ExpenseTracker());
 
         }
 
@@ -107,7 +111,7 @@ namespace ET
                 dr[6] = currTr.getDescription();
 
                 dt.Rows.Add(dr);
-                tr_data.DataSource = dt;
+                //tr_data.DataSource = dt;
             }
               
           
@@ -241,7 +245,7 @@ namespace ET
 
         private void button5_Click(object sender, EventArgs e)
         {
-            hidePanels();
+            //hidePanels();
             group_setting.Show();
         }
 
@@ -417,7 +421,7 @@ namespace ET
         private void tr_data_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            if (tr_data.Rows[e.RowIndex].Cells[0].Value.ToString() != "")
+           /* if (tr_data.Rows[e.RowIndex].Cells[0].Value.ToString() != "")
             {
 
                 fb_tr_edit_id.Text = tr_data.Rows[e.RowIndex].Cells[0].Value.ToString();
@@ -441,6 +445,7 @@ namespace ET
             {
                 MessageBox.Show("Invalid Transaction data.", "Update Transaction", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+           */
             
         }
 
@@ -580,9 +585,116 @@ namespace ET
 
         private void btn_view_transactions_Click(object sender, EventArgs e)
         {
+
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "MMMM";
+            dateTimePicker1.ShowUpDown = true;
+
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            dateTimePicker2.CustomFormat = "yyyy";
+            dateTimePicker2.ShowUpDown = true;
+
             //Show transaction list
             hidePanels();
             group_tr_view.Show();
+            tableLayoutPanel1.Controls.Clear();
+            tableLayoutPanel1.RowStyles.Clear();
+
+            panel2.Controls.Add(
+                new Label()
+                {
+                    Text = "10000",
+                    TextAlign = ContentAlignment.TopRight,
+                    Size = panel2.Size,
+                    Font = new Font("Segoe UI", 12),
+                });
+            panel3.Controls.Add(new Label() { Text = "10000",
+                TextAlign = ContentAlignment.TopRight,
+                Size = panel3.Size,
+                Font = new Font("Segoe UI", 12),
+            });
+
+            Transaction tr = new Income(123, 123, false, new DateTime(), "wewe", 1);
+
+            // TableLayoutPanel Initialization
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            tableLayoutPanel1.Controls.Add(new Label()
+            { Text = "Salary",
+                ForeColor = Color.DarkGreen,
+                Font = new Font("Segoe UI", 12),
+                TextAlign = ContentAlignment.TopLeft,
+                //Size = new System.Drawing.Size(900, 26)
+        }, 0, 0);
+            tableLayoutPanel1.Controls.Add(new Label() { 
+                Text = "01/01/2021" , 
+                TextAlign = ContentAlignment.TopLeft,
+                Font = new Font("Segoe UI", 8),
+            }, 0, 1);
+            tableLayoutPanel1.Controls.Add(new Label() { 
+                Text = "10000", 
+                ForeColor = Color.DarkGreen, Font = new Font("Segoe UI", 15) ,
+                Size = new System.Drawing.Size(900, 30),
+                TextAlign = ContentAlignment.BottomRight}, 1, 0);
+                tableLayoutPanel1.SetRowSpan(tableLayoutPanel1.GetControlFromPosition(1, 0), 2);
+            tableLayoutPanel1.Controls.Add(
+            new Button()
+            {
+                BackgroundImage = ET.Properties.Resources.arrow_right,
+                BackgroundImageLayout = ImageLayout.Zoom,
+                FlatStyle = FlatStyle.Flat,
+                FlatAppearance = { BorderSize = 0 },
+                Size = new System.Drawing.Size(40, 30),
+                ImageAlign = ContentAlignment.BottomRight,
+            }, 2, 0) ;
+            tableLayoutPanel1.SetRowSpan(tableLayoutPanel1.GetControlFromPosition(2, 0), 2);
+            tableLayoutPanel1.GetControlFromPosition(2,0).Click += (object sender, EventArgs e) =>
+            {
+                //you can use your variables inside event
+                loadEditTransaction(tr);
+            };
+            for (int i = 2; i < 10; i+=2) {
+                tableLayoutPanel1.RowCount = tableLayoutPanel1.RowCount + 2;
+                tableLayoutPanel1.Controls.Add(new Label()
+                { Text = "Salary",
+                    ForeColor = Color.DarkGreen,
+                    Font = new Font("Segoe UI", 12),
+                    TextAlign = ContentAlignment.TopLeft,
+                    //Size = new System.Drawing.Size(900, 26)
+                }, 0, i);
+                tableLayoutPanel1.Controls.Add(new Label() {
+                    Text = "10000",
+                    ForeColor = Color.DarkGreen,
+                    Font = new Font("Segoe UI", 15),
+                    Size = new System.Drawing.Size(900, 30),
+                    TextAlign = ContentAlignment.BottomRight
+                
+                }, 1, i);
+                tableLayoutPanel1.Controls.Add(new Label() {
+                    Text = "01/01/2021",
+                    TextAlign = ContentAlignment.TopLeft,
+                    Font = new Font("Segoe UI", 8),
+                }, 0, i+1);
+                tableLayoutPanel1.Controls.Add(
+                new Button()
+                {
+                    BackgroundImage = ET.Properties.Resources.arrow_right,
+                    BackgroundImageLayout = ImageLayout.Zoom,
+                    FlatStyle = FlatStyle.Flat,
+                    FlatAppearance = { BorderSize = 0 },
+                    Size = new System.Drawing.Size(40, 30),
+                    ImageAlign = ContentAlignment.BottomRight,
+                }, 2, i);
+                tableLayoutPanel1.SetRowSpan(tableLayoutPanel1.GetControlFromPosition(2, i), 2);
+                tableLayoutPanel1.GetControlFromPosition(2, i).Click += (object sender, EventArgs e) =>
+                {
+                    //you can use your variables inside event
+                    loadEditTransaction(tr);
+                };
+            }
+            
+            tableLayoutPanel1.Show();
+
         }
 
         private void btn_tr_update_cancle_Click(object sender, EventArgs e)
@@ -592,6 +704,50 @@ namespace ET
             group_tr_view.Show();
         }
 
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loadEditTransaction(Transaction tr)
+        {
+            hidePanels();
+            group_tr_edit.Show();
+        }
+
+        private void label12_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_about_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
