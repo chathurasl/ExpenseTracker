@@ -27,6 +27,8 @@ namespace ET
             InitializeComponent();
             incomeFactory = new IncomeFactory(currentTransactions);
             expenseFactory = new ExpenseFactory(currentTransactions);
+
+           
         }
 
 
@@ -199,6 +201,35 @@ namespace ET
 
             //Display summary
             displaySummary();
+
+            //Set currecny
+            setCurrency();
+
+            MessageBox.Show(this.Controls.Count.ToString());
+            foreach (Control control in this.Controls)
+            {
+                if (control.Name.Contains("currency_"))
+                {
+                    // Do something here.
+                    MessageBox.Show("found");
+                }
+
+
+                if (control is TextBox)
+                {
+                    // Do something here.
+                }
+            }
+
+        }
+
+        public void setCurrency()
+        {
+            var labels = Controls.OfType<Label>().Where(x => x.Name.StartsWith("currency_"));
+            foreach (var label in labels)
+            {
+                label.Text = "$";
+            }
         }
 
         public void displayDate()
