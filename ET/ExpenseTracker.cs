@@ -19,6 +19,8 @@ namespace ET
 
         double totalIncome = 0;
         double totalExpense = 0;
+        string currency = "LKR";
+
 
         public ExpenseTracker()
         {
@@ -192,6 +194,69 @@ namespace ET
             //Fill recurrence options
             fillRecurrenceOptions();
 
+            //Display today date
+            displayDate();
+
+            //Display summary
+            displaySummary();
+        }
+
+        public void displayDate()
+        {
+
+            string today = DateTime.Now.ToString("dddd, dd MMMM yyyy h:mm tt");
+            lbl_date.Text = today;
+
+        }
+
+        public void displaySummary()
+        {
+            double monthlyExp = 0,
+                monthlyInc = 0,
+                mothlyBlc = 0,
+                totalExp = 0,
+                totalInc = 0,
+                totalBlc = 0;
+
+
+            foreach (Transaction currTr in currentTransactions)
+            {
+
+                if (currTr.getType() == "Income")
+                {
+                    totalInc += currTr.getAmount();
+                }
+                else
+                {
+                    totalExp += currTr.getAmount();
+                }
+
+                if ((DateTime.Parse(currTr.getDate()).Year == DateTime.Now.Year && DateTime.Parse(currTr.getDate()).Month == DateTime.Now.Month))
+                {
+                    if (currTr.getType() == "Income")
+                    {
+                        monthlyInc += currTr.getAmount();
+                    }
+                    else
+                    {
+                        monthlyExp += currTr.getAmount();
+                    }
+                }
+            }
+
+            mothlyBlc = monthlyInc - monthlyExp;
+            totalBlc = totalInc - totalExp;
+
+            lbl_mon_inc.Text = monthlyInc.ToString("N0");
+            lbl_mon_exp.Text = monthlyExp.ToString("N0");
+            lbl_mon_bal.Text = mothlyBlc.ToString("N0");
+
+            lbl_tot_inc.Text = totalInc.ToString("N0");
+            lbl_tot_exp.Text = totalExp.ToString("N0");
+            lbl_tot_bal.Text = totalBlc.ToString("N0");
+
+            lbl_mon_bal.ForeColor = (mothlyBlc < 0) ? Color.FromArgb(183, 28, 28) : Color.FromArgb(27, 94, 32);
+            lbl_tot_bal.ForeColor = (totalBlc < 0) ? Color.FromArgb(183, 28, 28) : Color.FromArgb(27, 94, 32);
 
         }
 
@@ -849,6 +914,9 @@ namespace ET
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            //Update summary
+            displaySummary();
+
             hidePanels();
             group_home.Show();
         }

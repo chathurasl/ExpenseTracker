@@ -112,21 +112,27 @@
             this.group_home = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
+            this.lbl_tot_bal = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
+            this.lbl_tot_inc = new System.Windows.Forms.Label();
+            this.lbl_tot_exp = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
+            this.lbl_date = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
+            this.lbl_mon_bal = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
+            this.lbl_mon_inc = new System.Windows.Forms.Label();
+            this.lbl_mon_exp = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.group_setting.SuspendLayout();
@@ -1104,28 +1110,31 @@
             // group_home
             // 
             this.group_home.Controls.Add(this.groupBox3);
-            this.group_home.Controls.Add(this.label34);
+            this.group_home.Controls.Add(this.lbl_date);
             this.group_home.Controls.Add(this.groupBox2);
             this.group_home.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_home.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_home.Location = new System.Drawing.Point(177, 9);
+            this.group_home.Location = new System.Drawing.Point(177, -2);
             this.group_home.Name = "group_home";
-            this.group_home.Size = new System.Drawing.Size(661, 439);
+            this.group_home.Size = new System.Drawing.Size(672, 444);
             this.group_home.TabIndex = 8;
             this.group_home.TabStop = false;
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label35);
+            this.groupBox3.Controls.Add(this.label33);
+            this.groupBox3.Controls.Add(this.label28);
             this.groupBox3.Controls.Add(this.label26);
-            this.groupBox3.Controls.Add(this.label27);
+            this.groupBox3.Controls.Add(this.lbl_tot_bal);
             this.groupBox3.Controls.Add(this.label29);
             this.groupBox3.Controls.Add(this.label30);
-            this.groupBox3.Controls.Add(this.label35);
-            this.groupBox3.Controls.Add(this.label36);
+            this.groupBox3.Controls.Add(this.lbl_tot_inc);
+            this.groupBox3.Controls.Add(this.lbl_tot_exp);
             this.groupBox3.Controls.Add(this.label37);
             this.groupBox3.Location = new System.Drawing.Point(11, 248);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(646, 166);
+            this.groupBox3.Size = new System.Drawing.Size(652, 166);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
@@ -1134,29 +1143,29 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label26.Location = new System.Drawing.Point(514, 119);
+            this.label26.Location = new System.Drawing.Point(531, 124);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(105, 30);
             this.label26.TabIndex = 7;
             this.label26.Text = "BALANCE";
             // 
-            // label27
+            // lbl_tot_bal
             // 
-            this.label27.AutoSize = true;
-            this.label27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label27.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.label27.Location = new System.Drawing.Point(458, 51);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(174, 65);
-            this.label27.TabIndex = 6;
-            this.label27.Text = "79,000";
+            this.lbl_tot_bal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_tot_bal.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_tot_bal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(94)))), ((int)(((byte)(32)))));
+            this.lbl_tot_bal.Location = new System.Drawing.Point(435, 71);
+            this.lbl_tot_bal.Name = "lbl_tot_bal";
+            this.lbl_tot_bal.Size = new System.Drawing.Size(211, 65);
+            this.lbl_tot_bal.TabIndex = 6;
+            this.lbl_tot_bal.Text = "0";
+            this.lbl_tot_bal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label29
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label29.Location = new System.Drawing.Point(250, 118);
+            this.label29.Location = new System.Drawing.Point(248, 124);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(160, 30);
             this.label29.TabIndex = 5;
@@ -1173,62 +1182,66 @@
             this.label30.TabIndex = 3;
             this.label30.Text = "Total Summary";
             // 
-            // label35
+            // lbl_tot_inc
             // 
-            this.label35.AutoSize = true;
-            this.label35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label35.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
-            this.label35.Location = new System.Drawing.Point(243, 51);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(175, 65);
-            this.label35.TabIndex = 1;
-            this.label35.Text = "93,000";
+            this.lbl_tot_inc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_tot_inc.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_tot_inc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
+            this.lbl_tot_inc.Location = new System.Drawing.Point(215, 66);
+            this.lbl_tot_inc.Name = "lbl_tot_inc";
+            this.lbl_tot_inc.Size = new System.Drawing.Size(229, 65);
+            this.lbl_tot_inc.TabIndex = 1;
+            this.lbl_tot_inc.Text = "0";
+            this.lbl_tot_inc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label36
+            // lbl_tot_exp
             // 
-            this.label36.AutoSize = true;
-            this.label36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label36.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-            this.label36.Location = new System.Drawing.Point(7, 52);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(205, 65);
-            this.label36.TabIndex = 4;
-            this.label36.Text = "1,56,799";
+            this.lbl_tot_exp.AutoSize = true;
+            this.lbl_tot_exp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_tot_exp.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_tot_exp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
+            this.lbl_tot_exp.Location = new System.Drawing.Point(7, 65);
+            this.lbl_tot_exp.Name = "lbl_tot_exp";
+            this.lbl_tot_exp.Size = new System.Drawing.Size(55, 65);
+            this.lbl_tot_exp.TabIndex = 4;
+            this.lbl_tot_exp.Text = "0";
             // 
             // label37
             // 
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label37.Location = new System.Drawing.Point(13, 119);
+            this.label37.Location = new System.Drawing.Point(13, 124);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(175, 30);
             this.label37.TabIndex = 2;
             this.label37.Text = "TOTAL EXPENSES";
             // 
-            // label34
+            // lbl_date
             // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label34.Location = new System.Drawing.Point(511, 26);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(146, 25);
-            this.label34.TabIndex = 5;
-            this.label34.Text = "January 8, 2023";
+            this.lbl_date.AutoSize = true;
+            this.lbl_date.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbl_date.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lbl_date.Location = new System.Drawing.Point(415, 21);
+            this.lbl_date.Name = "lbl_date";
+            this.lbl_date.Size = new System.Drawing.Size(254, 25);
+            this.lbl_date.TabIndex = 5;
+            this.lbl_date.Text = "Friday, 29 May 2015 5:50 AM";
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.label34);
+            this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.lbl_mon_bal);
             this.groupBox2.Controls.Add(this.label25);
             this.groupBox2.Controls.Add(this.label32);
-            this.groupBox2.Controls.Add(this.label28);
-            this.groupBox2.Controls.Add(this.label33);
+            this.groupBox2.Controls.Add(this.lbl_mon_inc);
+            this.groupBox2.Controls.Add(this.lbl_mon_exp);
             this.groupBox2.Controls.Add(this.label31);
             this.groupBox2.Location = new System.Drawing.Point(11, 68);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(646, 166);
+            this.groupBox2.Size = new System.Drawing.Size(652, 166);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             // 
@@ -1236,30 +1249,32 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(517, 119);
+            this.label13.Location = new System.Drawing.Point(531, 125);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(105, 30);
             this.label13.TabIndex = 7;
             this.label13.Text = "BALANCE";
             // 
-            // label22
+            // lbl_mon_bal
             // 
-            this.label22.AutoSize = true;
-            this.label22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label22.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(94)))), ((int)(((byte)(32)))));
-            this.label22.Location = new System.Drawing.Point(461, 51);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(175, 65);
-            this.label22.TabIndex = 6;
-            this.label22.Text = "25,000";
+            this.lbl_mon_bal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_mon_bal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_mon_bal.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_mon_bal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(94)))), ((int)(((byte)(32)))));
+            this.lbl_mon_bal.Location = new System.Drawing.Point(436, 67);
+            this.lbl_mon_bal.Name = "lbl_mon_bal";
+            this.lbl_mon_bal.Size = new System.Drawing.Size(210, 65);
+            this.lbl_mon_bal.TabIndex = 6;
+            this.lbl_mon_bal.Text = "0";
+            this.lbl_mon_bal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label25.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label25.Location = new System.Drawing.Point(254, 118);
+            this.label25.Location = new System.Drawing.Point(248, 125);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(160, 30);
             this.label25.TabIndex = 5;
@@ -1277,40 +1292,106 @@
             this.label32.TabIndex = 3;
             this.label32.Text = "Monthly Overview";
             // 
-            // label28
+            // lbl_mon_inc
             // 
-            this.label28.AutoSize = true;
-            this.label28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label28.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
-            this.label28.Location = new System.Drawing.Point(247, 51);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(176, 65);
-            this.label28.TabIndex = 1;
-            this.label28.Text = "43,000";
+            this.lbl_mon_inc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_mon_inc.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_mon_inc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
+            this.lbl_mon_inc.Location = new System.Drawing.Point(215, 67);
+            this.lbl_mon_inc.Name = "lbl_mon_inc";
+            this.lbl_mon_inc.Size = new System.Drawing.Size(229, 65);
+            this.lbl_mon_inc.TabIndex = 1;
+            this.lbl_mon_inc.Text = "0";
+            this.lbl_mon_inc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label33
+            // lbl_mon_exp
             // 
-            this.label33.AutoSize = true;
-            this.label33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label33.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-            this.label33.Location = new System.Drawing.Point(7, 52);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(176, 65);
-            this.label33.TabIndex = 4;
-            this.label33.Text = "24,999";
+            this.lbl_mon_exp.AutoSize = true;
+            this.lbl_mon_exp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_mon_exp.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_mon_exp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
+            this.lbl_mon_exp.Location = new System.Drawing.Point(7, 67);
+            this.lbl_mon_exp.Name = "lbl_mon_exp";
+            this.lbl_mon_exp.Size = new System.Drawing.Size(55, 65);
+            this.lbl_mon_exp.TabIndex = 4;
+            this.lbl_mon_exp.Text = "0";
             // 
             // label31
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label31.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label31.Location = new System.Drawing.Point(13, 119);
+            this.label31.Location = new System.Drawing.Point(13, 123);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(175, 30);
             this.label31.TabIndex = 2;
             this.label31.Text = "TOTAL EXPENSES";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label22.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label22.Location = new System.Drawing.Point(13, 52);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(49, 30);
+            this.label22.TabIndex = 8;
+            this.label22.Text = "LKR";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label27.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label27.Location = new System.Drawing.Point(588, 52);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(49, 30);
+            this.label27.TabIndex = 9;
+            this.label27.Text = "LKR";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label28.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label28.Location = new System.Drawing.Point(587, 51);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(49, 30);
+            this.label28.TabIndex = 10;
+            this.label28.Text = "LKR";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label33.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label33.Location = new System.Drawing.Point(12, 47);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(49, 30);
+            this.label33.TabIndex = 11;
+            this.label33.Text = "LKR";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label34.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label34.Location = new System.Drawing.Point(305, 52);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(49, 30);
+            this.label34.TabIndex = 10;
+            this.label34.Text = "LKR";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label35.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label35.Location = new System.Drawing.Point(304, 47);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(49, 30);
+            this.label35.TabIndex = 12;
+            this.label35.Text = "LKR";
             // 
             // ExpenseTracker
             // 
@@ -1318,14 +1399,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(856, 448);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.group_home);
+            this.Controls.Add(this.group_tr_list);
             this.Controls.Add(this.group_tr_edit);
             this.Controls.Add(this.group_setting);
             this.Controls.Add(this.group_tr_view);
             this.Controls.Add(this.group_cat_add);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.group_tr_add);
-            this.Controls.Add(this.group_home);
-            this.Controls.Add(this.group_tr_list);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ExpenseTracker";
@@ -1443,21 +1524,27 @@
         private DataGridView tr_data;
         private GroupBox group_home;
         private GroupBox groupBox2;
-        private Label label34;
+        private Label lbl_date;
         private Label label25;
         private Label label32;
-        private Label label28;
-        private Label label33;
+        private Label lbl_mon_inc;
+        private Label lbl_mon_exp;
         private Label label31;
         private GroupBox groupBox3;
         private Label label26;
-        private Label label27;
+        private Label lbl_tot_bal;
         private Label label29;
         private Label label30;
-        private Label label35;
-        private Label label36;
+        private Label lbl_tot_inc;
+        private Label lbl_tot_exp;
         private Label label37;
         private Label label13;
+        private Label lbl_mon_bal;
+        private Label label35;
+        private Label label33;
+        private Label label28;
+        private Label label34;
+        private Label label27;
         private Label label22;
     }
 }
