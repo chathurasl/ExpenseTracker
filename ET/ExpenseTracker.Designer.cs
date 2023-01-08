@@ -117,9 +117,9 @@
             this.dateTimLabel = new System.Windows.Forms.Label();
             this.group_home = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
+            this.currency_35 = new System.Windows.Forms.Label();
+            this.currency_334 = new System.Windows.Forms.Label();
+            this.currency_28 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.lbl_tot_bal = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
@@ -130,9 +130,9 @@
             this.lbl_date = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label31 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
+            this.currency_34 = new System.Windows.Forms.Label();
+            this.currency_27 = new System.Windows.Forms.Label();
+            this.currency_222 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.lbl_mon_bal = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -1216,9 +1216,9 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label35);
-            this.groupBox3.Controls.Add(this.label33);
-            this.groupBox3.Controls.Add(this.label28);
+            this.groupBox3.Controls.Add(this.currency_35);
+            this.groupBox3.Controls.Add(this.currency_334);
+            this.groupBox3.Controls.Add(this.currency_28);
             this.groupBox3.Controls.Add(this.label26);
             this.groupBox3.Controls.Add(this.lbl_tot_bal);
             this.groupBox3.Controls.Add(this.label29);
@@ -1233,38 +1233,38 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
-            // label35
+            // currency_35
             // 
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label35.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label35.Location = new System.Drawing.Point(255, 49);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(49, 30);
-            this.label35.TabIndex = 12;
-            this.label35.Text = "LKR";
+            this.currency_35.AutoSize = true;
+            this.currency_35.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.currency_35.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.currency_35.Location = new System.Drawing.Point(238, 49);
+            this.currency_35.Name = "currency_35";
+            this.currency_35.Size = new System.Drawing.Size(49, 30);
+            this.currency_35.TabIndex = 12;
+            this.currency_35.Text = "LKR";
             // 
-            // label33
+            // currency_334
             // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label33.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label33.Location = new System.Drawing.Point(12, 47);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(49, 30);
-            this.label33.TabIndex = 11;
-            this.label33.Text = "LKR";
+            this.currency_334.AutoSize = true;
+            this.currency_334.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.currency_334.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.currency_334.Location = new System.Drawing.Point(12, 47);
+            this.currency_334.Name = "currency_334";
+            this.currency_334.Size = new System.Drawing.Size(49, 30);
+            this.currency_334.TabIndex = 11;
+            this.currency_334.Text = "LKR";
             // 
-            // label28
+            // currency_28
             // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label28.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label28.Location = new System.Drawing.Point(587, 51);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(49, 30);
-            this.label28.TabIndex = 10;
-            this.label28.Text = "LKR";
+            this.currency_28.AutoSize = true;
+            this.currency_28.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.currency_28.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.currency_28.Location = new System.Drawing.Point(587, 51);
+            this.currency_28.Name = "currency_28";
+            this.currency_28.Size = new System.Drawing.Size(49, 30);
+            this.currency_28.TabIndex = 10;
+            this.currency_28.Text = "LKR";
             // 
             // label26
             // 
@@ -1292,7 +1292,7 @@
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label29.Location = new System.Drawing.Point(250, 124);
+            this.label29.Location = new System.Drawing.Point(233, 124);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(160, 30);
             this.label29.TabIndex = 5;
@@ -1314,9 +1314,9 @@
             this.lbl_tot_inc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_tot_inc.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_tot_inc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
-            this.lbl_tot_inc.Location = new System.Drawing.Point(248, 70);
+            this.lbl_tot_inc.Location = new System.Drawing.Point(231, 70);
             this.lbl_tot_inc.Name = "lbl_tot_inc";
-            this.lbl_tot_inc.Size = new System.Drawing.Size(196, 65);
+            this.lbl_tot_inc.Size = new System.Drawing.Size(204, 65);
             this.lbl_tot_inc.TabIndex = 1;
             this.lbl_tot_inc.Text = "0";
             this.lbl_tot_inc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1356,9 +1356,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label31);
-            this.groupBox2.Controls.Add(this.label34);
-            this.groupBox2.Controls.Add(this.label27);
-            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.currency_34);
+            this.groupBox2.Controls.Add(this.currency_27);
+            this.groupBox2.Controls.Add(this.currency_222);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.lbl_mon_bal);
             this.groupBox2.Controls.Add(this.label25);
@@ -1382,39 +1382,39 @@
             this.label31.TabIndex = 2;
             this.label31.Text = "TOTAL EXPENSES";
             // 
-            // label34
+            // currency_34
             // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label34.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label34.Location = new System.Drawing.Point(251, 52);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(49, 30);
-            this.label34.TabIndex = 10;
-            this.label34.Text = "LKR";
-            this.label34.Click += new System.EventHandler(this.label34_Click);
+            this.currency_34.AutoSize = true;
+            this.currency_34.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.currency_34.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.currency_34.Location = new System.Drawing.Point(238, 52);
+            this.currency_34.Name = "currency_34";
+            this.currency_34.Size = new System.Drawing.Size(49, 30);
+            this.currency_34.TabIndex = 10;
+            this.currency_34.Text = "LKR";
+            this.currency_34.Click += new System.EventHandler(this.label34_Click);
             // 
-            // label27
+            // currency_27
             // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label27.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label27.Location = new System.Drawing.Point(588, 52);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(49, 30);
-            this.label27.TabIndex = 9;
-            this.label27.Text = "LKR";
+            this.currency_27.AutoSize = true;
+            this.currency_27.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.currency_27.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.currency_27.Location = new System.Drawing.Point(588, 52);
+            this.currency_27.Name = "currency_27";
+            this.currency_27.Size = new System.Drawing.Size(49, 30);
+            this.currency_27.TabIndex = 9;
+            this.currency_27.Text = "LKR";
             // 
-            // label22
+            // currency_222
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label22.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label22.Location = new System.Drawing.Point(13, 52);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(49, 30);
-            this.label22.TabIndex = 8;
-            this.label22.Text = "LKR";
+            this.currency_222.AutoSize = true;
+            this.currency_222.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.currency_222.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.currency_222.Location = new System.Drawing.Point(13, 52);
+            this.currency_222.Name = "currency_222";
+            this.currency_222.Size = new System.Drawing.Size(49, 30);
+            this.currency_222.TabIndex = 8;
+            this.currency_222.Text = "LKR";
             // 
             // label13
             // 
@@ -1445,7 +1445,7 @@
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label25.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label25.Location = new System.Drawing.Point(248, 125);
+            this.label25.Location = new System.Drawing.Point(235, 125);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(160, 30);
             this.label25.TabIndex = 5;
@@ -1469,7 +1469,7 @@
             this.lbl_mon_inc.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_mon_inc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
             this.lbl_mon_inc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbl_mon_inc.Location = new System.Drawing.Point(243, 70);
+            this.lbl_mon_inc.Location = new System.Drawing.Point(230, 70);
             this.lbl_mon_inc.Name = "lbl_mon_inc";
             this.lbl_mon_inc.Size = new System.Drawing.Size(205, 65);
             this.lbl_mon_inc.TabIndex = 1;
@@ -1495,8 +1495,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(856, 448);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.group_cat_add);
-            this.Controls.Add(this.group_tr_add);
             this.Controls.Add(this.group_home);
             this.Controls.Add(this.group_tr_edit);
             this.Controls.Add(this.group_setting);
@@ -1637,12 +1635,12 @@
         private Label label37;
         private Label label13;
         private Label lbl_mon_bal;
-        private Label label35;
-        private Label label33;
-        private Label label28;
-        private Label label34;
-        private Label label27;
-        private Label label22;
+        private Label currency_35;
+        private Label currency_334;
+        private Label currency_28;
+        private Label currency_34;
+        private Label currency_27;
+        private Label currency_222;
         private TableLayoutPanel budgetPanel;
         private Label label36;
         private Label label40;
