@@ -136,5 +136,27 @@ namespace ET
 
         }
 
+        //Get Category  by ID
+        public Category getCategroyById(int id)
+        {
+
+            Category rtn = null;
+            //Loop Categories
+            foreach (Category currCat in currentCategories)
+            {
+
+                //Check if given id is exist in the category list
+                if (id == currCat.getId())
+                {
+
+                    rtn = currCat;
+                    break;
+                }
+            }
+
+            return rtn;
+
+        }
+
     }
 }
