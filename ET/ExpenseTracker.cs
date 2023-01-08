@@ -1,11 +1,4 @@
 using System.Data;
-using System.Windows.Forms;
-using System.Drawing;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using System.Net;
-using System.Reflection.Metadata;
-using static System.Net.Mime.MediaTypeNames;
-using System.Security.Cryptography;
 
 
 namespace ET
@@ -61,6 +54,7 @@ namespace ET
 
             fb_tr_add_category.Items.Clear();
             fb_tr_edit_category.Items.Clear();
+            fb_tr_search_category.Items.Clear();
             catData.Rows.Clear();
 
 
@@ -68,6 +62,8 @@ namespace ET
             fb_tr_add_category.ValueMember = "Value";
             fb_tr_edit_category.DisplayMember = "Text";
             fb_tr_edit_category.ValueMember = "Value";
+            fb_tr_search_category.DisplayMember = "Text";
+            fb_tr_search_category.ValueMember = "Value";
 
             fb_tr_add_category.Items.Add(new { Text = "--Please select--", Value = 0 });
 
@@ -77,6 +73,7 @@ namespace ET
                 // fb_tr_add_category.Items.Add(currCat.getCategoryName());
                 fb_tr_add_category.Items.Add(new { Text = currCat.getCategoryName(), Value = currCat.getId() });
                 fb_tr_edit_category.Items.Add(new { Text = currCat.getCategoryName(), Value = currCat.getId() });
+                fb_tr_search_category.Items.Add(new { Text = currCat.getCategoryName(), Value = currCat.getId() });
 
                 DataRow catRow = catData.NewRow();
                 catRow[0] = currCat.getId(); ;
@@ -118,11 +115,16 @@ namespace ET
         
         public void fillTransactionTypes()
         {
+            fb_tr_add_type.Items.Clear();
+            fb_tr_edit_type.Items.Clear();
+            fb_tr_search_type.Items.Clear();
 
             fb_tr_add_type.DisplayMember = "Text";
             fb_tr_add_type.ValueMember = "Value";
             fb_tr_edit_type.DisplayMember = "Text";
             fb_tr_edit_type.ValueMember = "Value";
+            fb_tr_search_type.DisplayMember = "Text";
+            fb_tr_search_type.ValueMember = "Value";
 
             fb_tr_add_type.Items.Add(new { Text = "--Please select--", Value = "" });
             fb_tr_add_type.Items.Add(new { Text = "Income", Value = "Income" });
@@ -130,6 +132,9 @@ namespace ET
 
             fb_tr_edit_type.Items.Add(new { Text = "Income", Value = "Income" });
             fb_tr_edit_type.Items.Add(new { Text = "Expense", Value = "Expense" });
+
+            fb_tr_search_type.Items.Add(new { Text = "Income", Value = "Income" });
+            fb_tr_search_type.Items.Add(new { Text = "Expense", Value = "Expense" });
 
 
             fb_tr_add_type.SelectedIndex = 0;
@@ -262,7 +267,7 @@ namespace ET
 
         private void button5_Click(object sender, EventArgs e)
         {
-            //hidePanels();
+            hidePanels();
             group_setting.Show();
         }
 
@@ -639,6 +644,13 @@ namespace ET
 
         private void btn_view_transactions_Click(object sender, EventArgs e)
         {
+            fillCategoryData();
+
+            fb_tr_search_type.Items.Clear();
+            fillTransactionTypes();
+
+            fb_tr_search_category.ResetText();
+            fb_tr_search_type.ResetText();
 
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "MMMM";
@@ -659,73 +671,9 @@ namespace ET
 
             DateTime filteredDate = new DateTime(year.Year, month.Month, 1);
 
-            List<Transaction> list = getTransactionsOfGivenMonth(filteredDate);
+            List<Transaction> list = getTransactionsOfGivenMonth(filteredDate, 0, "");
 
-
-            panel2.Controls.Add(
-                new Label()
-                {
-                    Text = totalIncome.ToString(),
-                    TextAlign = ContentAlignment.TopRight,
-                    Size = panel2.Size,
-                    Font = new Font("Segoe UI", 12),
-                });
-            panel3.Controls.Add(new Label() { Text = totalExpense.ToString(),
-                TextAlign = ContentAlignment.TopRight,
-                Size = panel3.Size,
-                Font = new Font("Segoe UI", 12),
-            });
-
-            int count = -1;
-            foreach (Transaction tr in list) {
-                count++;
-                tableLayoutPanel1.RowCount = tableLayoutPanel1.RowCount + 2;
-                tableLayoutPanel1.Controls.Add(new Label()
-                { Text = tr.getDescription(),
-                    ForeColor = Color.DarkGreen,
-                    Font = new Font("Segoe UI", 12),
-                    TextAlign = ContentAlignment.TopLeft,
-                    //Size = new System.Drawing.Size(900, 26)
-                }, 0, count);
-                tableLayoutPanel1.Controls.Add(new Label() {
-                    Text = tr.getAmount().ToString(),
-                    ForeColor = Color.DarkGreen,
-                    Font = new Font("Segoe UI", 15),
-                    Size = new System.Drawing.Size(900, 30),
-                    TextAlign = ContentAlignment.BottomRight
-                
-                }, 1, count);
-
-                tableLayoutPanel1.Controls.Add(
-                new Button()
-                {
-                    BackgroundImage = ET.Properties.Resources.arrow_right,
-                    BackgroundImageLayout = ImageLayout.Zoom,
-                    FlatStyle = FlatStyle.Flat,
-                    FlatAppearance = { BorderSize = 0 },
-                    Size = new System.Drawing.Size(40, 30),
-                    ImageAlign = ContentAlignment.BottomRight,
-                }, 2, count);
-                tableLayoutPanel1.SetRowSpan(tableLayoutPanel1.GetControlFromPosition(2, count), 2);
-
-                tableLayoutPanel1.GetControlFromPosition(2, count).Click += (object sender, EventArgs e) =>
-                {
-                    //you can use your variables inside event
-                    loadEditTransaction(tr);
-                };
-                count++;
-                
-                tableLayoutPanel1.Controls.Add(new Label()
-                {
-                    Text = tr.getDate(),
-                    TextAlign = ContentAlignment.TopLeft,
-                    Font = new Font("Segoe UI", 8),
-                }, 0, count);
-                
-            }
-            
-            tableLayoutPanel1.Show();
-
+            updatePanel(list);
         }
 
         private void btn_tr_update_cancle_Click(object sender, EventArgs e)
@@ -779,9 +727,13 @@ namespace ET
             fb_tr_edit_date.Value = DateTime.Parse(tr.getDate());
             fb_tr_edit_notes.Text = tr.getNotes();
 
-            fb_tr_add_category.SelectedItem = tr.getCategroyId();
+            string category = categoryFactory.getCategroyNameById(tr.getCategroyId());
 
+            fillCategoryData();
+            fillTransactionTypes();
 
+            fb_tr_edit_category.SelectedIndex = fb_tr_edit_category.FindString(category);
+            fb_tr_edit_type.SelectedIndex = fb_tr_edit_type.FindString(tr.getType());
 
         }
 
@@ -815,7 +767,7 @@ namespace ET
 
         }
 
-        private List<Transaction> getTransactionsOfGivenMonth(DateTime date)
+        private List<Transaction> getTransactionsOfGivenMonth(DateTime date, int categoryId, string transactionType)
         {
 
             //Get last date of the month, year
@@ -825,23 +777,37 @@ namespace ET
             //Get the first date of the month year
             DateTime firstDate = new DateTime(date.Year, date.Month, 1);
 
-
             //Get all the expenses matching this year
             List<Transaction> filteredTransaction = new List<Transaction>();
 
-            foreach (Transaction tr in currentTransactions) {
-                if (DateTime.Parse(tr.getDate()) >= firstDate && DateTime.Parse(tr.getDate()) <= lastDate) { 
-                    filteredTransaction.Add(tr);
+            foreach (Transaction tr in currentTransactions)
+            {
+                if (DateTime.Parse(tr.getDate()) >= firstDate && DateTime.Parse(tr.getDate()) <= lastDate)
+                {
 
-                    if (tr.getType() == "Income")
+                    if (categoryId != 0 && tr.getCategroyId() == categoryId)
                     {
 
-                        totalIncome += tr.getAmount();
+                        if (transactionType != "" && tr.getType() == transactionType)
+                        {
+                            filteredTransaction.Add(tr);
+                        }
+                        else if (transactionType == "") 
+                        {
+                            filteredTransaction.Add(tr);
 
+                        }
                     }
-                    else {
-
-                        totalExpense += tr.getAmount();
+                    else if (categoryId == 0)
+                    {
+                        if (transactionType != "" && tr.getType() == transactionType)
+                        {
+                            filteredTransaction.Add(tr);
+                        }
+                        else if (transactionType == "")
+                        {
+                            filteredTransaction.Add(tr);
+                        }
                     }
                 }
             }
@@ -893,6 +859,126 @@ namespace ET
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            hidePanels();
+            group_tr_view.Show();
+            tableLayoutPanel1.Controls.Clear();
+            tableLayoutPanel1.RowStyles.Clear();
+
+            int catKey = 0;
+            string type = "";
+
+            if (fb_tr_search_category.SelectedItem != null) {
+                catKey = (fb_tr_search_category.SelectedItem as dynamic).Value;
+            }
+            if (fb_tr_search_type.SelectedItem != null)
+            {
+                type = (fb_tr_search_type.SelectedItem as dynamic).Value;
+            }
+
+            DateTime month = dateTimePicker1.Value;
+            DateTime year = dateTimePicker2.Value;
+
+            DateTime filteredDate = new DateTime(year.Year, month.Month, 1);
+
+            List<Transaction> list = getTransactionsOfGivenMonth(filteredDate, catKey, type);
+
+            updatePanel(list);
+        }
+
+        private void updatePanel(List<Transaction> list) {
+            totalIncome = 0;
+            totalExpense = 0;
+
+            int count = -1;
+            foreach (Transaction tr in list)
+            {
+                if (tr.getType() == "Income")
+                {
+
+                    totalIncome += tr.getAmount();
+
+                }
+                else
+                {
+
+                    totalExpense += tr.getAmount();
+                }
+                count++;
+                tableLayoutPanel1.RowCount = tableLayoutPanel1.RowCount + 2;
+                tableLayoutPanel1.Controls.Add(new Label()
+                {
+                    Text = tr.getDescription(),
+                    ForeColor = Color.DarkGreen,
+                    Font = new Font("Segoe UI", 12),
+                    TextAlign = ContentAlignment.TopLeft,
+                    //Size = new System.Drawing.Size(900, 26)
+                }, 0, count);
+                tableLayoutPanel1.Controls.Add(new Label()
+                {
+                    Text = tr.getAmount().ToString(),
+                    ForeColor = Color.DarkGreen,
+                    Font = new Font("Segoe UI", 15),
+                    Size = new System.Drawing.Size(900, 30),
+                    TextAlign = ContentAlignment.BottomRight
+
+                }, 1, count);
+
+                tableLayoutPanel1.Controls.Add(
+                new Button()
+                {
+                    BackgroundImage = ET.Properties.Resources.arrow_right,
+                    BackgroundImageLayout = ImageLayout.Zoom,
+                    FlatStyle = FlatStyle.Flat,
+                    FlatAppearance = { BorderSize = 0 },
+                    Size = new System.Drawing.Size(40, 30),
+                    ImageAlign = ContentAlignment.BottomRight,
+                }, 2, count);
+                tableLayoutPanel1.SetRowSpan(tableLayoutPanel1.GetControlFromPosition(2, count), 2);
+
+                tableLayoutPanel1.GetControlFromPosition(2, count).Click += (object sender, EventArgs e) =>
+                {
+                    //you can use your variables inside event
+                    loadEditTransaction(tr);
+                };
+                count++;
+
+                tableLayoutPanel1.Controls.Add(new Label()
+                {
+                    Text = tr.getDate(),
+                    TextAlign = ContentAlignment.TopLeft,
+                    Font = new Font("Segoe UI", 8),
+                }, 0, count);
+
+            }
+
+            panel2.Controls.Clear();
+            panel3.Controls.Clear();
+
+
+            panel2.Controls.Add(
+                new Label()
+                {
+                    Text = totalIncome.ToString(),
+                    TextAlign = ContentAlignment.TopRight,
+                    Size = panel2.Size,
+                    Font = new Font("Segoe UI", 12),
+                });
+            panel3.Controls.Add(new Label()
+            {
+                Text = totalExpense.ToString(),
+                TextAlign = ContentAlignment.TopRight,
+                Size = panel3.Size,
+                Font = new Font("Segoe UI", 12),
+            });
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

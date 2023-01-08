@@ -39,6 +39,20 @@
             this.group_setting = new System.Windows.Forms.GroupBox();
             this.btn_manage_categories = new System.Windows.Forms.Button();
             this.btn_about = new System.Windows.Forms.Button();
+            this.group_tr_view = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.fb_tr_search_type = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.fb_tr_search_category = new System.Windows.Forms.ComboBox();
             this.group_tr_add = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.fb_tr_add_rec_type = new System.Windows.Forms.ComboBox();
@@ -60,6 +74,17 @@
             this.fb_tr_add_type = new System.Windows.Forms.ComboBox();
             this.fb_tr_add_amount = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.group_cat_add = new System.Windows.Forms.GroupBox();
+            this.btn_cat_update_cancel = new System.Windows.Forms.Button();
+            this.cat_id = new System.Windows.Forms.TextBox();
+            this.btn_cat_delete = new System.Windows.Forms.Button();
+            this.btn_cat_update = new System.Windows.Forms.Button();
+            this.cat_data = new System.Windows.Forms.DataGridView();
+            this.cat_add_budget = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btn_cat_add = new System.Windows.Forms.Button();
+            this.cat_add_name = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.group_tr_edit = new System.Windows.Forms.GroupBox();
             this.label23 = new System.Windows.Forms.Label();
             this.fb_tr_edit_description = new System.Windows.Forms.TextBox();
@@ -80,31 +105,6 @@
             this.fb_tr_edit_type = new System.Windows.Forms.ComboBox();
             this.fb_tr_edit_amount = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.group_cat_add = new System.Windows.Forms.GroupBox();
-            this.btn_cat_update_cancel = new System.Windows.Forms.Button();
-            this.cat_id = new System.Windows.Forms.TextBox();
-            this.btn_cat_delete = new System.Windows.Forms.Button();
-            this.btn_cat_update = new System.Windows.Forms.Button();
-            this.cat_data = new System.Windows.Forms.DataGridView();
-            this.cat_add_budget = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btn_cat_add = new System.Windows.Forms.Button();
-            this.cat_add_name = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.group_tr_view = new System.Windows.Forms.GroupBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label9 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.dateTimLabel = new System.Windows.Forms.Label();
             this.group_tr_list = new System.Windows.Forms.GroupBox();
@@ -130,12 +130,12 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.group_setting.SuspendLayout();
-            this.group_tr_add.SuspendLayout();
-            this.group_tr_edit.SuspendLayout();
-            this.group_cat_add.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cat_data)).BeginInit();
             this.group_tr_view.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.group_tr_add.SuspendLayout();
+            this.group_cat_add.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cat_data)).BeginInit();
+            this.group_tr_edit.SuspendLayout();
             this.group_tr_list.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tr_data)).BeginInit();
             this.group_home.SuspendLayout();
@@ -155,7 +155,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(174, 448);
+            this.panel1.Size = new System.Drawing.Size(171, 448);
             this.panel1.TabIndex = 0;
             // 
             // button2
@@ -243,9 +243,9 @@
             this.group_setting.Controls.Add(this.btn_manage_categories);
             this.group_setting.Controls.Add(this.btn_about);
             this.group_setting.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.group_setting.Location = new System.Drawing.Point(180, 8);
+            this.group_setting.Location = new System.Drawing.Point(177, 6);
             this.group_setting.Name = "group_setting";
-            this.group_setting.Size = new System.Drawing.Size(666, 434);
+            this.group_setting.Size = new System.Drawing.Size(689, 436);
             this.group_setting.TabIndex = 2;
             this.group_setting.TabStop = false;
             this.group_setting.Text = "Settings";
@@ -282,6 +282,162 @@
             this.btn_about.UseVisualStyleBackColor = false;
             this.btn_about.Click += new System.EventHandler(this.btn_about_Click);
             // 
+            // group_tr_view
+            // 
+            this.group_tr_view.Controls.Add(this.panel3);
+            this.group_tr_view.Controls.Add(this.panel2);
+            this.group_tr_view.Controls.Add(this.tableLayoutPanel1);
+            this.group_tr_view.Controls.Add(this.groupBox1);
+            this.group_tr_view.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.group_tr_view.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.group_tr_view.Location = new System.Drawing.Point(176, 6);
+            this.group_tr_view.Name = "group_tr_view";
+            this.group_tr_view.Size = new System.Drawing.Size(673, 436);
+            this.group_tr_view.TabIndex = 4;
+            this.group_tr_view.TabStop = false;
+            this.group_tr_view.Text = "Transactions";
+            this.group_tr_view.Visible = false;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.LightCoral;
+            this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panel3.Location = new System.Drawing.Point(311, 120);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(337, 22);
+            this.panel3.TabIndex = 22;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.SpringGreen;
+            this.panel2.ForeColor = System.Drawing.Color.Green;
+            this.panel2.Location = new System.Drawing.Point(7, 120);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(298, 22);
+            this.panel2.TabIndex = 21;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoScroll = true;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.50501F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.49499F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 148);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(632, 274);
+            this.tableLayoutPanel1.TabIndex = 20;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label24);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.dateTimePicker2);
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.fb_tr_search_type);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.fb_tr_search_category);
+            this.groupBox1.Location = new System.Drawing.Point(6, 27);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(642, 92);
+            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabStop = false;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label24.Location = new System.Drawing.Point(7, 57);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(38, 19);
+            this.label24.TabIndex = 23;
+            this.label24.Text = "Year:";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.Location = new System.Drawing.Point(494, 64);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(138, 23);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Search";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(97, 51);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(119, 25);
+            this.dateTimePicker2.TabIndex = 21;
+            this.dateTimePicker2.UseWaitCursor = true;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(97, 18);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(119, 25);
+            this.dateTimePicker1.TabIndex = 19;
+            this.dateTimePicker1.UseWaitCursor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(7, 17);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 19);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Month:";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // fb_tr_search_type
+            // 
+            this.fb_tr_search_type.FormattingEnabled = true;
+            this.fb_tr_search_type.Location = new System.Drawing.Point(281, 26);
+            this.fb_tr_search_type.Name = "fb_tr_search_type";
+            this.fb_tr_search_type.Size = new System.Drawing.Size(133, 25);
+            this.fb_tr_search_type.TabIndex = 13;
+            this.fb_tr_search_type.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(235, 29);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(40, 19);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "Type:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(420, 29);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(68, 19);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Category:";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // fb_tr_search_category
+            // 
+            this.fb_tr_search_category.FormattingEnabled = true;
+            this.fb_tr_search_category.Location = new System.Drawing.Point(494, 26);
+            this.fb_tr_search_category.Name = "fb_tr_search_category";
+            this.fb_tr_search_category.Size = new System.Drawing.Size(138, 25);
+            this.fb_tr_search_category.TabIndex = 15;
+            // 
             // group_tr_add
             // 
             this.group_tr_add.Controls.Add(this.label6);
@@ -306,9 +462,9 @@
             this.group_tr_add.Controls.Add(this.label1);
             this.group_tr_add.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_tr_add.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_tr_add.Location = new System.Drawing.Point(180, 8);
+            this.group_tr_add.Location = new System.Drawing.Point(177, 12);
             this.group_tr_add.Name = "group_tr_add";
-            this.group_tr_add.Size = new System.Drawing.Size(666, 434);
+            this.group_tr_add.Size = new System.Drawing.Size(669, 430);
             this.group_tr_add.TabIndex = 1;
             this.group_tr_add.TabStop = false;
             this.group_tr_add.Text = "Add Transaction";
@@ -520,6 +676,154 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Amount:";
             // 
+            // group_cat_add
+            // 
+            this.group_cat_add.Controls.Add(this.btn_cat_update_cancel);
+            this.group_cat_add.Controls.Add(this.cat_id);
+            this.group_cat_add.Controls.Add(this.btn_cat_delete);
+            this.group_cat_add.Controls.Add(this.btn_cat_update);
+            this.group_cat_add.Controls.Add(this.cat_data);
+            this.group_cat_add.Controls.Add(this.cat_add_budget);
+            this.group_cat_add.Controls.Add(this.label5);
+            this.group_cat_add.Controls.Add(this.btn_cat_add);
+            this.group_cat_add.Controls.Add(this.cat_add_name);
+            this.group_cat_add.Controls.Add(this.label8);
+            this.group_cat_add.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.group_cat_add.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.group_cat_add.Location = new System.Drawing.Point(177, 9);
+            this.group_cat_add.Name = "group_cat_add";
+            this.group_cat_add.Size = new System.Drawing.Size(678, 439);
+            this.group_cat_add.TabIndex = 3;
+            this.group_cat_add.TabStop = false;
+            this.group_cat_add.Text = "Manage Categories";
+            this.group_cat_add.Visible = false;
+            // 
+            // btn_cat_update_cancel
+            // 
+            this.btn_cat_update_cancel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_cat_update_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cat_update_cancel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_cat_update_cancel.ForeColor = System.Drawing.Color.Black;
+            this.btn_cat_update_cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_cat_update_cancel.Location = new System.Drawing.Point(266, 135);
+            this.btn_cat_update_cancel.Name = "btn_cat_update_cancel";
+            this.btn_cat_update_cancel.Size = new System.Drawing.Size(82, 32);
+            this.btn_cat_update_cancel.TabIndex = 13;
+            this.btn_cat_update_cancel.Text = "CANCEL";
+            this.btn_cat_update_cancel.UseVisualStyleBackColor = false;
+            this.btn_cat_update_cancel.Visible = false;
+            this.btn_cat_update_cancel.Click += new System.EventHandler(this.btn_cat_update_cancel_Click);
+            // 
+            // cat_id
+            // 
+            this.cat_id.Location = new System.Drawing.Point(527, 54);
+            this.cat_id.Name = "cat_id";
+            this.cat_id.ReadOnly = true;
+            this.cat_id.Size = new System.Drawing.Size(100, 25);
+            this.cat_id.TabIndex = 12;
+            this.cat_id.Visible = false;
+            // 
+            // btn_cat_delete
+            // 
+            this.btn_cat_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.btn_cat_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cat_delete.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_cat_delete.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_cat_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_cat_delete.Location = new System.Drawing.Point(178, 135);
+            this.btn_cat_delete.Name = "btn_cat_delete";
+            this.btn_cat_delete.Size = new System.Drawing.Size(82, 32);
+            this.btn_cat_delete.TabIndex = 11;
+            this.btn_cat_delete.Text = "DELETE";
+            this.btn_cat_delete.UseVisualStyleBackColor = false;
+            this.btn_cat_delete.Visible = false;
+            this.btn_cat_delete.Click += new System.EventHandler(this.btn_cat_delete_Click);
+            // 
+            // btn_cat_update
+            // 
+            this.btn_cat_update.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.btn_cat_update.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cat_update.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_cat_update.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_cat_update.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_cat_update.Location = new System.Drawing.Point(90, 135);
+            this.btn_cat_update.Name = "btn_cat_update";
+            this.btn_cat_update.Size = new System.Drawing.Size(82, 32);
+            this.btn_cat_update.TabIndex = 10;
+            this.btn_cat_update.Text = "UPDATE";
+            this.btn_cat_update.UseVisualStyleBackColor = false;
+            this.btn_cat_update.Visible = false;
+            this.btn_cat_update.Click += new System.EventHandler(this.btn_cat_update_Click);
+            // 
+            // cat_data
+            // 
+            this.cat_data.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.cat_data.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
+            this.cat_data.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.cat_data.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.cat_data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.cat_data.Location = new System.Drawing.Point(6, 195);
+            this.cat_data.Name = "cat_data";
+            this.cat_data.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.cat_data.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.cat_data.RowTemplate.Height = 25;
+            this.cat_data.Size = new System.Drawing.Size(642, 219);
+            this.cat_data.TabIndex = 9;
+            this.cat_data.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cat_data_CellDoubleClick);
+            // 
+            // cat_add_budget
+            // 
+            this.cat_add_budget.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cat_add_budget.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.cat_add_budget.Location = new System.Drawing.Point(90, 90);
+            this.cat_add_budget.Name = "cat_add_budget";
+            this.cat_add_budget.Size = new System.Drawing.Size(258, 25);
+            this.cat_add_budget.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(26, 92);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(56, 19);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Budget:";
+            // 
+            // btn_cat_add
+            // 
+            this.btn_cat_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.btn_cat_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cat_add.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_cat_add.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_cat_add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_cat_add.Location = new System.Drawing.Point(90, 135);
+            this.btn_cat_add.Name = "btn_cat_add";
+            this.btn_cat_add.Size = new System.Drawing.Size(82, 32);
+            this.btn_cat_add.TabIndex = 4;
+            this.btn_cat_add.Text = "ADD";
+            this.btn_cat_add.UseVisualStyleBackColor = false;
+            this.btn_cat_add.Click += new System.EventHandler(this.btn_cat_add_Click);
+            // 
+            // cat_add_name
+            // 
+            this.cat_add_name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cat_add_name.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.cat_add_name.Location = new System.Drawing.Point(90, 54);
+            this.cat_add_name.Name = "cat_add_name";
+            this.cat_add_name.Size = new System.Drawing.Size(258, 25);
+            this.cat_add_name.TabIndex = 1;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(26, 58);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(48, 19);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Name:";
+            // 
             // group_tr_edit
             // 
             this.group_tr_edit.Controls.Add(this.label23);
@@ -543,9 +847,9 @@
             this.group_tr_edit.Controls.Add(this.label21);
             this.group_tr_edit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_tr_edit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_tr_edit.Location = new System.Drawing.Point(180, 8);
+            this.group_tr_edit.Location = new System.Drawing.Point(176, 6);
             this.group_tr_edit.Name = "group_tr_edit";
-            this.group_tr_edit.Size = new System.Drawing.Size(666, 434);
+            this.group_tr_edit.Size = new System.Drawing.Size(680, 442);
             this.group_tr_edit.TabIndex = 6;
             this.group_tr_edit.TabStop = false;
             this.group_tr_edit.Text = "Edit Transaction";
@@ -755,308 +1059,6 @@
             this.label21.TabIndex = 0;
             this.label21.Text = "Amount:";
             // 
-            // group_cat_add
-            // 
-            this.group_cat_add.Controls.Add(this.btn_cat_update_cancel);
-            this.group_cat_add.Controls.Add(this.cat_id);
-            this.group_cat_add.Controls.Add(this.btn_cat_delete);
-            this.group_cat_add.Controls.Add(this.btn_cat_update);
-            this.group_cat_add.Controls.Add(this.cat_data);
-            this.group_cat_add.Controls.Add(this.cat_add_budget);
-            this.group_cat_add.Controls.Add(this.label5);
-            this.group_cat_add.Controls.Add(this.btn_cat_add);
-            this.group_cat_add.Controls.Add(this.cat_add_name);
-            this.group_cat_add.Controls.Add(this.label8);
-            this.group_cat_add.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.group_cat_add.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_cat_add.Location = new System.Drawing.Point(180, 8);
-            this.group_cat_add.Name = "group_cat_add";
-            this.group_cat_add.Size = new System.Drawing.Size(666, 434);
-            this.group_cat_add.TabIndex = 3;
-            this.group_cat_add.TabStop = false;
-            this.group_cat_add.Text = "Manage Categories";
-            this.group_cat_add.Visible = false;
-            // 
-            // btn_cat_update_cancel
-            // 
-            this.btn_cat_update_cancel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_cat_update_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cat_update_cancel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_cat_update_cancel.ForeColor = System.Drawing.Color.Black;
-            this.btn_cat_update_cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_cat_update_cancel.Location = new System.Drawing.Point(266, 135);
-            this.btn_cat_update_cancel.Name = "btn_cat_update_cancel";
-            this.btn_cat_update_cancel.Size = new System.Drawing.Size(82, 32);
-            this.btn_cat_update_cancel.TabIndex = 13;
-            this.btn_cat_update_cancel.Text = "CANCEL";
-            this.btn_cat_update_cancel.UseVisualStyleBackColor = false;
-            this.btn_cat_update_cancel.Visible = false;
-            this.btn_cat_update_cancel.Click += new System.EventHandler(this.btn_cat_update_cancel_Click);
-            // 
-            // cat_id
-            // 
-            this.cat_id.Location = new System.Drawing.Point(527, 54);
-            this.cat_id.Name = "cat_id";
-            this.cat_id.ReadOnly = true;
-            this.cat_id.Size = new System.Drawing.Size(100, 25);
-            this.cat_id.TabIndex = 12;
-            this.cat_id.Visible = false;
-            // 
-            // btn_cat_delete
-            // 
-            this.btn_cat_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
-            this.btn_cat_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cat_delete.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_cat_delete.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_cat_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_cat_delete.Location = new System.Drawing.Point(178, 135);
-            this.btn_cat_delete.Name = "btn_cat_delete";
-            this.btn_cat_delete.Size = new System.Drawing.Size(82, 32);
-            this.btn_cat_delete.TabIndex = 11;
-            this.btn_cat_delete.Text = "DELETE";
-            this.btn_cat_delete.UseVisualStyleBackColor = false;
-            this.btn_cat_delete.Visible = false;
-            this.btn_cat_delete.Click += new System.EventHandler(this.btn_cat_delete_Click);
-            // 
-            // btn_cat_update
-            // 
-            this.btn_cat_update.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
-            this.btn_cat_update.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cat_update.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_cat_update.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_cat_update.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_cat_update.Location = new System.Drawing.Point(90, 135);
-            this.btn_cat_update.Name = "btn_cat_update";
-            this.btn_cat_update.Size = new System.Drawing.Size(82, 32);
-            this.btn_cat_update.TabIndex = 10;
-            this.btn_cat_update.Text = "UPDATE";
-            this.btn_cat_update.UseVisualStyleBackColor = false;
-            this.btn_cat_update.Visible = false;
-            this.btn_cat_update.Click += new System.EventHandler(this.btn_cat_update_Click);
-            // 
-            // cat_data
-            // 
-            this.cat_data.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.cat_data.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
-            this.cat_data.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.cat_data.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.cat_data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.cat_data.Location = new System.Drawing.Point(6, 195);
-            this.cat_data.Name = "cat_data";
-            this.cat_data.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.cat_data.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.cat_data.RowTemplate.Height = 25;
-            this.cat_data.Size = new System.Drawing.Size(642, 219);
-            this.cat_data.TabIndex = 9;
-            this.cat_data.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cat_data_CellDoubleClick);
-            // 
-            // cat_add_budget
-            // 
-            this.cat_add_budget.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cat_add_budget.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.cat_add_budget.Location = new System.Drawing.Point(90, 90);
-            this.cat_add_budget.Name = "cat_add_budget";
-            this.cat_add_budget.Size = new System.Drawing.Size(258, 25);
-            this.cat_add_budget.TabIndex = 6;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(26, 92);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 19);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Budget:";
-            // 
-            // btn_cat_add
-            // 
-            this.btn_cat_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
-            this.btn_cat_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cat_add.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_cat_add.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_cat_add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_cat_add.Location = new System.Drawing.Point(90, 135);
-            this.btn_cat_add.Name = "btn_cat_add";
-            this.btn_cat_add.Size = new System.Drawing.Size(82, 32);
-            this.btn_cat_add.TabIndex = 4;
-            this.btn_cat_add.Text = "ADD";
-            this.btn_cat_add.UseVisualStyleBackColor = false;
-            this.btn_cat_add.Click += new System.EventHandler(this.btn_cat_add_Click);
-            // 
-            // cat_add_name
-            // 
-            this.cat_add_name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cat_add_name.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.cat_add_name.Location = new System.Drawing.Point(90, 54);
-            this.cat_add_name.Name = "cat_add_name";
-            this.cat_add_name.Size = new System.Drawing.Size(258, 25);
-            this.cat_add_name.TabIndex = 1;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(26, 58);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(48, 19);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Name:";
-            // 
-            // group_tr_view
-            // 
-            this.group_tr_view.Controls.Add(this.panel3);
-            this.group_tr_view.Controls.Add(this.panel2);
-            this.group_tr_view.Controls.Add(this.tableLayoutPanel1);
-            this.group_tr_view.Controls.Add(this.groupBox1);
-            this.group_tr_view.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.group_tr_view.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_tr_view.Location = new System.Drawing.Point(185, 8);
-            this.group_tr_view.Name = "group_tr_view";
-            this.group_tr_view.Size = new System.Drawing.Size(661, 434);
-            this.group_tr_view.TabIndex = 4;
-            this.group_tr_view.TabStop = false;
-            this.group_tr_view.Text = "Transactions";
-            this.group_tr_view.Visible = false;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.LightCoral;
-            this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panel3.Location = new System.Drawing.Point(311, 120);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(337, 22);
-            this.panel3.TabIndex = 22;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.SpringGreen;
-            this.panel2.ForeColor = System.Drawing.Color.Green;
-            this.panel2.Location = new System.Drawing.Point(7, 120);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(298, 22);
-            this.panel2.TabIndex = 21;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.AutoScroll = true;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.50501F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.49499F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 148);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(632, 274);
-            this.tableLayoutPanel1.TabIndex = 20;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label24);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Location = new System.Drawing.Point(6, 27);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(642, 92);
-            this.groupBox1.TabIndex = 19;
-            this.groupBox1.TabStop = false;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label24.Location = new System.Drawing.Point(7, 57);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(38, 19);
-            this.label24.TabIndex = 23;
-            this.label24.Text = "Year:";
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Location = new System.Drawing.Point(494, 64);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(138, 23);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(97, 51);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(119, 25);
-            this.dateTimePicker2.TabIndex = 21;
-            this.dateTimePicker2.UseWaitCursor = true;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(97, 18);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(119, 25);
-            this.dateTimePicker1.TabIndex = 19;
-            this.dateTimePicker1.UseWaitCursor = true;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(7, 17);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(54, 19);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Month:";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(281, 26);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(133, 25);
-            this.comboBox3.TabIndex = 13;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(235, 29);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(40, 19);
-            this.label11.TabIndex = 14;
-            this.label11.Text = "Type:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(420, 29);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(68, 19);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "Category:";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(494, 26);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(138, 25);
-            this.comboBox2.TabIndex = 15;
-            // 
             // label12
             // 
             this.label12.Location = new System.Drawing.Point(0, 0);
@@ -1080,9 +1082,9 @@
             this.group_tr_list.Controls.Add(this.tr_data);
             this.group_tr_list.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_tr_list.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_tr_list.Location = new System.Drawing.Point(185, 8);
+            this.group_tr_list.Location = new System.Drawing.Point(186, 12);
             this.group_tr_list.Name = "group_tr_list";
-            this.group_tr_list.Size = new System.Drawing.Size(661, 428);
+            this.group_tr_list.Size = new System.Drawing.Size(660, 424);
             this.group_tr_list.TabIndex = 7;
             this.group_tr_list.TabStop = false;
             this.group_tr_list.Text = "Transactions";
@@ -1106,9 +1108,9 @@
             this.group_home.Controls.Add(this.groupBox2);
             this.group_home.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_home.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_home.Location = new System.Drawing.Point(180, 8);
+            this.group_home.Location = new System.Drawing.Point(177, 9);
             this.group_home.Name = "group_home";
-            this.group_home.Size = new System.Drawing.Size(666, 431);
+            this.group_home.Size = new System.Drawing.Size(661, 439);
             this.group_home.TabIndex = 8;
             this.group_home.TabStop = false;
             // 
@@ -1316,11 +1318,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(856, 448);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.group_tr_view);
             this.Controls.Add(this.group_tr_edit);
-            this.Controls.Add(this.group_cat_add);
             this.Controls.Add(this.group_setting);
+            this.Controls.Add(this.group_tr_view);
+            this.Controls.Add(this.group_cat_add);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.group_tr_add);
             this.Controls.Add(this.group_home);
             this.Controls.Add(this.group_tr_list);
@@ -1333,16 +1335,16 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.group_setting.ResumeLayout(false);
-            this.group_tr_add.ResumeLayout(false);
-            this.group_tr_add.PerformLayout();
-            this.group_tr_edit.ResumeLayout(false);
-            this.group_tr_edit.PerformLayout();
-            this.group_cat_add.ResumeLayout(false);
-            this.group_cat_add.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cat_data)).EndInit();
             this.group_tr_view.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.group_tr_add.ResumeLayout(false);
+            this.group_tr_add.PerformLayout();
+            this.group_cat_add.ResumeLayout(false);
+            this.group_cat_add.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cat_data)).EndInit();
+            this.group_tr_edit.ResumeLayout(false);
+            this.group_tr_edit.PerformLayout();
             this.group_tr_list.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tr_data)).EndInit();
             this.group_home.ResumeLayout(false);
@@ -1403,9 +1405,9 @@
         private TextBox fb_tr_edit_id;
         private Label label14;
         private Label label10;
-        private ComboBox comboBox2;
+        private ComboBox fb_tr_search_category;
         private Label label11;
-        private ComboBox comboBox3;
+        private ComboBox fb_tr_search_type;
         private GroupBox groupBox1;
         private Button btn_cat_delete;
         private Button btn_cat_update;
