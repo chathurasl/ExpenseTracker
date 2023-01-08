@@ -554,11 +554,18 @@ namespace ET
             {
                 mzg = "Please enter a name";
             }
-            else if (!Double.TryParse(cat_add_budget.Text, out currBudget))
+            else if (cat_add_budget.Text != "")
             {
-                mzg = "Please enter valid budget";
-            }
+                if (!Double.TryParse(cat_add_budget.Text, out currBudget))
+                {
+                    mzg = "Please enter valid budget";
 
+                }else if (Double.Parse(cat_add_budget.Text) == 0 )
+                {
+                    mzg = "The budget must be greater than 0";
+                }
+
+            }
 
             if (mzg != "")
             {
@@ -613,9 +620,18 @@ namespace ET
             {
                 mzg = "Please enter a name";
             }
-            else if (!Double.TryParse(cat_add_budget.Text, out currBudget))
+            else if (cat_add_budget.Text != "")
             {
-                mzg = "Please enter valid budget";
+                if (!Double.TryParse(cat_add_budget.Text, out currBudget))
+                {
+                    mzg = "Please enter valid budget";
+
+                }
+                else if (Double.Parse(cat_add_budget.Text) == 0)
+                {
+                    mzg = "The budget must be greater than 0";
+                }
+
             }
 
 

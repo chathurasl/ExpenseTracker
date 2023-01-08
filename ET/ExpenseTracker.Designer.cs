@@ -1226,7 +1226,7 @@
             this.groupBox3.Controls.Add(this.lbl_tot_inc);
             this.groupBox3.Controls.Add(this.lbl_tot_exp);
             this.groupBox3.Controls.Add(this.label37);
-            this.groupBox3.Location = new System.Drawing.Point(11, 248);
+            this.groupBox3.Location = new System.Drawing.Point(11, 259);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(652, 166);
             this.groupBox3.TabIndex = 8;
@@ -1345,14 +1345,13 @@
             // 
             // lbl_date
             // 
-            this.lbl_date.AutoSize = true;
-            this.lbl_date.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbl_date.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.lbl_date.Location = new System.Drawing.Point(415, 21);
+            this.lbl_date.Location = new System.Drawing.Point(390, 31);
             this.lbl_date.Name = "lbl_date";
-            this.lbl_date.Size = new System.Drawing.Size(254, 25);
+            this.lbl_date.Size = new System.Drawing.Size(273, 25);
             this.lbl_date.TabIndex = 5;
             this.lbl_date.Text = "Friday, 29 May 2015 5:50 AM";
+            this.lbl_date.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // groupBox2
             // 
@@ -1366,7 +1365,7 @@
             this.groupBox2.Controls.Add(this.label32);
             this.groupBox2.Controls.Add(this.lbl_mon_inc);
             this.groupBox2.Controls.Add(this.lbl_mon_exp);
-            this.groupBox2.Location = new System.Drawing.Point(11, 68);
+            this.groupBox2.Location = new System.Drawing.Point(11, 81);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(652, 166);
             this.groupBox2.TabIndex = 2;
@@ -1496,6 +1495,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(856, 448);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.group_cat_add);
+            this.Controls.Add(this.group_tr_add);
             this.Controls.Add(this.group_home);
             this.Controls.Add(this.group_tr_edit);
             this.Controls.Add(this.group_setting);
@@ -1527,7 +1528,6 @@
             this.group_tr_edit.ResumeLayout(false);
             this.group_tr_edit.PerformLayout();
             this.group_home.ResumeLayout(false);
-            this.group_home.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
