@@ -175,7 +175,7 @@ namespace ET
             dt.Columns.Add("ID");
             dt.Columns.Add("Description");
             dt.Columns.Add("Date");
-            dt.Columns.Add("Amount");
+            dt.Columns.Add("Amount ("+currency+")");
             dt.Columns.Add("Type");
             dt.Columns.Add("Category");
             dt.Columns.Add("Recurring");
@@ -184,7 +184,7 @@ namespace ET
             //Category table colimns
             catData.Columns.Add("ID");
             catData.Columns.Add("Name");
-            catData.Columns.Add("Budget");
+            catData.Columns.Add("Budget (" + currency + ")");
 
 
             //Fill category dropdowns.
@@ -217,6 +217,9 @@ namespace ET
             labels.Add(currency_334);
             labels.Add(currency_35);
             labels.Add(currency_28);
+            labels.Add(currency_229);
+            labels.Add(currency_272);
+            labels.Add(currency_24);
 
 
             foreach (Label label in labels)
@@ -759,35 +762,6 @@ namespace ET
             group_tr_view.Show();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void loadEditTransaction(Transaction tr)
         {
@@ -826,35 +800,13 @@ namespace ET
 
         }
 
-        private void label12_Click_1(object sender, EventArgs e)
-        {
-
-        }
+  
 
         private void btn_about_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label6_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label23_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label24_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label23_Click_1(object sender, EventArgs e)
-        {
-
-        }
 
         private List<Transaction> getTransactionsOfGivenMonth(DateTime date, int categoryId, string transactionType)
         {
@@ -927,21 +879,21 @@ namespace ET
 
             budgetPanel.Controls.Add(new Label()
             {
-                Text = "Budget",
+                Text = "Budget (" + currency + ")",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
                 TextAlign = ContentAlignment.TopRight
 
             }, 1, 0);
             budgetPanel.Controls.Add(new Label()
             {
-                Text = "Spent Amount",
+                Text = "Spent Amount (" + currency + ")",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
                 TextAlign = ContentAlignment.TopRight
 
             }, 2, 0);
             budgetPanel.Controls.Add(new Label()
             {
-                Text = "Balance",
+                Text = "Balance (" + currency + ")",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
                 TextAlign = ContentAlignment.TopRight
 
@@ -1069,16 +1021,6 @@ namespace ET
             group_home.Show();
         }
 
-        private void label25_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             hidePanels();
@@ -1194,31 +1136,6 @@ namespace ET
             });
         }
 
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label34_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label36_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void group_tr_edit_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void fb_tr_add_category_SelectedIndexChanged(object sender, EventArgs e)
         {
             int catKey = (fb_tr_add_category.SelectedItem as dynamic).Value;
@@ -1230,8 +1147,10 @@ namespace ET
                 if (budget > 0)
                 {
                     double spentAmount = getMonthExpenditureOfBudget(DateTime.Now, catKey);
-                    budgetAddCategory.Text = "You have spent " + spentAmount.ToString() + " and your budget is " + budget +
+                    budgetAddCategory.Text = "You have spent " + currency + " " + spentAmount.ToString() + " and your budget is " + currency + " " + budget +
                     ".";
+                    budgetAddCategory.ForeColor = (budget > spentAmount) ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
+
                 }
                 else
                 {
@@ -1239,5 +1158,6 @@ namespace ET
                 }
             }
         }
+
     }
 }
