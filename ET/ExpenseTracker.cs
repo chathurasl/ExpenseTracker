@@ -1050,5 +1050,10 @@ namespace ET
         {
 
         }
+
+        private void label34_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
