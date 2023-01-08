@@ -462,7 +462,6 @@ namespace ET
                 bool response = false;
                 currAmount = Double.Parse(fb_tr_edit_amount.Text);
 
-                MessageBox.Show(currAmount.ToString());
 
                 if (type == "Income")
                 {
