@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Data;
 
 
@@ -108,7 +109,6 @@ namespace ET
                 dr[7] = currTr.getNotes();
 
                 dt.Rows.Add(dr);
-                tr_data.DataSource = dt;
             }
               
           
@@ -321,6 +321,9 @@ namespace ET
         {
             hidePanels();
             group_tr_add.Show();
+
+
+            //budgetAddCategory
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -417,7 +420,7 @@ namespace ET
                     }
 
                     //List Transaction Data;
-                    fillTransactionData();
+                   // fillTransactionData();
                     resetTrForms();
 
                    
@@ -539,41 +542,6 @@ namespace ET
                 }
             }
         }
-
-   
-
-        private void tr_data_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-           if (tr_data.Rows[e.RowIndex].Cells[0].Value.ToString() != "")
-            {
-
-                fb_tr_edit_id.Text = tr_data.Rows[e.RowIndex].Cells[0].Value.ToString();
-                fb_tr_edit_description.Text = tr_data.Rows[e.RowIndex].Cells[1].Value.ToString();
-                fb_tr_edit_date.Text = tr_data.Rows[e.RowIndex].Cells[2].Value.ToString();
-                fb_tr_edit_amount.Text = tr_data.Rows[e.RowIndex].Cells[3].Value.ToString();
-                fb_tr_edit_type.Text = tr_data.Rows[e.RowIndex].Cells[4].Value.ToString();
-                fb_tr_edit_category.Text = tr_data.Rows[e.RowIndex].Cells[5].Value.ToString();
-                fb_tr_edit_notes.Text = tr_data.Rows[e.RowIndex].Cells[7].Value.ToString();
-                fb_tr_edit_recurring.Checked = false;
-
-                if (tr_data.Rows[e.RowIndex].Cells[6].Value.ToString() == "True")
-                {
-                    fb_tr_edit_recurring.Checked = true;
-                }
-
-                hidePanels();
-                group_tr_edit.Show();
-
-            }
-            else
-            {
-                MessageBox.Show("Invalid Transaction data.", "Update Transaction", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-           
-            
-        }
-
 
 
         private void btn_cat_add_Click(object sender, EventArgs e)
@@ -799,6 +767,19 @@ namespace ET
             fb_tr_edit_category.SelectedIndex = fb_tr_edit_category.FindString(category);
             fb_tr_edit_type.SelectedIndex = fb_tr_edit_type.FindString(tr.getType());
 
+            double budget = categoryFactory.getCategroyById(tr.getCategroyId()).getBudget();
+
+            if (budget > 0)
+            {
+                double spentAmount = getMonthExpenditureOfBudget(DateTime.Now, tr.getCategroyId());
+                budgetEditCategory.Text = "You have spent " + spentAmount.ToString() +" and your budget is " + budget +
+                ".";
+            }
+            else 
+            {
+                budgetEditCategory.Text = "Unlimited Budget";
+            }
+
         }
 
         private void label12_Click_1(object sender, EventArgs e)
@@ -888,6 +869,130 @@ namespace ET
         {
             hidePanels();
             group_tr_list.Show();
+            budgetPanel.Controls.Clear();
+            budgetPanel.RowStyles.Clear();
+
+            //Panel Headers
+            budgetPanel.Controls.Add(new Label()
+            {
+                Text = "Category Name",
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                TextAlign = ContentAlignment.TopLeft,
+                //Size = new System.Drawing.Size(900, 26)
+            }, 0, 0);
+
+            budgetPanel.Controls.Add(new Label()
+            {
+                Text = "Budget",
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                TextAlign = ContentAlignment.TopRight
+
+            }, 1, 0);
+            budgetPanel.Controls.Add(new Label()
+            {
+                Text = "Spent Amount",
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                TextAlign = ContentAlignment.TopRight
+
+            }, 2, 0);
+            budgetPanel.Controls.Add(new Label()
+            {
+                Text = "Balance",
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                TextAlign = ContentAlignment.TopRight
+
+            }, 3, 0);
+
+            int count = 1;
+            foreach (Category cat in categoryFactory.getCategories())
+            {
+                double budgetAmount = cat.getBudget();
+                double spentAmount = getMonthExpenditureOfBudget(DateTime.Now, cat.getId());
+
+                bool budgetExceed = false;
+
+                
+
+                if (budgetAmount > 0 && spentAmount > budgetAmount) {
+
+                    budgetExceed = true;
+                }
+
+                budgetPanel.RowCount = budgetPanel.RowCount + 1;
+                budgetPanel.Controls.Add(new Label()
+                {
+                    Text = cat.getCategoryName(),
+                    Font = new Font("Segoe UI", 12),
+                    TextAlign = ContentAlignment.TopLeft,
+                    //Size = new System.Drawing.Size(900, 26)
+                }, 0, count);
+                
+                budgetPanel.Controls.Add(new Label()
+                {
+                    Text = budgetAmount > 0 ? cat.getBudget().ToString() : "Unlimited",
+                    Font = new Font("Segoe UI", 12),
+                    //Size = new System.Drawing.Size(900, 30),
+                    TextAlign = ContentAlignment.TopRight
+
+                }, 1, count);     
+                budgetPanel.Controls.Add(new Label()
+                {
+                    Text = spentAmount.ToString(),
+                    Font = new Font("Segoe UI", 12),
+                    //Size = new System.Drawing.Size(900, 30),
+                    ForeColor = (budgetExceed)?Color.Red:Color.Black,
+                    TextAlign = ContentAlignment.TopRight
+
+                }, 2, count);
+
+                string balance = "";
+                if (budgetAmount > 0) {
+
+                    if (budgetAmount < spentAmount)
+                    {
+                        balance = "-" + (budgetAmount - spentAmount);
+                    }
+                    else
+                    {
+                        balance = (budgetAmount - spentAmount).ToString();
+                    }
+                }
+                else 
+                {
+                    balance = "-";    
+                }
+                budgetPanel.Controls.Add(new Label()
+                {
+                    Text = balance,
+                    Font = new Font("Segoe UI", 12),
+                    //Size = new System.Drawing.Size(900, 30),
+                    ForeColor = (budgetExceed) ? Color.Red : Color.Black,
+                    TextAlign = ContentAlignment.TopRight
+
+                }, 3, count);
+                
+                count++;
+
+            }
+
+
+        }
+
+        private double getMonthExpenditureOfBudget(DateTime month, int categoryId) {
+
+            //Get all the items per month and category
+            List<Transaction> list = getTransactionsOfGivenMonth(month, categoryId, "");
+
+            //Get the sum of expenses from the list
+            double sumExpense = 0;
+            foreach (Transaction tr in list) {
+                if (tr.getType() == "Expense") { 
+                    sumExpense = sumExpense + tr.getAmount();
+                }
+            }
+
+            return sumExpense;
+        
         }
 
         private void fb_tr_add_recurring_CheckedChanged(object sender, EventArgs e)
@@ -1053,6 +1158,42 @@ namespace ET
         private void label34_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label36_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void group_tr_edit_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fb_tr_add_category_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int catKey = (fb_tr_add_category.SelectedItem as dynamic).Value;
+
+            if (catKey > 0)
+            {
+                double budget = categoryFactory.getCategroyById(catKey).getBudget();
+
+                if (budget > 0)
+                {
+                    double spentAmount = getMonthExpenditureOfBudget(DateTime.Now, catKey);
+                    budgetAddCategory.Text = "You have spent " + spentAmount.ToString() + " and your budget is " + budget +
+                    ".";
+                }
+                else
+                {
+                    budgetAddCategory.Text = "Unlimited Budget";
+                }
+            }
         }
     }
 }
