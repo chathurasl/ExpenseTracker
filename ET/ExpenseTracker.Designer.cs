@@ -37,8 +37,9 @@
             this.btn_add_transactions = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.group_setting = new System.Windows.Forms.GroupBox();
-            this.btn_manage_categories = new System.Windows.Forms.Button();
             this.btn_about = new System.Windows.Forms.Button();
+            this.btn_manage_categories = new System.Windows.Forms.Button();
+            this.btn_general = new System.Windows.Forms.Button();
             this.group_tr_view = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -142,6 +143,18 @@
             this.label32 = new System.Windows.Forms.Label();
             this.lbl_mon_inc = new System.Windows.Forms.Label();
             this.lbl_mon_exp = new System.Windows.Forms.Label();
+            this.group_general = new System.Windows.Forms.GroupBox();
+            this.group_abt = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.btn_save_settings = new System.Windows.Forms.Button();
+            this.fb_currency = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.group_setting.SuspendLayout();
@@ -156,6 +169,10 @@
             this.group_home.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.group_general.SuspendLayout();
+            this.group_abt.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -255,8 +272,9 @@
             // 
             // group_setting
             // 
-            this.group_setting.Controls.Add(this.btn_manage_categories);
             this.group_setting.Controls.Add(this.btn_about);
+            this.group_setting.Controls.Add(this.btn_manage_categories);
+            this.group_setting.Controls.Add(this.btn_general);
             this.group_setting.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_setting.Location = new System.Drawing.Point(177, 13);
             this.group_setting.Name = "group_setting";
@@ -266,21 +284,6 @@
             this.group_setting.Text = "Settings";
             this.group_setting.Visible = false;
             // 
-            // btn_manage_categories
-            // 
-            this.btn_manage_categories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
-            this.btn_manage_categories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_manage_categories.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_manage_categories.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_manage_categories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_manage_categories.Location = new System.Drawing.Point(29, 46);
-            this.btn_manage_categories.Name = "btn_manage_categories";
-            this.btn_manage_categories.Size = new System.Drawing.Size(120, 112);
-            this.btn_manage_categories.TabIndex = 7;
-            this.btn_manage_categories.Text = "MANAGE CATEGORIES";
-            this.btn_manage_categories.UseVisualStyleBackColor = false;
-            this.btn_manage_categories.Click += new System.EventHandler(this.button9_Click);
-            // 
             // btn_about
             // 
             this.btn_about.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
@@ -289,13 +292,44 @@
             this.btn_about.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_about.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btn_about.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_about.Location = new System.Drawing.Point(172, 48);
+            this.btn_about.Location = new System.Drawing.Point(298, 44);
             this.btn_about.Name = "btn_about";
             this.btn_about.Size = new System.Drawing.Size(118, 111);
-            this.btn_about.TabIndex = 6;
+            this.btn_about.TabIndex = 8;
             this.btn_about.Text = "ABOUT";
             this.btn_about.UseVisualStyleBackColor = false;
-            this.btn_about.Click += new System.EventHandler(this.btn_about_Click);
+            this.btn_about.Click += new System.EventHandler(this.btn_about_Click_1);
+            // 
+            // btn_manage_categories
+            // 
+            this.btn_manage_categories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.btn_manage_categories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_manage_categories.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_manage_categories.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_manage_categories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_manage_categories.Location = new System.Drawing.Point(26, 44);
+            this.btn_manage_categories.Name = "btn_manage_categories";
+            this.btn_manage_categories.Size = new System.Drawing.Size(120, 112);
+            this.btn_manage_categories.TabIndex = 7;
+            this.btn_manage_categories.Text = "MANAGE CATEGORIES";
+            this.btn_manage_categories.UseVisualStyleBackColor = false;
+            this.btn_manage_categories.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // btn_general
+            // 
+            this.btn_general.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.btn_general.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_general.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_general.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_general.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_general.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_general.Location = new System.Drawing.Point(162, 45);
+            this.btn_general.Name = "btn_general";
+            this.btn_general.Size = new System.Drawing.Size(118, 111);
+            this.btn_general.TabIndex = 6;
+            this.btn_general.Text = "GENERAL";
+            this.btn_general.UseVisualStyleBackColor = false;
+            this.btn_general.Click += new System.EventHandler(this.btn_general_Click);
             // 
             // group_tr_view
             // 
@@ -1529,6 +1563,140 @@
             this.lbl_mon_exp.TabIndex = 4;
             this.lbl_mon_exp.Text = "0";
             // 
+            // group_general
+            // 
+            this.group_general.Controls.Add(this.btn_save_settings);
+            this.group_general.Controls.Add(this.fb_currency);
+            this.group_general.Controls.Add(this.label42);
+            this.group_general.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.group_general.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.group_general.Location = new System.Drawing.Point(177, 13);
+            this.group_general.Name = "group_general";
+            this.group_general.Size = new System.Drawing.Size(672, 428);
+            this.group_general.TabIndex = 10;
+            this.group_general.TabStop = false;
+            this.group_general.Text = "General Settings";
+            this.group_general.Visible = false;
+            // 
+            // group_abt
+            // 
+            this.group_abt.Controls.Add(this.groupBox5);
+            this.group_abt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.group_abt.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.group_abt.Location = new System.Drawing.Point(177, 11);
+            this.group_abt.Name = "group_abt";
+            this.group_abt.Size = new System.Drawing.Size(672, 428);
+            this.group_abt.TabIndex = 12;
+            this.group_abt.TabStop = false;
+            this.group_abt.Text = "About Expense Tracker";
+            this.group_abt.Visible = false;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label22);
+            this.groupBox5.Controls.Add(this.pictureBox3);
+            this.groupBox5.Controls.Add(this.label27);
+            this.groupBox5.Controls.Add(this.label28);
+            this.groupBox5.Controls.Add(this.label33);
+            this.groupBox5.Controls.Add(this.label34);
+            this.groupBox5.Location = new System.Drawing.Point(164, 55);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(338, 322);
+            this.groupBox5.TabIndex = 8;
+            this.groupBox5.TabStop = false;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(62, 281);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(214, 17);
+            this.label22.TabIndex = 8;
+            this.label22.Text = "Copyright © 2023 Expense Tracker.";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = global::ET.Properties.Resources.logo;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox3.Location = new System.Drawing.Point(98, 42);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(148, 78);
+            this.pictureBox3.TabIndex = 7;
+            this.pictureBox3.TabStop = false;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label27.Location = new System.Drawing.Point(86, 131);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(169, 30);
+            this.label27.TabIndex = 0;
+            this.label27.Text = "Expense Tracker";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(85, 224);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(169, 17);
+            this.label28.TabIndex = 3;
+            this.label28.Text = "gousalya.20210654@iit.ac.lk";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label33.Location = new System.Drawing.Point(127, 167);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(93, 21);
+            this.label33.TabIndex = 1;
+            this.label33.Text = "Version 1.0";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(85, 203);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(167, 17);
+            this.label34.TabIndex = 2;
+            this.label34.Text = "chathura.20211351@iit.ac.lk";
+            // 
+            // btn_save_settings
+            // 
+            this.btn_save_settings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.btn_save_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_save_settings.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_save_settings.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_save_settings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_save_settings.Location = new System.Drawing.Point(266, 96);
+            this.btn_save_settings.Name = "btn_save_settings";
+            this.btn_save_settings.Size = new System.Drawing.Size(82, 31);
+            this.btn_save_settings.TabIndex = 26;
+            this.btn_save_settings.Text = "SAVE";
+            this.btn_save_settings.UseVisualStyleBackColor = false;
+            this.btn_save_settings.Click += new System.EventHandler(this.btn_save_settings_Click);
+            // 
+            // fb_currency
+            // 
+            this.fb_currency.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.fb_currency.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.fb_currency.Location = new System.Drawing.Point(90, 56);
+            this.fb_currency.Name = "fb_currency";
+            this.fb_currency.Size = new System.Drawing.Size(258, 25);
+            this.fb_currency.TabIndex = 25;
+            this.fb_currency.Text = "LKR";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label42.Location = new System.Drawing.Point(21, 59);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(67, 19);
+            this.label42.TabIndex = 24;
+            this.label42.Text = "Currecny:";
+            // 
             // ExpenseTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1536,13 +1704,15 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(856, 448);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.group_tr_add);
-            this.Controls.Add(this.group_tr_edit);
+            this.Controls.Add(this.group_general);
             this.Controls.Add(this.group_setting);
+            this.Controls.Add(this.group_abt);
             this.Controls.Add(this.group_cat_add);
             this.Controls.Add(this.group_tr_list);
             this.Controls.Add(this.group_tr_view);
             this.Controls.Add(this.group_home);
+            this.Controls.Add(this.group_tr_add);
+            this.Controls.Add(this.group_tr_edit);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ExpenseTracker";
@@ -1571,6 +1741,12 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.group_general.ResumeLayout(false);
+            this.group_general.PerformLayout();
+            this.group_abt.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1594,7 +1770,7 @@
         private Button btn_settings;
         private GroupBox group_setting;
         private Button btn_manage_categories;
-        private Button btn_about;
+        private Button btn_general;
         private GroupBox group_cat_add;
         private TextBox cat_add_budget;
         private Label label5;
@@ -1692,5 +1868,18 @@
         private Label currency_229;
         private Label currency_272;
         private Label currency_24;
+        private Button btn_about;
+        private GroupBox group_general;
+        private GroupBox group_abt;
+        private GroupBox groupBox5;
+        private Label label22;
+        private PictureBox pictureBox3;
+        private Label label27;
+        private Label label28;
+        private Label label33;
+        private Label label34;
+        private Button btn_save_settings;
+        private TextBox fb_currency;
+        private Label label42;
     }
 }

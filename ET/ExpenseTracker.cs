@@ -52,6 +52,8 @@ namespace ET
             group_cat_add.Hide();
             group_tr_view.Hide();
             group_tr_edit.Hide();
+            group_abt.Hide();
+            group_general.Hide();
         }
 
         public void fillCategoryData()
@@ -171,21 +173,8 @@ namespace ET
 
             //ExpenseTracker ET = new ExpenseTracker();
 
-            //Data view columns
-            dt.Columns.Add("ID");
-            dt.Columns.Add("Description");
-            dt.Columns.Add("Date");
-            dt.Columns.Add("Amount ("+currency+")");
-            dt.Columns.Add("Type");
-            dt.Columns.Add("Category");
-            dt.Columns.Add("Recurring");
-            dt.Columns.Add("Notes");
-
-            //Category table colimns
-            catData.Columns.Add("ID");
-            catData.Columns.Add("Name");
-            catData.Columns.Add("Budget (" + currency + ")");
-
+            //Set table columns
+            setDataTableHeadings();
 
             //Fill category dropdowns.
             fillCategoryData();
@@ -206,6 +195,8 @@ namespace ET
             setCurrency();
 
         }
+
+     
 
         public void setCurrency()
         {
@@ -237,6 +228,29 @@ namespace ET
 
             string today = DateTime.Now.ToString("dddd, dd MMMM yyyy h:mm tt");
             lbl_date.Text = today;
+
+        }       
+        
+        
+        public void setDataTableHeadings()
+        {
+
+            //Data view columns
+            dt.Columns.Clear();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("Description");
+            dt.Columns.Add("Date");
+            dt.Columns.Add("Amount (" + currency + ")");
+            dt.Columns.Add("Type");
+            dt.Columns.Add("Category");
+            dt.Columns.Add("Recurring");
+            dt.Columns.Add("Notes");
+
+            //Category table colimns
+            catData.Columns.Clear();
+            catData.Columns.Add("ID");
+            catData.Columns.Add("Name");
+            catData.Columns.Add("Budget (" + currency + ")");
 
         }
 
@@ -802,12 +816,6 @@ namespace ET
 
   
 
-        private void btn_about_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
         private List<Transaction> getTransactionsOfGivenMonth(DateTime date, int categoryId, string transactionType)
         {
 
@@ -1159,5 +1167,25 @@ namespace ET
             }
         }
 
+        private void btn_general_Click(object sender, EventArgs e)
+        {
+            hidePanels();
+            group_general.Show();
+        }
+
+        private void btn_about_Click_1(object sender, EventArgs e)
+        {
+            hidePanels();
+            group_abt.Show();
+        }
+
+        private void btn_save_settings_Click(object sender, EventArgs e)
+        {
+            currency = fb_currency.Text;
+            setCurrency();
+            setDataTableHeadings();
+
+            MessageBox.Show("Application settings sucessfully updated.", "Save Settings", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
