@@ -73,6 +73,7 @@ namespace ET
             fb_tr_search_category.ValueMember = "Value";
 
             fb_tr_add_category.Items.Add(new { Text = "--Please select--", Value = 0 });
+            fb_tr_search_category.Items.Add(new { Text = "All", Value = 0 });
 
 
             foreach (Category currCat in categoryFactory.getCategories())
@@ -85,7 +86,7 @@ namespace ET
                 DataRow catRow = catData.NewRow();
                 catRow[0] = currCat.getId(); ;
                 catRow[1] = currCat.getCategoryName();
-                catRow[2] = currCat.getBudget();
+                catRow[2] = (currCat.getBudget() == 0)?"Unlimited": currCat.getBudget();
 
                 catData.Rows.Add(catRow);
                 cat_data.DataSource = catData;
@@ -139,6 +140,7 @@ namespace ET
             fb_tr_edit_type.Items.Add(new { Text = "Income", Value = "Income" });
             fb_tr_edit_type.Items.Add(new { Text = "Expense", Value = "Expense" });
 
+            fb_tr_search_type.Items.Add(new { Text = "All", Value = 0 });
             fb_tr_search_type.Items.Add(new { Text = "Income", Value = "Income" });
             fb_tr_search_type.Items.Add(new { Text = "Expense", Value = "Expense" });
 
@@ -367,8 +369,6 @@ namespace ET
             hidePanels();
             group_tr_add.Show();
 
-
-            //budgetAddCategory
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -642,7 +642,16 @@ namespace ET
 
                 cat_id.Text = cat_data.Rows[e.RowIndex].Cells[0].Value.ToString();
                 cat_add_name.Text = cat_data.Rows[e.RowIndex].Cells[1].Value.ToString();
-                cat_add_budget.Text = cat_data.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+                string budget = cat_data.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+                if (budget == "Unlimited")
+                {
+                    cat_add_budget.Text = "";
+                }
+                else {
+                    cat_add_budget.Text = cat_data.Rows[e.RowIndex].Cells[2].Value.ToString();
+                }
 
                 btn_cat_add.Hide();
                 btn_cat_update.Show();
@@ -742,8 +751,8 @@ namespace ET
             fb_tr_search_type.Items.Clear();
             fillTransactionTypes();
 
-            fb_tr_search_category.ResetText();
-            fb_tr_search_type.ResetText();
+            fb_tr_search_category.SelectedIndex = 0;
+            fb_tr_search_type.SelectedIndex = 0;
 
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "MMMM";
@@ -801,20 +810,24 @@ namespace ET
 
             double budget = categoryFactory.getCategroyById(tr.getCategroyId()).getBudget();
 
-            if (budget > 0)
-            {
-                double spentAmount = getMonthExpenditureOfBudget(DateTime.Now, tr.getCategroyId());
-                budgetEditCategory.Text = "You have spent " + spentAmount.ToString() +" and your budget is " + budget +
-                ".";
-            }
-            else 
-            {
-                budgetEditCategory.Text = "Unlimited Budget";
+            int catKey = (fb_tr_add_category.SelectedItem as dynamic).Value;
+
+                if (budget > 0)
+                {
+                    double spentAmount = getMonthExpenditureOfBudget(DateTime.Now, catKey);
+                    budgetEditCategory.Text = "You have spent " + currency + " " + spentAmount.ToString() + " and your budget is " + currency + " " + budget +
+                    ".";
+                    budgetEditCategory.ForeColor = (budget > spentAmount) ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
+
+                }
+                else
+                {
+                    budgetEditCategory.Text = "Unlimited Budget";
+                    budgetEditCategory.ForeColor = Color.FromArgb(56, 142, 60);
+
             }
 
         }
-
-  
 
         private List<Transaction> getTransactionsOfGivenMonth(DateTime date, int categoryId, string transactionType)
         {
@@ -915,9 +928,7 @@ namespace ET
 
                 bool budgetExceed = false;
 
-                
-
-                if (budgetAmount > 0 && spentAmount > budgetAmount) {
+                if (budgetAmount > 0 && spentAmount >= budgetAmount) {
 
                     budgetExceed = true;
                 }
@@ -952,14 +963,7 @@ namespace ET
                 string balance = "";
                 if (budgetAmount > 0) {
 
-                    if (budgetAmount < spentAmount)
-                    {
-                        balance = "-" + (budgetAmount - spentAmount);
-                    }
-                    else
-                    {
-                        balance = (budgetAmount - spentAmount).ToString();
-                    }
+                    balance = (budgetAmount - spentAmount).ToString();
                 }
                 else 
                 {
@@ -1039,10 +1043,10 @@ namespace ET
             int catKey = 0;
             string type = "";
 
-            if (fb_tr_search_category.SelectedItem != null) {
+            if (fb_tr_search_category.SelectedIndex != 0) {
                 catKey = (fb_tr_search_category.SelectedItem as dynamic).Value;
             }
-            if (fb_tr_search_type.SelectedItem != null)
+            if (fb_tr_search_type.SelectedIndex != 0)
             {
                 type = (fb_tr_search_type.SelectedItem as dynamic).Value;
             }
@@ -1062,12 +1066,14 @@ namespace ET
             totalExpense = 0;
 
             int count = -1;
+            Boolean isIncome = false;
             foreach (Transaction tr in list)
             {
                 if (tr.getType() == "Income")
                 {
 
                     totalIncome += tr.getAmount();
+                    isIncome = true;
 
                 }
                 else
@@ -1080,7 +1086,7 @@ namespace ET
                 tableLayoutPanel1.Controls.Add(new Label()
                 {
                     Text = tr.getDescription(),
-                    ForeColor = Color.DarkGreen,
+                    ForeColor = isIncome?Color.DarkGreen:Color.DarkRed,
                     Font = new Font("Segoe UI", 12),
                     TextAlign = ContentAlignment.TopLeft,
                     //Size = new System.Drawing.Size(900, 26)
@@ -1088,7 +1094,7 @@ namespace ET
                 tableLayoutPanel1.Controls.Add(new Label()
                 {
                     Text = tr.getAmount().ToString(),
-                    ForeColor = Color.DarkGreen,
+                    ForeColor = isIncome ? Color.DarkGreen : Color.DarkRed,
                     Font = new Font("Segoe UI", 15),
                     Size = new System.Drawing.Size(900, 30),
                     TextAlign = ContentAlignment.BottomRight
@@ -1163,7 +1169,32 @@ namespace ET
                 else
                 {
                     budgetAddCategory.Text = "Unlimited Budget";
+                    budgetAddCategory.ForeColor = Color.FromArgb(56, 142, 60);
                 }
+            }
+        }
+
+        private void fb_tr_edit_category_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            int catKey = (fb_tr_edit_category.SelectedItem as dynamic).Value;
+
+
+            double budget = categoryFactory.getCategroyById(catKey).getBudget();
+
+
+            if (budget > 0)
+            {
+                double spentAmount = getMonthExpenditureOfBudget(DateTime.Now, catKey);
+                budgetEditCategory.Text = "You have spent " + currency + " " + spentAmount.ToString() + " and your budget is " + currency + " " + budget +
+                ".";
+                budgetEditCategory.ForeColor = (budget > spentAmount) ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
+
+            }
+            else
+            {
+                budgetEditCategory.Text = "Unlimited Budget";
+                budgetEditCategory.ForeColor = Color.FromArgb(56, 142, 60);
             }
         }
 
@@ -1186,6 +1217,34 @@ namespace ET
             setDataTableHeadings();
 
             MessageBox.Show("Application settings sucessfully updated.", "Save Settings", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void fb_tr_edit_category_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            int catKey = (fb_tr_edit_category.SelectedItem as dynamic).Value;
+
+
+            double budget = categoryFactory.getCategroyById(catKey).getBudget();
+
+
+            if (budget > 0)
+            {
+                double spentAmount = getMonthExpenditureOfBudget(DateTime.Now, catKey);
+                budgetEditCategory.Text = "You have spent " + currency + " " + spentAmount.ToString() + " and your budget is " + currency + " " + budget +
+                ".";
+                budgetEditCategory.ForeColor = (budget > spentAmount) ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
+
+            }
+            else
+            {
+                budgetEditCategory.Text = "Unlimited Budget";
+                budgetEditCategory.ForeColor = Color.FromArgb(56, 142, 60);
+            }
+        }
+
+        private void cat_data_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
