@@ -58,8 +58,8 @@
             this.budgetPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label40 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
             this.group_tr_add = new System.Windows.Forms.GroupBox();
             this.currency_272 = new System.Windows.Forms.Label();
             this.budgetAddCategory = new System.Windows.Forms.Label();
@@ -96,8 +96,8 @@
             this.cat_add_name = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.group_tr_edit = new System.Windows.Forms.GroupBox();
-            this.currency_229 = new System.Windows.Forms.Label();
             this.budgetEditCategory = new System.Windows.Forms.Label();
+            this.currency_229 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.fb_tr_edit_description = new System.Windows.Forms.TextBox();
             this.fb_tr_edit_notes = new System.Windows.Forms.TextBox();
@@ -144,6 +144,9 @@
             this.lbl_mon_inc = new System.Windows.Forms.Label();
             this.lbl_mon_exp = new System.Windows.Forms.Label();
             this.group_general = new System.Windows.Forms.GroupBox();
+            this.btn_save_settings = new System.Windows.Forms.Button();
+            this.fb_currency = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
             this.group_abt = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -152,9 +155,6 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
-            this.btn_save_settings = new System.Windows.Forms.Button();
-            this.fb_currency = new System.Windows.Forms.TextBox();
-            this.label42 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.group_setting.SuspendLayout();
@@ -349,20 +349,20 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.LightCoral;
-            this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panel3.Location = new System.Drawing.Point(322, 120);
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(205)))), ((int)(((byte)(210)))));
+            this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(53)))));
+            this.panel3.Location = new System.Drawing.Point(316, 120);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(341, 22);
+            this.panel3.Size = new System.Drawing.Size(347, 22);
             this.panel3.TabIndex = 22;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.SpringGreen;
-            this.panel2.ForeColor = System.Drawing.Color.Green;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(201)))));
+            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(125)))), ((int)(((byte)(50)))));
             this.panel2.Location = new System.Drawing.Point(7, 120);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(303, 22);
+            this.panel2.Size = new System.Drawing.Size(309, 22);
             this.panel2.TabIndex = 21;
             // 
             // tableLayoutPanel1
@@ -424,23 +424,19 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker2.Location = new System.Drawing.Point(97, 51);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(119, 25);
             this.dateTimePicker2.TabIndex = 21;
-            this.dateTimePicker2.UseWaitCursor = true;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(97, 18);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(119, 25);
             this.dateTimePicker1.TabIndex = 19;
-            this.dateTimePicker1.UseWaitCursor = true;
             // 
             // label9
             // 
@@ -502,26 +498,26 @@
             this.group_tr_list.TabStop = false;
             this.group_tr_list.Text = "Budget Overview - Current Month";
             this.group_tr_list.Visible = false;
+            this.group_tr_list.Enter += new System.EventHandler(this.group_tr_list_Enter);
             // 
             // budgetPanel
             // 
             this.budgetPanel.AutoSize = true;
             this.budgetPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.budgetPanel.ColumnCount = 4;
-            this.budgetPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.48872F));
-            this.budgetPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.51128F));
-            this.budgetPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 161F));
-            this.budgetPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 204F));
+            this.budgetPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.budgetPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.budgetPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.budgetPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.budgetPanel.Controls.Add(this.label40, 3, 0);
             this.budgetPanel.Controls.Add(this.label39, 2, 0);
-            this.budgetPanel.Controls.Add(this.label38, 1, 0);
             this.budgetPanel.Controls.Add(this.label36, 0, 0);
-            this.budgetPanel.Location = new System.Drawing.Point(20, 24);
+            this.budgetPanel.Controls.Add(this.label38, 1, 0);
+            this.budgetPanel.Location = new System.Drawing.Point(20, 43);
             this.budgetPanel.Name = "budgetPanel";
             this.budgetPanel.RowCount = 1;
-            this.budgetPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.budgetPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 359F));
-            this.budgetPanel.Size = new System.Drawing.Size(634, 133);
+            this.budgetPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.budgetPanel.Size = new System.Drawing.Size(634, 143);
             this.budgetPanel.TabIndex = 1;
             // 
             // label40
@@ -531,9 +527,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label40.AutoEllipsis = true;
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(431, 1);
+            this.label40.Location = new System.Drawing.Point(478, 1);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(199, 131);
+            this.label40.Size = new System.Drawing.Size(152, 141);
             this.label40.TabIndex = 3;
             this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -544,24 +540,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label39.AutoEllipsis = true;
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(269, 1);
+            this.label39.Location = new System.Drawing.Point(320, 1);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(155, 131);
+            this.label39.Size = new System.Drawing.Size(151, 141);
             this.label39.TabIndex = 2;
             this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label38
-            // 
-            this.label38.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label38.AutoEllipsis = true;
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(125, 1);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(137, 131);
-            this.label38.TabIndex = 1;
-            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label36
             // 
@@ -572,9 +555,22 @@
             this.label36.AutoSize = true;
             this.label36.Location = new System.Drawing.Point(4, 1);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(114, 131);
+            this.label36.Size = new System.Drawing.Size(151, 141);
             this.label36.TabIndex = 0;
             this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label38
+            // 
+            this.label38.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label38.AutoEllipsis = true;
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(162, 1);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(151, 141);
+            this.label38.TabIndex = 1;
+            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // group_tr_add
             // 
@@ -946,7 +942,7 @@
             this.cat_data.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.cat_data.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.cat_data.RowTemplate.Height = 25;
-            this.cat_data.Size = new System.Drawing.Size(642, 219);
+            this.cat_data.Size = new System.Drawing.Size(666, 219);
             this.cat_data.TabIndex = 9;
             this.cat_data.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cat_data_CellDoubleClick);
             // 
@@ -1005,8 +1001,8 @@
             // 
             // group_tr_edit
             // 
-            this.group_tr_edit.Controls.Add(this.currency_229);
             this.group_tr_edit.Controls.Add(this.budgetEditCategory);
+            this.group_tr_edit.Controls.Add(this.currency_229);
             this.group_tr_edit.Controls.Add(this.label23);
             this.group_tr_edit.Controls.Add(this.fb_tr_edit_description);
             this.group_tr_edit.Controls.Add(this.fb_tr_edit_notes);
@@ -1036,6 +1032,16 @@
             this.group_tr_edit.Text = "Edit Transaction";
             this.group_tr_edit.Visible = false;
             // 
+            // budgetEditCategory
+            // 
+            this.budgetEditCategory.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.budgetEditCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(142)))), ((int)(((byte)(60)))));
+            this.budgetEditCategory.Location = new System.Drawing.Point(26, 169);
+            this.budgetEditCategory.Name = "budgetEditCategory";
+            this.budgetEditCategory.Size = new System.Drawing.Size(600, 19);
+            this.budgetEditCategory.TabIndex = 23;
+            this.budgetEditCategory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // currency_229
             // 
             this.currency_229.BackColor = System.Drawing.Color.White;
@@ -1048,16 +1054,6 @@
             this.currency_229.TabIndex = 22;
             this.currency_229.Text = "LKR";
             this.currency_229.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // budgetEditCategory
-            // 
-            this.budgetEditCategory.AutoSize = true;
-            this.budgetEditCategory.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.budgetEditCategory.ForeColor = System.Drawing.Color.Red;
-            this.budgetEditCategory.Location = new System.Drawing.Point(353, 170);
-            this.budgetEditCategory.Name = "budgetEditCategory";
-            this.budgetEditCategory.Size = new System.Drawing.Size(0, 19);
-            this.budgetEditCategory.TabIndex = 21;
             // 
             // label23
             // 
@@ -1578,6 +1574,41 @@
             this.group_general.Text = "General Settings";
             this.group_general.Visible = false;
             // 
+            // btn_save_settings
+            // 
+            this.btn_save_settings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.btn_save_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_save_settings.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_save_settings.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_save_settings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_save_settings.Location = new System.Drawing.Point(266, 96);
+            this.btn_save_settings.Name = "btn_save_settings";
+            this.btn_save_settings.Size = new System.Drawing.Size(82, 31);
+            this.btn_save_settings.TabIndex = 26;
+            this.btn_save_settings.Text = "SAVE";
+            this.btn_save_settings.UseVisualStyleBackColor = false;
+            this.btn_save_settings.Click += new System.EventHandler(this.btn_save_settings_Click);
+            // 
+            // fb_currency
+            // 
+            this.fb_currency.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.fb_currency.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.fb_currency.Location = new System.Drawing.Point(90, 56);
+            this.fb_currency.Name = "fb_currency";
+            this.fb_currency.Size = new System.Drawing.Size(258, 25);
+            this.fb_currency.TabIndex = 25;
+            this.fb_currency.Text = "LKR";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label42.Location = new System.Drawing.Point(21, 59);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(67, 19);
+            this.label42.TabIndex = 24;
+            this.label42.Text = "Currecny:";
+            // 
             // group_abt
             // 
             this.group_abt.Controls.Add(this.groupBox5);
@@ -1662,41 +1693,6 @@
             this.label34.TabIndex = 2;
             this.label34.Text = "chathura.20211351@iit.ac.lk";
             // 
-            // btn_save_settings
-            // 
-            this.btn_save_settings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
-            this.btn_save_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_save_settings.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_save_settings.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_save_settings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_save_settings.Location = new System.Drawing.Point(266, 96);
-            this.btn_save_settings.Name = "btn_save_settings";
-            this.btn_save_settings.Size = new System.Drawing.Size(82, 31);
-            this.btn_save_settings.TabIndex = 26;
-            this.btn_save_settings.Text = "SAVE";
-            this.btn_save_settings.UseVisualStyleBackColor = false;
-            this.btn_save_settings.Click += new System.EventHandler(this.btn_save_settings_Click);
-            // 
-            // fb_currency
-            // 
-            this.fb_currency.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.fb_currency.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.fb_currency.Location = new System.Drawing.Point(90, 56);
-            this.fb_currency.Name = "fb_currency";
-            this.fb_currency.Size = new System.Drawing.Size(258, 25);
-            this.fb_currency.TabIndex = 25;
-            this.fb_currency.Text = "LKR";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label42.Location = new System.Drawing.Point(21, 59);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(67, 19);
-            this.label42.TabIndex = 24;
-            this.label42.Text = "Currecny:";
-            // 
             // ExpenseTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1704,15 +1700,15 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(856, 448);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.group_general);
-            this.Controls.Add(this.group_setting);
-            this.Controls.Add(this.group_abt);
-            this.Controls.Add(this.group_cat_add);
             this.Controls.Add(this.group_tr_list);
             this.Controls.Add(this.group_tr_view);
             this.Controls.Add(this.group_home);
             this.Controls.Add(this.group_tr_add);
             this.Controls.Add(this.group_tr_edit);
+            this.Controls.Add(this.group_general);
+            this.Controls.Add(this.group_setting);
+            this.Controls.Add(this.group_abt);
+            this.Controls.Add(this.group_cat_add);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ExpenseTracker";
@@ -1858,12 +1854,7 @@
         private Label currency_34;
         private Label currency_27;
         private Label currency_222;
-        private TableLayoutPanel budgetPanel;
         private Label label36;
-        private Label label40;
-        private Label label39;
-        private Label label38;
-        private Label budgetEditCategory;
         private Label budgetAddCategory;
         private Label currency_229;
         private Label currency_272;
@@ -1881,5 +1872,10 @@
         private Button btn_save_settings;
         private TextBox fb_currency;
         private Label label42;
+        private Label budgetEditCategory;
+        private TableLayoutPanel budgetPanel;
+        private Label label40;
+        private Label label39;
+        private Label label38;
     }
 }
