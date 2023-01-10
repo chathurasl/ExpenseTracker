@@ -893,7 +893,7 @@ namespace ET
             budgetPanel.Controls.Add(new Label()
             {
                 Text = "Category Name",
-                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
                 TextAlign = ContentAlignment.TopLeft,
                 //Size = new System.Drawing.Size(900, 26)
             }, 0, 0);
@@ -901,21 +901,21 @@ namespace ET
             budgetPanel.Controls.Add(new Label()
             {
                 Text = "Budget (" + currency + ")",
-                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
                 TextAlign = ContentAlignment.TopRight
 
             }, 1, 0);
             budgetPanel.Controls.Add(new Label()
             {
                 Text = "Spent Amount (" + currency + ")",
-                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
                 TextAlign = ContentAlignment.TopRight
 
             }, 2, 0);
             budgetPanel.Controls.Add(new Label()
             {
                 Text = "Balance (" + currency + ")",
-                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
                 TextAlign = ContentAlignment.TopRight
 
             }, 3, 0);
@@ -944,7 +944,7 @@ namespace ET
                 
                 budgetPanel.Controls.Add(new Label()
                 {
-                    Text = budgetAmount > 0 ? cat.getBudget().ToString() : "Unlimited",
+                    Text = budgetAmount > 0 ? cat.getBudget().ToString("N0") : "Unlimited",
                     Font = new Font("Segoe UI", 12),
                     //Size = new System.Drawing.Size(900, 30),
                     TextAlign = ContentAlignment.TopRight
@@ -952,7 +952,7 @@ namespace ET
                 }, 1, count);     
                 budgetPanel.Controls.Add(new Label()
                 {
-                    Text = spentAmount.ToString(),
+                    Text = spentAmount.ToString("N0"),
                     Font = new Font("Segoe UI", 12),
                     //Size = new System.Drawing.Size(900, 30),
                     ForeColor = (budgetExceed)?Color.Red:Color.Black,
@@ -1104,10 +1104,12 @@ namespace ET
                 tableLayoutPanel1.Controls.Add(
                 new Button()
                 {
+                  //  BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126))))),
                     BackgroundImage = ET.Properties.Resources.arrow_right,
-                    BackgroundImageLayout = ImageLayout.Zoom,
-                    FlatStyle = FlatStyle.Flat,
-                    FlatAppearance = { BorderSize = 0 },
+                    BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch,
+                // Text = "Edit",
+                FlatStyle = FlatStyle.Flat,
+                FlatAppearance = { BorderSize = 0 },
                     Size = new System.Drawing.Size(40, 30),
                     ImageAlign = ContentAlignment.BottomRight,
                 }, 2, count);
@@ -1136,14 +1138,14 @@ namespace ET
             panel2.Controls.Add(
                 new Label()
                 {
-                    Text = totalIncome.ToString(),
+                    Text = currency + " " + totalIncome.ToString(),
                     TextAlign = ContentAlignment.TopRight,
                     Size = panel2.Size,
                     Font = new Font("Segoe UI", 12),
                 });
             panel3.Controls.Add(new Label()
             {
-                Text = totalExpense.ToString(),
+                Text = currency + " " + totalExpense.ToString(),
                 TextAlign = ContentAlignment.TopRight,
                 Size = panel3.Size,
                 Font = new Font("Segoe UI", 12),
