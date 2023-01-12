@@ -298,9 +298,9 @@
             this.group_setting.Controls.Add(this.btn_manage_categories);
             this.group_setting.Controls.Add(this.btn_general);
             this.group_setting.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.group_setting.Location = new System.Drawing.Point(177, 13);
+            this.group_setting.Location = new System.Drawing.Point(177, 17);
             this.group_setting.Name = "group_setting";
-            this.group_setting.Size = new System.Drawing.Size(672, 426);
+            this.group_setting.Size = new System.Drawing.Size(672, 422);
             this.group_setting.TabIndex = 2;
             this.group_setting.TabStop = false;
             this.group_setting.Text = "Settings";
@@ -514,9 +514,9 @@
             this.group_tr_list.Controls.Add(this.budgetPanel);
             this.group_tr_list.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_tr_list.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_tr_list.Location = new System.Drawing.Point(177, 12);
+            this.group_tr_list.Location = new System.Drawing.Point(177, 17);
             this.group_tr_list.Name = "group_tr_list";
-            this.group_tr_list.Size = new System.Drawing.Size(672, 430);
+            this.group_tr_list.Size = new System.Drawing.Size(672, 425);
             this.group_tr_list.TabIndex = 7;
             this.group_tr_list.TabStop = false;
             this.group_tr_list.Text = "Budget Overview - Current Month";
@@ -633,7 +633,6 @@
             // 
             this.currency_272.BackColor = System.Drawing.Color.White;
             this.currency_272.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.currency_272.Cursor = System.Windows.Forms.Cursors.Default;
             this.currency_272.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.currency_272.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.currency_272.Location = new System.Drawing.Point(439, 89);
@@ -875,9 +874,9 @@
             this.group_cat_add.Controls.Add(this.label8);
             this.group_cat_add.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_cat_add.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_cat_add.Location = new System.Drawing.Point(177, 13);
+            this.group_cat_add.Location = new System.Drawing.Point(177, 17);
             this.group_cat_add.Name = "group_cat_add";
-            this.group_cat_add.Size = new System.Drawing.Size(672, 425);
+            this.group_cat_add.Size = new System.Drawing.Size(672, 421);
             this.group_cat_add.TabIndex = 3;
             this.group_cat_add.TabStop = false;
             this.group_cat_add.Text = "Manage Categories";
@@ -967,6 +966,7 @@
             this.cat_data.RowTemplate.Height = 25;
             this.cat_data.Size = new System.Drawing.Size(666, 219);
             this.cat_data.TabIndex = 9;
+            this.cat_data.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cat_data_CellContentClick);
             this.cat_data.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cat_data_CellDoubleClick);
             // 
             // cat_add_budget
@@ -1055,16 +1055,6 @@
             this.group_tr_edit.Text = "Edit Transaction";
             this.group_tr_edit.Visible = false;
             // 
-            // budgetEditCategory
-            // 
-            this.budgetEditCategory.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.budgetEditCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(142)))), ((int)(((byte)(60)))));
-            this.budgetEditCategory.Location = new System.Drawing.Point(26, 169);
-            this.budgetEditCategory.Name = "budgetEditCategory";
-            this.budgetEditCategory.Size = new System.Drawing.Size(600, 19);
-            this.budgetEditCategory.TabIndex = 23;
-            this.budgetEditCategory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // currency_229
             // 
             this.currency_229.BackColor = System.Drawing.Color.White;
@@ -1077,6 +1067,16 @@
             this.currency_229.TabIndex = 22;
             this.currency_229.Text = "LKR";
             this.currency_229.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // budgetEditCategory
+            // 
+            this.budgetEditCategory.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.budgetEditCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(142)))), ((int)(((byte)(60)))));
+            this.budgetEditCategory.Location = new System.Drawing.Point(35, 171);
+            this.budgetEditCategory.Name = "budgetEditCategory";
+            this.budgetEditCategory.Size = new System.Drawing.Size(600, 19);
+            this.budgetEditCategory.TabIndex = 21;
+            this.budgetEditCategory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label23
             // 
@@ -1118,7 +1118,7 @@
             this.btn_tr_update_cancle.Name = "btn_tr_update_cancle";
             this.btn_tr_update_cancle.Size = new System.Drawing.Size(100, 40);
             this.btn_tr_update_cancle.TabIndex = 18;
-            this.btn_tr_update_cancle.Text = "CANCLE";
+            this.btn_tr_update_cancle.Text = "CANCEL";
             this.btn_tr_update_cancle.UseVisualStyleBackColor = false;
             this.btn_tr_update_cancle.Click += new System.EventHandler(this.btn_tr_update_cancle_Click);
             // 
@@ -1242,6 +1242,7 @@
             this.fb_tr_edit_category.Name = "fb_tr_edit_category";
             this.fb_tr_edit_category.Size = new System.Drawing.Size(196, 25);
             this.fb_tr_edit_category.TabIndex = 4;
+            this.fb_tr_edit_category.SelectedIndexChanged += new System.EventHandler(this.fb_tr_edit_category_SelectedIndexChanged_1);
             // 
             // label20
             // 
@@ -1305,9 +1306,9 @@
             this.group_home.Controls.Add(this.groupBox2);
             this.group_home.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_home.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_home.Location = new System.Drawing.Point(177, 0);
+            this.group_home.Location = new System.Drawing.Point(177, 17);
             this.group_home.Name = "group_home";
-            this.group_home.Size = new System.Drawing.Size(672, 442);
+            this.group_home.Size = new System.Drawing.Size(672, 425);
             this.group_home.TabIndex = 8;
             this.group_home.TabStop = false;
             // 
@@ -1589,9 +1590,9 @@
             this.group_general.Controls.Add(this.label42);
             this.group_general.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_general.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_general.Location = new System.Drawing.Point(177, 13);
+            this.group_general.Location = new System.Drawing.Point(177, 17);
             this.group_general.Name = "group_general";
-            this.group_general.Size = new System.Drawing.Size(672, 428);
+            this.group_general.Size = new System.Drawing.Size(672, 424);
             this.group_general.TabIndex = 10;
             this.group_general.TabStop = false;
             this.group_general.Text = "General Settings";
@@ -1637,9 +1638,9 @@
             this.group_abt.Controls.Add(this.groupBox5);
             this.group_abt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_abt.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_abt.Location = new System.Drawing.Point(177, 11);
+            this.group_abt.Location = new System.Drawing.Point(177, 17);
             this.group_abt.Name = "group_abt";
-            this.group_abt.Size = new System.Drawing.Size(672, 428);
+            this.group_abt.Size = new System.Drawing.Size(672, 422);
             this.group_abt.TabIndex = 12;
             this.group_abt.TabStop = false;
             this.group_abt.Text = "About Expense Tracker";
