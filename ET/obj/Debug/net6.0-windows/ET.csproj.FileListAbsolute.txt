@@ -40,7 +40,6 @@ E:\My Workz\MSc\Semester_3\ASD\CW2\ExpenseTracker\ET\bin\Debug\net6.0-windows\ET
 E:\My Workz\MSc\Semester_3\ASD\CW2\ExpenseTracker\ET\bin\Debug\net6.0-windows\ET.dll
 E:\My Workz\MSc\Semester_3\ASD\CW2\ExpenseTracker\ET\bin\Debug\net6.0-windows\ref\ET.dll
 E:\My Workz\MSc\Semester_3\ASD\CW2\ExpenseTracker\ET\bin\Debug\net6.0-windows\ET.pdb
-E:\My Workz\MSc\Semester_3\ASD\CW2\ExpenseTracker\ET\obj\Debug\net6.0-windows\ET.csproj.AssemblyReference.cache
 E:\My Workz\MSc\Semester_3\ASD\CW2\ExpenseTracker\ET\obj\Debug\net6.0-windows\ET.ExpenseTracker.resources
 E:\My Workz\MSc\Semester_3\ASD\CW2\ExpenseTracker\ET\obj\Debug\net6.0-windows\ET.Properties.Resources.resources
 E:\My Workz\MSc\Semester_3\ASD\CW2\ExpenseTracker\ET\obj\Debug\net6.0-windows\ET.csproj.GenerateResource.cache
@@ -52,3 +51,5 @@ E:\My Workz\MSc\Semester_3\ASD\CW2\ExpenseTracker\ET\obj\Debug\net6.0-windows\ET
 E:\My Workz\MSc\Semester_3\ASD\CW2\ExpenseTracker\ET\obj\Debug\net6.0-windows\ref\ET.dll
 E:\My Workz\MSc\Semester_3\ASD\CW2\ExpenseTracker\ET\obj\Debug\net6.0-windows\ET.pdb
 E:\My Workz\MSc\Semester_3\ASD\CW2\ExpenseTracker\ET\obj\Debug\net6.0-windows\ET.genruntimeconfig.cache
+E:\My Workz\MSc\Semester_3\ASD\CW2\ExpenseTracker\ET\obj\Debug\net6.0-windows\ET.ListItem.resources
+E:\My Workz\MSc\Semester_3\ASD\CW2\ExpenseTracker\ET\obj\Debug\net6.0-windows\ET.csproj.AssemblyReference.cache

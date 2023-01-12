@@ -54,6 +54,7 @@ namespace ET
             group_tr_edit.Hide();
             group_abt.Hide();
             group_general.Hide();
+            group_tr_list2.Hide();
         }
 
         public void fillCategoryData()
@@ -804,7 +805,7 @@ namespace ET
             if (budget > 0)
             {
                 double spentAmount = getMonthExpenditureOfBudget(DateTime.Now, tr.getCategroyId());
-                budgetEditCategory.Text = "You have spent " + currency + " " + spentAmount.ToString() + " and your budget is " + currency + " " + budget +
+                budgetEditCategory.Text = "You have spent " + currency + " " + spentAmount.ToString("N0") + " and your budget is " + currency + " " + budget.ToString("N0") +
                    ".";
                 budgetEditCategory.ForeColor = (budget > spentAmount) ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
             }
@@ -874,6 +875,7 @@ namespace ET
         {
             hidePanels();
             group_tr_list.Show();
+           // group_tr_list2.Show();
             budgetPanel.Controls.Clear();
             budgetPanel.RowStyles.Clear();
 
@@ -1062,9 +1064,37 @@ namespace ET
             totalIncome = 0;
             totalExpense = 0;
 
+            List<ListItem> listItems = new List<ListItem>();
+
+            if (flowLayoutPanel1.Controls.Count > 0)
+            {
+                flowLayoutPanel1.Controls.Clear();
+            }
+
             int count = -1;
             foreach (Transaction tr in list)
             {
+
+                ListItem item = new ListItem();
+                item.Desc = tr.getDescription();
+                item.Notes = tr.getNotes();
+                item.Date = tr.getDate();
+                item.Type = tr.getType();
+                item.Recurrence = tr.getRecurrence();
+                item.Amount = currency + " " + tr.getAmount().ToString("N0");
+                item.Category = categoryFactory.getCategroyNameById(tr.getCategroyId());
+
+                /* if (flowLayoutPanel1.Controls.Count > 0)
+                 {
+                    // flowLayoutPanel1.Controls.Clear();
+                 }
+                 else
+                 {
+                     flowLayoutPanel1.Controls.Add(item);
+                 }*/
+
+                flowLayoutPanel1.Controls.Add(item);
+
                 if (tr.getType() == "Income")
                 {
 
@@ -1083,31 +1113,40 @@ namespace ET
                     Text = tr.getDescription(),
                     ForeColor = Color.DarkGreen,
                     Font = new Font("Segoe UI", 12),
-                    TextAlign = ContentAlignment.TopLeft,
+                    TextAlign = ContentAlignment.MiddleLeft,
                     //Size = new System.Drawing.Size(900, 26)
                 }, 0, count);
+
+
                 tableLayoutPanel1.Controls.Add(new Label()
                 {
-                    Text = tr.getAmount().ToString(),
-                    ForeColor = Color.DarkGreen,
+                    Text = categoryFactory.getCategroyNameById(tr.getCategroyId()),
+                    Font = new System.Drawing.Font("Segoe UI Semibold", 10, System.Drawing.FontStyle.Bold),
+                    Size = new System.Drawing.Size(900, 30),
+                    TextAlign = ContentAlignment.MiddleLeft,
+                }, 1, count);
+
+                tableLayoutPanel1.Controls.Add(new Label()
+                {
+                    Text = currency + " " + tr.getAmount().ToString("N0"),
+                    ForeColor = (tr.getType() == "Income") ? Color.FromArgb(76, 175, 80) : Color.FromArgb(244, 67, 54),
                     Font = new Font("Segoe UI", 15),
                     Size = new System.Drawing.Size(900, 30),
                     TextAlign = ContentAlignment.BottomRight
 
-                }, 1, count);
+                },2, count);
 
                 tableLayoutPanel1.Controls.Add(
                 new Button()
                 {
-                  //  BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126))))),
-                    BackgroundImage = ET.Properties.Resources.arrow_right,
-                    BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch,
-                // Text = "Edit",
+               
+                BackgroundImage = ET.Properties.Resources.arrow_right,
+                BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom,
                 FlatStyle = FlatStyle.Flat,
                 FlatAppearance = { BorderSize = 0 },
                     Size = new System.Drawing.Size(40, 30),
                     ImageAlign = ContentAlignment.BottomRight,
-                }, 2, count);
+                },3, count);
                 tableLayoutPanel1.SetRowSpan(tableLayoutPanel1.GetControlFromPosition(2, count), 2);
 
                 tableLayoutPanel1.GetControlFromPosition(2, count).Click += (object sender, EventArgs e) =>
@@ -1116,13 +1155,23 @@ namespace ET
                     loadEditTransaction(tr);
                 };
                 count++;
+               
+                tableLayoutPanel1.Controls.Add(new Label()
+                {
+                    Text = tr.getNotes(),
+                    Font = new Font("Segoe UI", 8),
+                    TextAlign = ContentAlignment.MiddleLeft,
+                }, 0, count);
 
+               // count++;
                 tableLayoutPanel1.Controls.Add(new Label()
                 {
                     Text = tr.getDate(),
-                    TextAlign = ContentAlignment.TopLeft,
+                    TextAlign = ContentAlignment.MiddleLeft,
                     Font = new Font("Segoe UI", 8),
-                }, 0, count);
+                }, 1, count);
+
+
 
             }
 
@@ -1133,14 +1182,14 @@ namespace ET
             panel2.Controls.Add(
                 new Label()
                 {
-                    Text = currency + " " + totalIncome.ToString(),
+                    Text = currency + " " + totalIncome.ToString("N0"),
                     TextAlign = ContentAlignment.TopRight,
                     Size = panel2.Size,
                     Font = new Font("Segoe UI", 12),
                 });
             panel3.Controls.Add(new Label()
             {
-                Text = currency + " " + totalExpense.ToString(),
+                Text = currency + " " + totalExpense.ToString("N0"),
                 TextAlign = ContentAlignment.TopRight,
                 Size = panel3.Size,
                 Font = new Font("Segoe UI", 12),
@@ -1158,7 +1207,7 @@ namespace ET
                 if (budget > 0)
                 {
                     double spentAmount = getMonthExpenditureOfBudget(DateTime.Now, catKey);
-                    budgetAddCategory.Text = "You have spent " + currency + " " + spentAmount.ToString() + " and your budget is " + currency + " " + budget +
+                    budgetAddCategory.Text = "You have spent " + currency + " " + spentAmount.ToString("N0") + " and your budget is " + currency + " " + budget.ToString("N0") +
                     ".";
                     budgetAddCategory.ForeColor = (budget > spentAmount) ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
 

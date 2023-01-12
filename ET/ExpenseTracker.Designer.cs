@@ -155,6 +155,25 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.listItem2 = new ET.ListItem();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.group_tr_list2 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.group_setting.SuspendLayout();
@@ -173,6 +192,9 @@
             this.group_abt.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            this.group_tr_list2.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -368,14 +390,15 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoScroll = true;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.50501F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.49499F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.42708F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.14973F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.5505F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.872684F));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(7, 148);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(656, 272);
             this.tableLayoutPanel1.TabIndex = 20;
             // 
@@ -1693,22 +1716,227 @@
             this.label34.TabIndex = 2;
             this.label34.Text = "chathura.20211351@iit.ac.lk";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.listItem2);
+            this.groupBox4.Controls.Add(this.panel4);
+            this.groupBox4.Controls.Add(this.panel5);
+            this.groupBox4.Location = new System.Drawing.Point(0, 0);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(200, 100);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            // 
+            // listItem2
+            // 
+            this.listItem2.Amount = null;
+            this.listItem2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listItem2.Category = null;
+            this.listItem2.Date = null;
+            this.listItem2.Desc = null;
+            this.listItem2.Location = new System.Drawing.Point(34, 26);
+            this.listItem2.Name = "listItem2";
+            this.listItem2.Notes = null;
+            this.listItem2.Recurrence = false;
+            this.listItem2.Size = new System.Drawing.Size(594, 83);
+            this.listItem2.TabIndex = 23;
+            this.listItem2.Type = null;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(205)))), ((int)(((byte)(210)))));
+            this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(53)))));
+            this.panel4.Location = new System.Drawing.Point(316, 120);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(347, 22);
+            this.panel4.TabIndex = 22;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(201)))));
+            this.panel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(125)))), ((int)(((byte)(50)))));
+            this.panel5.Location = new System.Drawing.Point(7, 120);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(309, 22);
+            this.panel5.TabIndex = 21;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.AutoScroll = true;
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.50501F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.49499F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(200, 100);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // group_tr_list2
+            // 
+            this.group_tr_list2.Controls.Add(this.flowLayoutPanel1);
+            this.group_tr_list2.Controls.Add(this.panel6);
+            this.group_tr_list2.Controls.Add(this.panel7);
+            this.group_tr_list2.Controls.Add(this.groupBox7);
+            this.group_tr_list2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.group_tr_list2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.group_tr_list2.Location = new System.Drawing.Point(169, 11);
+            this.group_tr_list2.Name = "group_tr_list2";
+            this.group_tr_list2.Size = new System.Drawing.Size(672, 427);
+            this.group_tr_list2.TabIndex = 13;
+            this.group_tr_list2.TabStop = false;
+            this.group_tr_list2.Text = "Transactions v2";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(7, 148);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(653, 265);
+            this.flowLayoutPanel1.TabIndex = 23;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(205)))), ((int)(((byte)(210)))));
+            this.panel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(53)))));
+            this.panel6.Location = new System.Drawing.Point(316, 120);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(347, 22);
+            this.panel6.TabIndex = 22;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(201)))));
+            this.panel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(125)))), ((int)(((byte)(50)))));
+            this.panel7.Location = new System.Drawing.Point(7, 120);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(309, 22);
+            this.panel7.TabIndex = 21;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.label41);
+            this.groupBox7.Controls.Add(this.label35);
+            this.groupBox7.Controls.Add(this.button3);
+            this.groupBox7.Controls.Add(this.dateTimePicker3);
+            this.groupBox7.Controls.Add(this.dateTimePicker4);
+            this.groupBox7.Controls.Add(this.comboBox1);
+            this.groupBox7.Controls.Add(this.label43);
+            this.groupBox7.Controls.Add(this.label44);
+            this.groupBox7.Controls.Add(this.comboBox2);
+            this.groupBox7.Location = new System.Drawing.Point(7, 27);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox7.Size = new System.Drawing.Size(656, 92);
+            this.groupBox7.TabIndex = 19;
+            this.groupBox7.TabStop = false;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label41.Location = new System.Drawing.Point(7, 16);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(54, 19);
+            this.label41.TabIndex = 17;
+            this.label41.Text = "Month:";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label35.Location = new System.Drawing.Point(7, 56);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(38, 19);
+            this.label35.TabIndex = 23;
+            this.label35.Text = "Year:";
+            // 
+            // button3
+            // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.button3.Location = new System.Drawing.Point(738, 41);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(138, 36);
+            this.button3.TabIndex = 22;
+            this.button3.Text = "SEARCH";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker3.Location = new System.Drawing.Point(97, 51);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(119, 25);
+            this.dateTimePicker3.TabIndex = 21;
+            // 
+            // dateTimePicker4
+            // 
+            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker4.Location = new System.Drawing.Point(97, 18);
+            this.dateTimePicker4.Name = "dateTimePicker4";
+            this.dateTimePicker4.Size = new System.Drawing.Size(119, 25);
+            this.dateTimePicker4.TabIndex = 19;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(283, 17);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(133, 25);
+            this.comboBox1.TabIndex = 13;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label43.Location = new System.Drawing.Point(237, 19);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(40, 19);
+            this.label43.TabIndex = 14;
+            this.label43.Text = "Type:";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label44.Location = new System.Drawing.Point(431, 19);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(68, 19);
+            this.label44.TabIndex = 16;
+            this.label44.Text = "Category:";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(510, 16);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(138, 25);
+            this.comboBox2.TabIndex = 15;
+            // 
             // ExpenseTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(856, 448);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.group_tr_list);
-            this.Controls.Add(this.group_tr_view);
             this.Controls.Add(this.group_home);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.group_tr_view);
             this.Controls.Add(this.group_tr_add);
             this.Controls.Add(this.group_tr_edit);
             this.Controls.Add(this.group_general);
             this.Controls.Add(this.group_setting);
             this.Controls.Add(this.group_abt);
             this.Controls.Add(this.group_cat_add);
+            this.Controls.Add(this.group_tr_list);
+            this.Controls.Add(this.group_tr_list2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ExpenseTracker";
@@ -1743,6 +1971,10 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.group_tr_list2.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1877,5 +2109,24 @@
         private Label label40;
         private Label label39;
         private Label label38;
+        private GroupBox groupBox4;
+        private ListItem listItem2;
+        private Panel panel4;
+        private Panel panel5;
+        private TableLayoutPanel tableLayoutPanel2;
+        private GroupBox group_tr_list2;
+        private Panel panel6;
+        private Panel panel7;
+        private GroupBox groupBox7;
+        private Label label35;
+        private Button button3;
+        private DateTimePicker dateTimePicker3;
+        private DateTimePicker dateTimePicker4;
+        private Label label41;
+        private ComboBox comboBox1;
+        private Label label43;
+        private Label label44;
+        private ComboBox comboBox2;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }
