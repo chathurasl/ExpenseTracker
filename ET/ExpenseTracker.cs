@@ -805,7 +805,7 @@ namespace ET
             fillCategoryData();
             fillTransactionTypes();
 
-            fb_tr_edit_category.SelectedIndex = fb_tr_edit_category.FindString(category);
+                fb_tr_edit_category.SelectedIndex = fb_tr_edit_category.FindString(category);
             fb_tr_edit_type.SelectedIndex = fb_tr_edit_type.FindString(tr.getType());
 
             double budget = categoryFactory.getCategroyById(tr.getCategroyId()).getBudget();
@@ -889,6 +889,9 @@ namespace ET
             budgetPanel.Controls.Clear();
             budgetPanel.RowStyles.Clear();
 
+            double overAllSpending = 0;
+            double overAllBudget = 0;
+
             //Panel Headers
             budgetPanel.Controls.Add(new Label()
             {
@@ -927,6 +930,9 @@ namespace ET
                 double spentAmount = getMonthExpenditureOfBudget(DateTime.Now, cat.getId());
 
                 bool budgetExceed = false;
+
+                overAllBudget += budgetAmount;
+                overAllSpending += spentAmount;
 
                 if (budgetAmount > 0 && spentAmount >= budgetAmount) {
 
@@ -983,6 +989,8 @@ namespace ET
 
             }
 
+            lblOverallBudget.Text = currency + " " +  overAllBudget;
+            lblOverallSpending.Text = currency + " " + overAllSpending;
 
         }
 
@@ -1245,6 +1253,11 @@ namespace ET
         }
 
         private void cat_data_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel9_Paint(object sender, PaintEventArgs e)
         {
 
         }
