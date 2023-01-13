@@ -55,14 +55,14 @@
             this.label10 = new System.Windows.Forms.Label();
             this.fb_tr_search_category = new System.Windows.Forms.ComboBox();
             this.group_tr_list = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.budgetPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lblOverallBudget = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
-            this.budgetPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.lblOverallSpending = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
@@ -166,28 +166,15 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.group_tr_list2 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.group_setting.SuspendLayout();
             this.group_tr_view.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.group_tr_list.SuspendLayout();
-            this.panel9.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.budgetPanel.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
             this.group_tr_add.SuspendLayout();
             this.group_cat_add.SuspendLayout();
@@ -201,8 +188,6 @@
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.groupBox4.SuspendLayout();
-            this.group_tr_list2.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -398,11 +383,12 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoScroll = true;
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.42708F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.14973F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.5505F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.872684F));
+            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.79444F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.64945F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.55611F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(7, 148);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -519,8 +505,8 @@
             // 
             // group_tr_list
             // 
+            this.group_tr_list.Controls.Add(this.flowLayoutPanel2);
             this.group_tr_list.Controls.Add(this.panel9);
-            this.group_tr_list.Controls.Add(this.budgetPanel);
             this.group_tr_list.Controls.Add(this.panel8);
             this.group_tr_list.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_tr_list.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -532,14 +518,81 @@
             this.group_tr_list.Text = "Budget Overview - Current Month";
             this.group_tr_list.Visible = false;
             // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoScroll = true;
+            this.flowLayoutPanel2.Controls.Add(this.budgetPanel);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(15, 32);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(650, 278);
+            this.flowLayoutPanel2.TabIndex = 5;
+            // 
+            // budgetPanel
+            // 
+            this.budgetPanel.AutoSize = true;
+            this.budgetPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.budgetPanel.ColumnCount = 4;
+            this.budgetPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.budgetPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.budgetPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.budgetPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.budgetPanel.Controls.Add(this.label39, 2, 0);
+            this.budgetPanel.Controls.Add(this.label38, 1, 0);
+            this.budgetPanel.Controls.Add(this.label40, 3, 0);
+            this.budgetPanel.Location = new System.Drawing.Point(3, 3);
+            this.budgetPanel.Name = "budgetPanel";
+            this.budgetPanel.RowCount = 1;
+            this.budgetPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.budgetPanel.Size = new System.Drawing.Size(23, 21);
+            this.budgetPanel.TabIndex = 1;
+            // 
+            // label39
+            // 
+            this.label39.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label39.AutoEllipsis = true;
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(12, 1);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(1, 19);
+            this.label39.TabIndex = 2;
+            this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label38
+            // 
+            this.label38.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label38.AutoEllipsis = true;
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(5, 1);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(1, 19);
+            this.label38.TabIndex = 1;
+            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label40
+            // 
+            this.label40.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label40.AutoEllipsis = true;
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(19, 1);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(1, 19);
+            this.label40.TabIndex = 3;
+            this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panel9
             // 
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel9.Controls.Add(this.lblOverallBudget);
             this.panel9.Controls.Add(this.label46);
-            this.panel9.Location = new System.Drawing.Point(20, 210);
+            this.panel9.Location = new System.Drawing.Point(13, 316);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(316, 100);
+            this.panel9.Size = new System.Drawing.Size(323, 100);
             this.panel9.TabIndex = 3;
             this.panel9.Paint += new System.Windows.Forms.PaintEventHandler(this.panel9_Paint);
             // 
@@ -564,86 +617,14 @@
             this.label46.TabIndex = 1;
             this.label46.Text = "Overall Budget";
             // 
-            // budgetPanel
-            // 
-            this.budgetPanel.AutoSize = true;
-            this.budgetPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.budgetPanel.ColumnCount = 4;
-            this.budgetPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.budgetPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.budgetPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.budgetPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.budgetPanel.Controls.Add(this.label40, 3, 0);
-            this.budgetPanel.Controls.Add(this.label39, 2, 0);
-            this.budgetPanel.Controls.Add(this.label36, 0, 0);
-            this.budgetPanel.Controls.Add(this.label38, 1, 0);
-            this.budgetPanel.Location = new System.Drawing.Point(20, 43);
-            this.budgetPanel.Name = "budgetPanel";
-            this.budgetPanel.RowCount = 1;
-            this.budgetPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.budgetPanel.Size = new System.Drawing.Size(634, 143);
-            this.budgetPanel.TabIndex = 1;
-            // 
-            // label40
-            // 
-            this.label40.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label40.AutoEllipsis = true;
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(478, 1);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(152, 141);
-            this.label40.TabIndex = 3;
-            this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label39
-            // 
-            this.label39.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label39.AutoEllipsis = true;
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(320, 1);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(151, 141);
-            this.label39.TabIndex = 2;
-            this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label36
-            // 
-            this.label36.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label36.AutoEllipsis = true;
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(4, 1);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(151, 141);
-            this.label36.TabIndex = 0;
-            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label38
-            // 
-            this.label38.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label38.AutoEllipsis = true;
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(162, 1);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(151, 141);
-            this.label38.TabIndex = 1;
-            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // panel8
             // 
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel8.Controls.Add(this.lblOverallSpending);
             this.panel8.Controls.Add(this.label45);
-            this.panel8.Location = new System.Drawing.Point(340, 211);
+            this.panel8.Location = new System.Drawing.Point(337, 316);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(313, 100);
+            this.panel8.Size = new System.Drawing.Size(328, 100);
             this.panel8.TabIndex = 2;
             // 
             // lblOverallSpending
@@ -1846,161 +1827,12 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(200, 100);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // group_tr_list2
-            // 
-            this.group_tr_list2.Controls.Add(this.flowLayoutPanel1);
-            this.group_tr_list2.Controls.Add(this.panel6);
-            this.group_tr_list2.Controls.Add(this.panel7);
-            this.group_tr_list2.Controls.Add(this.groupBox7);
-            this.group_tr_list2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.group_tr_list2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_tr_list2.Location = new System.Drawing.Point(169, 11);
-            this.group_tr_list2.Name = "group_tr_list2";
-            this.group_tr_list2.Size = new System.Drawing.Size(672, 427);
-            this.group_tr_list2.TabIndex = 13;
-            this.group_tr_list2.TabStop = false;
-            this.group_tr_list2.Text = "Transactions v2";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(7, 148);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(653, 265);
-            this.flowLayoutPanel1.TabIndex = 23;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(205)))), ((int)(((byte)(210)))));
-            this.panel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(53)))));
-            this.panel6.Location = new System.Drawing.Point(316, 120);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(347, 22);
-            this.panel6.TabIndex = 22;
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(201)))));
-            this.panel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(125)))), ((int)(((byte)(50)))));
-            this.panel7.Location = new System.Drawing.Point(7, 120);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(309, 22);
-            this.panel7.TabIndex = 21;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.label41);
-            this.groupBox7.Controls.Add(this.label35);
-            this.groupBox7.Controls.Add(this.button3);
-            this.groupBox7.Controls.Add(this.dateTimePicker3);
-            this.groupBox7.Controls.Add(this.dateTimePicker4);
-            this.groupBox7.Controls.Add(this.comboBox1);
-            this.groupBox7.Controls.Add(this.label43);
-            this.groupBox7.Controls.Add(this.label44);
-            this.groupBox7.Controls.Add(this.comboBox2);
-            this.groupBox7.Location = new System.Drawing.Point(7, 27);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox7.Size = new System.Drawing.Size(656, 92);
-            this.groupBox7.TabIndex = 19;
-            this.groupBox7.TabStop = false;
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label41.Location = new System.Drawing.Point(7, 16);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(54, 19);
-            this.label41.TabIndex = 17;
-            this.label41.Text = "Month:";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label35.Location = new System.Drawing.Point(7, 56);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(38, 19);
-            this.label35.TabIndex = 23;
-            this.label35.Text = "Year:";
-            // 
-            // button3
-            // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button3.Location = new System.Drawing.Point(738, 41);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(138, 36);
-            this.button3.TabIndex = 22;
-            this.button3.Text = "SEARCH";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker3.Location = new System.Drawing.Point(97, 51);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(119, 25);
-            this.dateTimePicker3.TabIndex = 21;
-            // 
-            // dateTimePicker4
-            // 
-            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker4.Location = new System.Drawing.Point(97, 18);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(119, 25);
-            this.dateTimePicker4.TabIndex = 19;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(283, 17);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(133, 25);
-            this.comboBox1.TabIndex = 13;
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label43.Location = new System.Drawing.Point(237, 19);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(40, 19);
-            this.label43.TabIndex = 14;
-            this.label43.Text = "Type:";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label44.Location = new System.Drawing.Point(431, 19);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(68, 19);
-            this.label44.TabIndex = 16;
-            this.label44.Text = "Category:";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(510, 16);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(138, 25);
-            this.comboBox2.TabIndex = 15;
-            // 
             // ExpenseTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(856, 448);
-            this.Controls.Add(this.group_tr_list);
-            this.Controls.Add(this.group_home);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.group_tr_view);
             this.Controls.Add(this.group_tr_add);
@@ -2009,7 +1841,8 @@
             this.Controls.Add(this.group_setting);
             this.Controls.Add(this.group_abt);
             this.Controls.Add(this.group_cat_add);
-            this.Controls.Add(this.group_tr_list2);
+            this.Controls.Add(this.group_tr_list);
+            this.Controls.Add(this.group_home);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ExpenseTracker";
@@ -2023,11 +1856,12 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.group_tr_list.ResumeLayout(false);
-            this.group_tr_list.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
             this.budgetPanel.ResumeLayout(false);
             this.budgetPanel.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.group_tr_add.ResumeLayout(false);
@@ -2049,9 +1883,6 @@
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.groupBox4.ResumeLayout(false);
-            this.group_tr_list2.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2163,7 +1994,6 @@
         private Label currency_34;
         private Label currency_27;
         private Label currency_222;
-        private Label label36;
         private Label budgetAddCategory;
         private Label currency_229;
         private Label currency_272;
@@ -2191,25 +2021,12 @@
         private Panel panel4;
         private Panel panel5;
         private TableLayoutPanel tableLayoutPanel2;
-        private GroupBox group_tr_list2;
-        private Panel panel6;
-        private Panel panel7;
-        private GroupBox groupBox7;
-        private Label label35;
-        private Button button3;
-        private DateTimePicker dateTimePicker3;
-        private DateTimePicker dateTimePicker4;
-        private Label label41;
-        private ComboBox comboBox1;
-        private Label label43;
-        private Label label44;
-        private ComboBox comboBox2;
-        private FlowLayoutPanel flowLayoutPanel1;
         private Panel panel9;
         private Label lblOverallBudget;
         private Label label46;
         private Panel panel8;
         private Label lblOverallSpending;
         private Label label45;
+        private FlowLayoutPanel flowLayoutPanel2;
     }
 }
