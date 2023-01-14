@@ -13,6 +13,7 @@ namespace ET
         private double amount;
         private bool isRecurring;
         private DateTime date;
+        //private string transactionType;
         private string transactionDescription;
         private string otherNotes;
         private int categoryId;

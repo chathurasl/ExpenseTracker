@@ -239,7 +239,6 @@ namespace ET
 
         }       
         
-        
         //Set transaction table heasings
         public void setDataTableHeadings()
         {
@@ -346,6 +345,256 @@ namespace ET
 
         }
 
+        //Update the transaction list panel
+        private void updatePanel(List<Transaction> list)
+        {
+            totalIncome = 0;
+            totalExpense = 0;
+
+            int count = -1;
+            Boolean isIncome = false;
+            foreach (Transaction tr in list)
+            {
+                if (tr.getType() == "Income")
+                {
+
+                    totalIncome += tr.getAmount();
+                    isIncome = true;
+
+                }
+                else
+                {
+                    isIncome = false;
+                    totalExpense += tr.getAmount();
+                }
+                count++;
+                tableLayoutPanel1.RowCount = tableLayoutPanel1.RowCount + 2;
+
+                tableLayoutPanel1.Controls.Add(new Label()
+                {
+                    Text = tr.getDescription(),
+                    ForeColor = Color.FromArgb(26, 35, 126),
+                    Font = new Font("Segoe UI Semibold", 12),
+                    TextAlign = ContentAlignment.TopLeft,
+                    Size = new System.Drawing.Size(900, 26)
+                }, 0, count);
+
+
+                if (tr.getRecurrence())
+                {
+                    tableLayoutPanel1.Controls.Add(new PictureBox()
+                    {
+                        BackgroundImage = global::ET.Properties.Resources.recurring,
+                        BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom,
+                        Size = new System.Drawing.Size(16, 16)
+                    }, 2, count);
+                }
+
+
+                tableLayoutPanel1.Controls.Add(new Label()
+                {
+                    Text = categoryFactory.getCategoryById(tr.getCategoryId()).getCategoryName(),
+                    ForeColor = Color.FromArgb(26, 35, 126),
+                    Font = new Font("Segoe UI Semibold", 10),
+                    TextAlign = ContentAlignment.TopLeft,
+                    Size = new System.Drawing.Size(120, 26)
+                }, 1, count);
+
+                tableLayoutPanel1.Controls.Add(new Label()
+                {
+                    Text = currency + " " + tr.getAmount().ToString("N0"),
+                    // ForeColor = isIncome ? Color.DarkGreen : Color.DarkRed,
+                    ForeColor = (isIncome) ? Color.FromArgb(76, 175, 80) : Color.FromArgb(244, 67, 54),
+                    Font = new Font("Segoe UI", 15),
+                    Size = new System.Drawing.Size(900, 30),
+                    TextAlign = ContentAlignment.BottomRight
+
+                }, 3, count);
+
+                tableLayoutPanel1.Controls.Add(
+                new Button()
+                {
+                    BackgroundImage = ET.Properties.Resources.arrow_right,
+                    BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom,
+                    FlatStyle = FlatStyle.Flat,
+                    FlatAppearance = { BorderSize = 0 },
+                    Size = new System.Drawing.Size(40, 30),
+                    ImageAlign = ContentAlignment.BottomRight,
+                }, 4, count);
+                // tableLayoutPanel1.SetRowSpan(tableLayoutPanel1.GetControlFromPosition(2, count), 2);
+
+                tableLayoutPanel1.GetControlFromPosition(4, count).Click += (object sender, EventArgs e) =>
+                {
+                    //you can use your variables inside event
+                    loadEditTransaction(tr);
+                };
+                count++;
+
+                tableLayoutPanel1.Controls.Add(new Label()
+                {
+                    Text = tr.getNotes(),
+                    TextAlign = ContentAlignment.TopLeft,
+                    Font = new Font("Segoe UI", 9),
+                    Size = new System.Drawing.Size(900, 20)
+                }, 0, count);
+
+                tableLayoutPanel1.Controls.Add(new Label()
+                {
+                    Text = tr.getDate(),
+                    TextAlign = ContentAlignment.TopLeft,
+                    Font = new Font("Segoe UI", 10),
+                    Size = new System.Drawing.Size(120, 20)
+                }, 1, count);
+            }
+
+            panel2.Controls.Clear();
+            panel3.Controls.Clear();
+
+
+            panel2.Controls.Add(
+                new Label()
+                {
+                    Text = currency + " " + totalIncome.ToString("N0"),
+                    TextAlign = ContentAlignment.TopRight,
+                    Size = panel2.Size,
+                    Font = new Font("Segoe UI", 12),
+                });
+            panel3.Controls.Add(new Label()
+            {
+                Text = currency + " " + totalExpense.ToString("N0"),
+                TextAlign = ContentAlignment.TopRight,
+                Size = panel3.Size,
+                Font = new Font("Segoe UI", 12),
+            });
+        }
+
+        //Load Edit Transaction details
+        private void loadEditTransaction(Transaction tr)
+        {
+            hidePanels();
+            group_tr_edit.Show();
+
+            //Populate the details in the edit page constrols
+            fb_tr_edit_id.Text = tr.getId().ToString();
+
+            fb_tr_edit_description.Text = tr.getDescription();
+            fb_tr_edit_amount.Text = tr.getAmount().ToString();
+
+            fb_tr_edit_recurring.Checked = tr.getRecurrence();
+            fb_tr_edit_date.Value = DateTime.Parse(tr.getDate());
+            fb_tr_edit_notes.Text = tr.getNotes();
+
+            string category = categoryFactory.getCategoryById(tr.getCategoryId()).getCategoryName();
+
+            //Fill the transaction type and category drop downs
+            fillCategoryData();
+            fillTransactionTypes();
+
+            fb_tr_edit_category.SelectedIndex = fb_tr_edit_category.FindString(category);
+            fb_tr_edit_type.SelectedIndex = fb_tr_edit_type.FindString(tr.getType());
+
+            //Apply validate budget principle
+            double budget = categoryFactory.getCategoryById(tr.getCategoryId()).getBudget();
+
+            int catKey = (fb_tr_add_category.SelectedItem as dynamic).Value;
+
+            if (budget > 0)
+            {
+                double spentAmount = getMonthExpenditureOfBudget(tr.getCategoryId());
+                budgetEditCategory.Text = "You have spent " + currency + " " + spentAmount.ToString("N0") + " and your budget is " + currency + " " + budget.ToString("N0") +
+                ".";
+                budgetEditCategory.ForeColor = (budget > spentAmount) ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
+
+            }
+            else
+            {
+                budgetEditCategory.Text = "Unlimited Budget";
+                budgetEditCategory.ForeColor = Color.FromArgb(56, 142, 60);
+
+            }
+        }
+
+        //Return a list of transactions depending on the filters
+        private List<Transaction> getTransactionsOfGivenMonth(DateTime date, int categoryId, string transactionType)
+        {
+
+            //Get last date of the month, year
+            int lastDay = DateTime.DaysInMonth(date.Year, date.Month);
+            DateTime lastDate = new DateTime(date.Year, date.Month, lastDay);
+
+            //Get the first date of the month year
+            DateTime firstDate = new DateTime(date.Year, date.Month, 1);
+
+            //Get all the expenses matching this year
+            List<Transaction> filteredTransaction = new List<Transaction>();
+
+            //Navigate through current transaction and get the lists based on the filters 
+            foreach (Transaction tr in loadTransaction())
+            {
+                //Date filteration
+                if (DateTime.Parse(tr.getDate()) >= firstDate && DateTime.Parse(tr.getDate()) <= lastDate)
+                {
+                    //Category Filterations if category is selected
+                    if (categoryId != 0 && tr.getCategoryId() == categoryId)
+                    {
+                        //Transaction type filteration if type is selected
+                        if (transactionType != "" && tr.getType() == transactionType)
+                        {
+                            filteredTransaction.Add(tr);
+                        }
+                        else if (transactionType == "") //if type is not selected
+                        {
+                            filteredTransaction.Add(tr);
+
+                        }
+                    }
+                    else if (categoryId == 0) // if category is not selected
+                    {
+                        if (transactionType != "" && tr.getType() == transactionType) // but type is selected
+                        {
+                            filteredTransaction.Add(tr);
+                        }
+                        else if (transactionType == "") // type is also not selected
+                        {
+                            filteredTransaction.Add(tr);
+                        }
+                    }
+                }
+            }
+
+            //Sort transaction list with IComparable implementation and reverse the sort
+            filteredTransaction.Sort();
+            filteredTransaction.Reverse();
+
+            return filteredTransaction;
+
+        }
+
+        //Update relevant 
+        private void changeTransactionType(Transaction tr)
+        {
+            if (tr.getType() == "Income")
+            {
+                incomeFactory.createTransaction(tr);
+                expenseFactory.deleteTransaction(tr.getId());
+            }
+            else
+            {
+                expenseFactory.createTransaction(tr);
+                incomeFactory.deleteTransaction(tr.getId());
+            }
+        }
+
+        //Get the Expense Sum of a Category
+        private double getMonthExpenditureOfBudget(int categoryId)
+        {
+
+            double sumExpense = expenseFactory.getSpentAmountOfACategory(categoryId);
+
+            return sumExpense;
+
+        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -358,19 +607,21 @@ namespace ET
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            hidePanels();
-            group_tr_view.Show();
-        }
+        /*  private void button2_Click(object sender, EventArgs e)
+          {
+              hidePanels();
+              group_tr_view.Show();
+          }*/
 
 
+        //Click on the Settings Button to navigate to settings page.
         private void button5_Click(object sender, EventArgs e)
         {
             hidePanels();
             group_setting.Show();
         }
 
+        //Click on the Manage categroy Button to navigate to manage categories page.
         private void button9_Click(object sender, EventArgs e)
         {
             hidePanels();
@@ -584,7 +835,6 @@ namespace ET
                 }
             }
         }
-
 
         //This function allows a category to be added to the system
         private void btn_cat_add_Click(object sender, EventArgs e)
@@ -805,108 +1055,6 @@ namespace ET
             group_tr_view.Show();
         }
 
-        //Load Edit Transaction details
-        private void loadEditTransaction(Transaction tr)
-        {
-            hidePanels();
-            group_tr_edit.Show();
-
-            //Populate the details in the edit page constrols
-            fb_tr_edit_id.Text = tr.getId().ToString();
-
-            fb_tr_edit_description.Text = tr.getDescription();
-            fb_tr_edit_amount.Text = tr.getAmount().ToString();
-
-            fb_tr_edit_recurring.Checked = tr.getRecurrence();
-            fb_tr_edit_date.Value = DateTime.Parse(tr.getDate());
-            fb_tr_edit_notes.Text = tr.getNotes();
-
-            string category = categoryFactory.getCategoryById(tr.getCategoryId()).getCategoryName();
-
-            //Fill the transaction type and category drop downs
-            fillCategoryData();
-            fillTransactionTypes();
-
-            fb_tr_edit_category.SelectedIndex = fb_tr_edit_category.FindString(category);
-            fb_tr_edit_type.SelectedIndex = fb_tr_edit_type.FindString(tr.getType());
-
-            //Apply validate budget principle
-            double budget = categoryFactory.getCategoryById(tr.getCategoryId()).getBudget();
-
-            int catKey = (fb_tr_add_category.SelectedItem as dynamic).Value;
-
-                if (budget > 0)
-                {
-                    double spentAmount = getMonthExpenditureOfBudget(tr.getCategoryId());
-                    budgetEditCategory.Text = "You have spent " + currency + " " + spentAmount.ToString("N0") + " and your budget is " + currency + " " + budget.ToString("N0") +
-                    ".";
-                    budgetEditCategory.ForeColor = (budget > spentAmount) ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
-
-                }
-                else
-                {
-                    budgetEditCategory.Text = "Unlimited Budget";
-                    budgetEditCategory.ForeColor = Color.FromArgb(56, 142, 60);
-
-                }
-        }
-
-        //Return a list of transactions depending on the filters
-        private List<Transaction> getTransactionsOfGivenMonth(DateTime date, int categoryId, string transactionType)
-        {
-
-            //Get last date of the month, year
-            int lastDay = DateTime.DaysInMonth(date.Year, date.Month);
-            DateTime lastDate = new DateTime(date.Year, date.Month, lastDay);
-
-            //Get the first date of the month year
-            DateTime firstDate = new DateTime(date.Year, date.Month, 1);
-
-            //Get all the expenses matching this year
-            List<Transaction> filteredTransaction = new List<Transaction>();
-
-            //Navigate through current transaction and get the lists based on the filters 
-            foreach (Transaction tr in loadTransaction())
-            {
-                //Date filteration
-                if (DateTime.Parse(tr.getDate()) >= firstDate && DateTime.Parse(tr.getDate()) <= lastDate)
-                {
-                    //Category Filterations if category is selected
-                    if (categoryId != 0 && tr.getCategoryId() == categoryId)
-                    {
-                        //Transaction type filteration if type is selected
-                        if (transactionType != "" && tr.getType() == transactionType)
-                        {
-                            filteredTransaction.Add(tr);
-                        }
-                        else if (transactionType == "") //if type is not selected
-                        {
-                            filteredTransaction.Add(tr);
-
-                        }
-                    }
-                    else if (categoryId == 0) // if category is not selected
-                    {
-                        if (transactionType != "" && tr.getType() == transactionType) // but type is selected
-                        {
-                            filteredTransaction.Add(tr);
-                        }
-                        else if (transactionType == "") // type is also not selected
-                        {
-                            filteredTransaction.Add(tr);
-                        }
-                    }
-                }
-            }
-
-            //Sort transaction list with IComparable implementation and reverse the sort
-            filteredTransaction.Sort();
-            filteredTransaction.Reverse();
-
-            return filteredTransaction;
-
-        }
-
         //Click on the budget overview to load all the budgets of categories
         private void btn_tr_list_Click(object sender, EventArgs e)
         {
@@ -1024,15 +1172,6 @@ namespace ET
 
         }
 
-        //Get the Expense Sum of a Category
-        private double getMonthExpenditureOfBudget(int categoryId) {
-
-            double sumExpense = expenseFactory.getSpentAmountOfACategory(categoryId);
-
-            return sumExpense;
-        
-        }
-
         //Enable/Disable recurring controls on selecting recurrence 
         private void fb_tr_add_recurring_CheckedChanged(object sender, EventArgs e)
         {
@@ -1092,129 +1231,6 @@ namespace ET
             List<Transaction> list = getTransactionsOfGivenMonth(filteredDate, catKey, type);
 
             updatePanel(list);
-        }
-
-
-        //Update the transaction list panel
-        private void updatePanel(List<Transaction> list) {
-            totalIncome = 0;
-            totalExpense = 0;
-
-            int count = -1;
-            Boolean isIncome = false;
-            foreach (Transaction tr in list)
-            {
-                if (tr.getType() == "Income")
-                {
-
-                    totalIncome += tr.getAmount();
-                    isIncome = true;
-
-                }
-                else
-                {
-                    isIncome = false;
-                    totalExpense += tr.getAmount();
-                }
-                count++;
-                tableLayoutPanel1.RowCount = tableLayoutPanel1.RowCount + 2;
-
-                tableLayoutPanel1.Controls.Add(new Label()
-                {
-                    Text = tr.getDescription(),
-                    ForeColor = Color.FromArgb(26, 35, 126),
-                    Font = new Font("Segoe UI Semibold", 12),
-                    TextAlign = ContentAlignment.TopLeft,
-                    Size = new System.Drawing.Size(900, 26)
-                }, 0, count);
-
-
-                if (tr.getRecurrence())
-                {
-                    tableLayoutPanel1.Controls.Add(new PictureBox()
-                    {
-                        BackgroundImage = global::ET.Properties.Resources.recurring,
-                        BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom,
-                        Size = new System.Drawing.Size(16, 16)
-                    }, 2, count);
-                }
-
-
-                tableLayoutPanel1.Controls.Add(new Label()
-                {
-                    Text = categoryFactory.getCategoryById(tr.getCategoryId()).getCategoryName(),
-                    ForeColor = Color.FromArgb(26, 35, 126),
-                    Font = new Font("Segoe UI Semibold", 10),
-                    TextAlign = ContentAlignment.TopLeft,
-                     Size = new System.Drawing.Size(120, 26)
-                }, 1, count);
-
-                tableLayoutPanel1.Controls.Add(new Label()
-                {
-                    Text = currency + " " + tr.getAmount().ToString("N0"),
-                    // ForeColor = isIncome ? Color.DarkGreen : Color.DarkRed,
-                    ForeColor = (isIncome) ? Color.FromArgb(76, 175, 80) : Color.FromArgb(244, 67, 54),
-                    Font = new Font("Segoe UI", 15),
-                    Size = new System.Drawing.Size(900, 30),
-                    TextAlign = ContentAlignment.BottomRight
-
-                }, 3, count);
-
-                tableLayoutPanel1.Controls.Add(
-                new Button()
-                {
-                    BackgroundImage = ET.Properties.Resources.arrow_right,
-                    BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom,
-                    FlatStyle = FlatStyle.Flat,
-                    FlatAppearance = { BorderSize = 0 },
-                        Size = new System.Drawing.Size(40, 30),
-                        ImageAlign = ContentAlignment.BottomRight,
-                    }, 4, count);
-               // tableLayoutPanel1.SetRowSpan(tableLayoutPanel1.GetControlFromPosition(2, count), 2);
-
-                tableLayoutPanel1.GetControlFromPosition(4, count).Click += (object sender, EventArgs e) =>
-                {
-                    //you can use your variables inside event
-                    loadEditTransaction(tr);
-                };
-                count++;
-
-                tableLayoutPanel1.Controls.Add(new Label()
-                {
-                    Text = tr.getNotes(),
-                    TextAlign = ContentAlignment.TopLeft,
-                    Font = new Font("Segoe UI", 9),
-                    Size = new System.Drawing.Size(900, 20)
-                }, 0, count);
-
-                tableLayoutPanel1.Controls.Add(new Label()
-                {
-                    Text = tr.getDate(),
-                    TextAlign = ContentAlignment.TopLeft,
-                    Font = new Font("Segoe UI", 10),
-                    Size = new System.Drawing.Size(120, 20)
-                }, 1, count);
-            }
-
-            panel2.Controls.Clear();
-            panel3.Controls.Clear();
-
-
-            panel2.Controls.Add(
-                new Label()
-                {
-                    Text = currency + " " + totalIncome.ToString("N0"),
-                    TextAlign = ContentAlignment.TopRight,
-                    Size = panel2.Size,
-                    Font = new Font("Segoe UI", 12),
-                });
-            panel3.Controls.Add(new Label()
-            {
-                Text = currency + " " + totalExpense.ToString("N0"),
-                TextAlign = ContentAlignment.TopRight,
-                Size = panel3.Size,
-                Font = new Font("Segoe UI", 12),
-            });
         }
 
         //Validate budget when the add category drop down index changes
@@ -1291,21 +1307,6 @@ namespace ET
             setDataTableHeadings();
 
             MessageBox.Show("Application settings sucessfully updated.", "Save Settings", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-
-        //Update relevant 
-        private void changeTransactionType(Transaction tr)
-        {
-            if (tr.getType() == "Income")
-            {
-                incomeFactory.createTransaction(tr);
-                expenseFactory.deleteTransaction(tr.getId());
-            }
-            else {
-                expenseFactory.createTransaction(tr);
-                incomeFactory.deleteTransaction(tr.getId());
-            }
         }
 
     }
