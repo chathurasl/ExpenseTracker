@@ -162,7 +162,6 @@
             this.label33 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.listItem2 = new ET.ListItem();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -225,7 +224,7 @@
             this.btn_tr_list.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_tr_list.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btn_tr_list.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_tr_list.Location = new System.Drawing.Point(12, 295);
+            this.btn_tr_list.Location = new System.Drawing.Point(12, 250);
             this.btn_tr_list.Name = "btn_tr_list";
             this.btn_tr_list.Size = new System.Drawing.Size(148, 40);
             this.btn_tr_list.TabIndex = 5;
@@ -239,7 +238,7 @@
             this.btn_settings.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_settings.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btn_settings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_settings.Location = new System.Drawing.Point(12, 249);
+            this.btn_settings.Location = new System.Drawing.Point(12, 296);
             this.btn_settings.Name = "btn_settings";
             this.btn_settings.Size = new System.Drawing.Size(148, 40);
             this.btn_settings.TabIndex = 4;
@@ -598,18 +597,19 @@
             // lblOverallBudget
             // 
             this.lblOverallBudget.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblOverallBudget.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblOverallBudget.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
             this.lblOverallBudget.Location = new System.Drawing.Point(-1, 66);
             this.lblOverallBudget.Name = "lblOverallBudget";
-            this.lblOverallBudget.Size = new System.Drawing.Size(312, 30);
+            this.lblOverallBudget.Size = new System.Drawing.Size(323, 30);
             this.lblOverallBudget.TabIndex = 2;
+            this.lblOverallBudget.Text = "0";
             this.lblOverallBudget.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label46
             // 
             this.label46.AutoSize = true;
             this.label46.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
             this.label46.Location = new System.Drawing.Point(4, 1);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(159, 30);
@@ -632,15 +632,16 @@
             this.lblOverallSpending.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblOverallSpending.Location = new System.Drawing.Point(1, 66);
             this.lblOverallSpending.Name = "lblOverallSpending";
-            this.lblOverallSpending.Size = new System.Drawing.Size(308, 30);
+            this.lblOverallSpending.Size = new System.Drawing.Size(323, 30);
             this.lblOverallSpending.TabIndex = 3;
+            this.lblOverallSpending.Text = "0";
             this.lblOverallSpending.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label45
             // 
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
             this.label45.Location = new System.Drawing.Point(1, 2);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(182, 30);
@@ -1770,7 +1771,6 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.listItem2);
             this.groupBox4.Controls.Add(this.panel4);
             this.groupBox4.Controls.Add(this.panel5);
             this.groupBox4.Location = new System.Drawing.Point(0, 0);
@@ -1778,21 +1778,6 @@
             this.groupBox4.Size = new System.Drawing.Size(200, 100);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
-            // 
-            // listItem2
-            // 
-            this.listItem2.Amount = null;
-            this.listItem2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listItem2.Category = null;
-            this.listItem2.Date = null;
-            this.listItem2.Desc = null;
-            this.listItem2.Location = new System.Drawing.Point(34, 26);
-            this.listItem2.Name = "listItem2";
-            this.listItem2.Notes = null;
-            this.listItem2.Recurrence = false;
-            this.listItem2.Size = new System.Drawing.Size(594, 83);
-            this.listItem2.TabIndex = 23;
-            this.listItem2.Type = null;
             // 
             // panel4
             // 
@@ -1831,6 +1816,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(856, 448);
+            this.Controls.Add(this.group_home);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.group_tr_view);
             this.Controls.Add(this.group_tr_add);
@@ -1840,7 +1826,6 @@
             this.Controls.Add(this.group_abt);
             this.Controls.Add(this.group_cat_add);
             this.Controls.Add(this.group_tr_list);
-            this.Controls.Add(this.group_home);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ExpenseTracker";
@@ -2015,7 +2000,6 @@
         private Label label39;
         private Label label38;
         private GroupBox groupBox4;
-        private ListItem listItem2;
         private Panel panel4;
         private Panel panel5;
         private TableLayoutPanel tableLayoutPanel2;

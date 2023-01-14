@@ -8,12 +8,6 @@ namespace ET
 
         private List<Transaction> currentTransactions = new List<Transaction>();
 
-
-        public ExpenseFactory()
-        {
-
-        }
-
         public List<Transaction> getList()
         {
             return currentTransactions;

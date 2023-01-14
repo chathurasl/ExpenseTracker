@@ -619,6 +619,10 @@ namespace ET
 
                     //RE-fill category dropdowns.
                     fillCategoryData();
+
+
+                    //Reset category form data.
+                    resetCategoryForm();
                 }
                 else
                 {
@@ -1007,8 +1011,10 @@ namespace ET
             }
 
             //Set the overall budget details
-            lblOverallBudget.Text = currency + " " +  overAllBudget;
-            lblOverallSpending.Text = currency + " " + overAllSpending;
+            lblOverallBudget.Text = currency + " " +  overAllBudget.ToString("N0");
+            lblOverallSpending.Text = currency + " " + overAllSpending.ToString("N0");
+
+            lblOverallSpending.ForeColor = (overAllSpending > overAllBudget) ? Color.FromArgb(183, 28, 28) : Color.FromArgb(27, 94, 32);
 
         }
 

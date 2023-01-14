@@ -6,12 +6,6 @@ namespace ET
 
         private List<Transaction> currentTransactions = new List<Transaction>();
 
-
-        public IncomeFactory()
-        {
-
-        }
-
         public List<Transaction> getList()
         {
             return currentTransactions;
