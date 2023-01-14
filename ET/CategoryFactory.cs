@@ -114,30 +114,8 @@ namespace ET
 
         }
 
-        //Get Category Name by ID
-        public string getCategroyNameById(int id)
-        {
-
-            string rtn = "";
-            //Loop Categories
-            foreach (Category currCat in currentCategories)
-            {
-
-                //Check if given id is exist in the category list
-                if (id == currCat.getId())
-                {
-
-                    rtn = currCat.getCategoryName();
-                    break;
-                }
-            }
-
-            return rtn;
-
-        }
-
         //Get Category  by ID
-        public Category getCategroyById(int id)
+        public Category getCategoryById(int id)
         {
 
             Category rtn = null;

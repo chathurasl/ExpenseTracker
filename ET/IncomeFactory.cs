@@ -72,5 +72,57 @@ namespace ET
 
             return rtn;
         }
+
+
+        public Transaction getTransaction(int incomeId) {
+
+            //Loop Transactions
+            foreach (Transaction currTr in currentTransactions)
+            {
+
+                //Check if given id is exist in the Transaction list
+                if (incomeId == currTr.getId())
+                {
+                    return currTr;
+                }
+            }
+
+            return null;
+        }
+
+
+        public double getTotalIncome()
+        {
+
+            double sum = 0;
+
+            //Loop Transactions
+            foreach (Transaction currTr in currentTransactions)
+            {
+
+                sum += currTr.getAmount();
+            }
+
+            return sum;
+        }
+
+        public double getMonthTotalIncome() {
+
+            double sum = 0;
+
+            //Loop Transactions
+            foreach (Transaction currTr in currentTransactions)
+            {
+
+                if ((DateTime.Parse(currTr.getDate()).Year == DateTime.Now.Year && DateTime.Parse(currTr.getDate()).Month == DateTime.Now.Month))
+                {
+                    sum += currTr.getAmount();
+
+                }
+
+            }
+
+            return sum;
+        }
     }
 }

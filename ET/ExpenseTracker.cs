@@ -7,8 +7,6 @@ namespace ET
     public partial class ExpenseTracker : Form
     {
 
-        // private Dictionary<int, Category> currentCategories = new Dictionary<int, Category>();
-        //private Dictionary<int, Transaction> currentTransactions = new Dictionary<int, Transaction>();
         List<Transaction> currentTransactions = new List<Transaction>();
 
         DataTable dt = new DataTable();
@@ -22,17 +20,15 @@ namespace ET
         double totalExpense = 0;
         string currency = "LKR";
 
-
+        //Load the constructor
         public ExpenseTracker()
         {
             InitializeComponent();
             incomeFactory = new IncomeFactory(currentTransactions);
             expenseFactory = new ExpenseFactory(currentTransactions);
-
-           
         }
 
-
+        //Main Function of the program
         static void Main()
         {
             // To customize application configuration such as set high DPI settings or default font,
@@ -42,7 +38,7 @@ namespace ET
 
         }
 
-
+        //Hide the non active panels in the program
         public void hidePanels()
         {
             group_home.Hide();
@@ -56,15 +52,17 @@ namespace ET
             group_general.Hide();
         }
 
+        //Fill the updated category name in all the category drop downs and tables
         public void fillCategoryData()
         {
-
+            //Clear the category details from the tables and drop downs
             fb_tr_add_category.Items.Clear();
             fb_tr_edit_category.Items.Clear();
             fb_tr_search_category.Items.Clear();
             catData.Rows.Clear();
+            resetCategoryForm();
 
-
+            //Set display parameters
             fb_tr_add_category.DisplayMember = "Text";
             fb_tr_add_category.ValueMember = "Value";
             fb_tr_edit_category.DisplayMember = "Text";
@@ -72,13 +70,15 @@ namespace ET
             fb_tr_search_category.DisplayMember = "Text";
             fb_tr_search_category.ValueMember = "Value";
 
+            //For add add a please select value 
             fb_tr_add_category.Items.Add(new { Text = "--Please select--", Value = 0 });
+
+            //For edit add an all option as a common option
             fb_tr_search_category.Items.Add(new { Text = "All", Value = 0 });
 
-
+            //Navigate through each category and updated the dropdows/tables
             foreach (Category currCat in categoryFactory.getCategories())
             {
-                // fb_tr_add_category.Items.Add(currCat.getCategoryName());
                 fb_tr_add_category.Items.Add(new { Text = currCat.getCategoryName(), Value = currCat.getId() });
                 fb_tr_edit_category.Items.Add(new { Text = currCat.getCategoryName(), Value = currCat.getId() });
                 fb_tr_search_category.Items.Add(new { Text = currCat.getCategoryName(), Value = currCat.getId() });
@@ -92,13 +92,15 @@ namespace ET
                 cat_data.DataSource = catData;
             }
 
+            //Set the selected index for add category drop down
             fb_tr_add_category.SelectedIndex = 0;
 
         }
 
-
+        //Fill the transaction details in all the transaction tble
         public void fillTransactionData(){
 
+            //Clear the details
             dt.Rows.Clear();
 
             foreach (Transaction currTr in currentTransactions)
@@ -109,7 +111,7 @@ namespace ET
                 dr[2] = currTr.getDate();
                 dr[3] = currTr.getAmount();
                 dr[4] = currTr.getType();
-                dr[5] = categoryFactory.getCategroyNameById(currTr.getCategroyId());
+                dr[5] = categoryFactory.getCategoryById(currTr.getCategoryId()).getCategoryName();
                 dr[6] = currTr.getRecurrence();
                 dr[7] = currTr.getNotes();
 
@@ -118,8 +120,8 @@ namespace ET
               
           
         }
-        
-        
+
+        //Fill the transaction  type details in all the transaction type drop downs
         public void fillTransactionTypes()
         {
             fb_tr_add_type.Items.Clear();
@@ -149,10 +151,10 @@ namespace ET
 
         }
 
-
+        //Fill the recurrence controls in the add transaction drop down
         public void fillRecurrenceOptions()
         {
-
+            //Add 1 to 100 options in days/months selection
             for (int i = 1; i < 101; i++)
             {
                 fb_tr_add_rec_count.Items.Add(i);
@@ -167,9 +169,7 @@ namespace ET
 
         }
 
-
-
-
+        //Load the expense tracker
         private void ExpenseTracker_Load(object sender, EventArgs e)
         {
 
@@ -199,7 +199,7 @@ namespace ET
         }
 
      
-
+        //Set the currency details in all currency labels
         public void setCurrency()
         {
             List<Label> labels = new List<Label>();
@@ -220,11 +220,9 @@ namespace ET
 
                 label.Text = currency;
             }
-
-
-
         }
 
+        //Display today's date in date label
         public void displayDate()
         {
 
@@ -234,6 +232,7 @@ namespace ET
         }       
         
         
+        //Set transaction table heasings
         public void setDataTableHeadings()
         {
 
@@ -256,6 +255,7 @@ namespace ET
 
         }
 
+        //Display Summary in the home page
         public void displaySummary()
         {
             double monthlyExp = 0,
@@ -265,31 +265,10 @@ namespace ET
                 totalInc = 0,
                 totalBlc = 0;
 
-
-            foreach (Transaction currTr in currentTransactions)
-            {
-
-                if (currTr.getType() == "Income")
-                {
-                    totalInc += currTr.getAmount();
-                }
-                else
-                {
-                    totalExp += currTr.getAmount();
-                }
-
-                if ((DateTime.Parse(currTr.getDate()).Year == DateTime.Now.Year && DateTime.Parse(currTr.getDate()).Month == DateTime.Now.Month))
-                {
-                    if (currTr.getType() == "Income")
-                    {
-                        monthlyInc += currTr.getAmount();
-                    }
-                    else
-                    {
-                        monthlyExp += currTr.getAmount();
-                    }
-                }
-            }
+            totalInc = incomeFactory.getTotalIncome();
+            totalExp = expenseFactory.getTotalExpense();
+            monthlyInc = incomeFactory.getMonthTotalIncome();
+            monthlyExp = expenseFactory.getMonthTotalExpense();
 
             mothlyBlc = monthlyInc - monthlyExp;
             totalBlc = totalInc - totalExp;
@@ -307,6 +286,7 @@ namespace ET
 
         }
 
+        //Reset the All the forms in the system
         public void resetTrForms()
         {
 
@@ -349,7 +329,7 @@ namespace ET
 
         }
 
-        public void resetCategroyForm()
+        public void resetCategoryForm()
         {
 
             btn_cat_add.Show();
@@ -463,9 +443,6 @@ namespace ET
                         }
 
                     }
-
-                    //List Transaction Data;
-                   // fillTransactionData();
                     resetTrForms();
 
                    
@@ -704,7 +681,7 @@ namespace ET
                     fillCategoryData();
 
                     //Reset category form data.
-                    resetCategroyForm();
+                    resetCategoryForm();
                 }
                 else
                 {
@@ -716,7 +693,7 @@ namespace ET
         private void btn_cat_update_cancel_Click(object sender, EventArgs e)
         {
             //Reset category form data.
-            resetCategroyForm();
+            resetCategoryForm();
         }
 
         private void btn_cat_delete_Click(object sender, EventArgs e)
@@ -734,7 +711,7 @@ namespace ET
                     fillCategoryData();
 
                     //Reset category form data.
-                    resetCategroyForm();
+                    resetCategoryForm();
                 }
                 else
                 {
@@ -800,7 +777,7 @@ namespace ET
             fb_tr_edit_date.Value = DateTime.Parse(tr.getDate());
             fb_tr_edit_notes.Text = tr.getNotes();
 
-            string category = categoryFactory.getCategroyNameById(tr.getCategroyId());
+            string category = categoryFactory.getCategoryById(tr.getCategoryId()).getCategoryName();
 
             fillCategoryData();
             fillTransactionTypes();
@@ -808,13 +785,13 @@ namespace ET
                 fb_tr_edit_category.SelectedIndex = fb_tr_edit_category.FindString(category);
             fb_tr_edit_type.SelectedIndex = fb_tr_edit_type.FindString(tr.getType());
 
-            double budget = categoryFactory.getCategroyById(tr.getCategroyId()).getBudget();
+            double budget = categoryFactory.getCategoryById(tr.getCategoryId()).getBudget();
 
             int catKey = (fb_tr_add_category.SelectedItem as dynamic).Value;
 
                 if (budget > 0)
                 {
-                    double spentAmount = getMonthExpenditureOfBudget(DateTime.Now, catKey);
+                    double spentAmount = getMonthExpenditureOfBudget(catKey);
                     budgetEditCategory.Text = "You have spent " + currency + " " + spentAmount.ToString("N0") + " and your budget is " + currency + " " + budget.ToString("N0") +
                     ".";
                     budgetEditCategory.ForeColor = (budget > spentAmount) ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
@@ -847,7 +824,7 @@ namespace ET
                 if (DateTime.Parse(tr.getDate()) >= firstDate && DateTime.Parse(tr.getDate()) <= lastDate)
                 {
 
-                    if (categoryId != 0 && tr.getCategroyId() == categoryId)
+                    if (categoryId != 0 && tr.getCategoryId() == categoryId)
                     {
 
                         if (transactionType != "" && tr.getType() == transactionType)
@@ -927,7 +904,7 @@ namespace ET
             foreach (Category cat in categoryFactory.getCategories())
             {
                 double budgetAmount = cat.getBudget();
-                double spentAmount = getMonthExpenditureOfBudget(DateTime.Now, cat.getId());
+                double spentAmount = getMonthExpenditureOfBudget(cat.getId());
 
                 bool budgetExceed = false;
 
@@ -994,18 +971,10 @@ namespace ET
 
         }
 
-        private double getMonthExpenditureOfBudget(DateTime month, int categoryId) {
-
-            //Get all the items per month and category
-            List<Transaction> list = getTransactionsOfGivenMonth(month, categoryId, "");
+        private double getMonthExpenditureOfBudget(int categoryId) {
 
             //Get the sum of expenses from the list
-            double sumExpense = 0;
-            foreach (Transaction tr in list) {
-                if (tr.getType() == "Expense") { 
-                    sumExpense = sumExpense + tr.getAmount();
-                }
-            }
+            double sumExpense = expenseFactory.getSpentAmountOfACategory(categoryId);
 
             return sumExpense;
         
@@ -1115,7 +1084,7 @@ namespace ET
 
                 tableLayoutPanel1.Controls.Add(new Label()
                 {
-                    Text = categoryFactory.getCategroyNameById(tr.getCategroyId()),
+                    Text = categoryFactory.getCategoryById(tr.getCategoryId()).getCategoryName(),
                     ForeColor = Color.FromArgb(26, 35, 126),
                     Font = new Font("Segoe UI Semibold", 10),
                     TextAlign = ContentAlignment.TopLeft,
@@ -1167,13 +1136,6 @@ namespace ET
                     Font = new Font("Segoe UI", 10),
                     Size = new System.Drawing.Size(120, 20)
                 }, 1, count);
-
-
-
-
-
-
-
             }
 
             panel2.Controls.Clear();
@@ -1203,14 +1165,15 @@ namespace ET
 
             if (catKey > 0)
             {
-                double budget = categoryFactory.getCategroyById(catKey).getBudget();
+                double budget = categoryFactory.getCategoryById(catKey).getBudget();
 
                 if (budget > 0)
                 {
-                    double spentAmount = getMonthExpenditureOfBudget(DateTime.Now, catKey);
+                    double spentAmount = getMonthExpenditureOfBudget(catKey);
+                    bool isExpenseExceeded = expenseFactory.isExpenseExceedBudget(categoryFactory.getCategoryById(catKey));
                     budgetAddCategory.Text = "You have spent " + currency + " " + spentAmount.ToString("N0") + " and your budget is " + currency + " " + budget.ToString("N0") +
                     ".";
-                    budgetAddCategory.ForeColor = (budget > spentAmount) ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
+                    budgetAddCategory.ForeColor = isExpenseExceeded ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
 
                 }
                 else
@@ -1227,15 +1190,16 @@ namespace ET
             int catKey = (fb_tr_edit_category.SelectedItem as dynamic).Value;
 
 
-            double budget = categoryFactory.getCategroyById(catKey).getBudget();
+            double budget = categoryFactory.getCategoryById(catKey).getBudget();
 
 
             if (budget > 0)
             {
-                double spentAmount = getMonthExpenditureOfBudget(DateTime.Now, catKey);
+                double spentAmount = getMonthExpenditureOfBudget(catKey);
+                bool isExpenseExceeded = expenseFactory.isExpenseExceedBudget(categoryFactory.getCategoryById(catKey));
                 budgetEditCategory.Text = "You have spent " + currency + " " + spentAmount.ToString("N0") + " and your budget is " + currency + " " + budget.ToString("N0") +
                 ".";
-                budgetEditCategory.ForeColor = (budget > spentAmount) ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
+                budgetEditCategory.ForeColor = isExpenseExceeded ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
 
             }
             else
@@ -1271,15 +1235,16 @@ namespace ET
             int catKey = (fb_tr_edit_category.SelectedItem as dynamic).Value;
 
 
-            double budget = categoryFactory.getCategroyById(catKey).getBudget();
+            double budget = categoryFactory.getCategoryById(catKey).getBudget();
 
 
             if (budget > 0)
             {
-                double spentAmount = getMonthExpenditureOfBudget(DateTime.Now, catKey);
+                double spentAmount = getMonthExpenditureOfBudget(catKey);
+                bool isExpenseExceeded = expenseFactory.isExpenseExceedBudget(categoryFactory.getCategoryById(catKey));
                 budgetEditCategory.Text = "You have spent " + currency + " " + spentAmount.ToString("N0") + " and your budget is " + currency + " " + budget.ToString("N0") +
                 ".";
-                budgetEditCategory.ForeColor = (budget > spentAmount) ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
+                budgetEditCategory.ForeColor = isExpenseExceeded ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
 
             }
             else

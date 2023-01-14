@@ -25,8 +25,8 @@ namespace ET
 
         }
 
-        //Set recurring dates
-        public void setRecurringDates()
+        //Set the transaction recurring dates with the created Transaction Recurrence object
+        private void setRecurringDates()
         {
             DateTime tempDate = (recurranceType == "months") ? recurringStart.AddMonths(period) : recurringStart.AddDays(period);
 

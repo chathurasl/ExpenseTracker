@@ -16,11 +16,11 @@ namespace ET
         //private string transactionType;
         private string transactionDescription;
         private string otherNotes;
-        private int categroyId;
+        private int categoryId;
 
 
         //Constractor
-        public Transaction(int id, string transactionDescription, double amount, bool isRecurring, DateTime date, string otherNotes, int categroyId)
+        public Transaction(int id, string transactionDescription, double amount, bool isRecurring, DateTime date, string otherNotes, int categoryId)
         {
             this.id = id;
             this.transactionDescription = transactionDescription;
@@ -28,7 +28,7 @@ namespace ET
             this.isRecurring = isRecurring;
             this.date = date;
             this.otherNotes = otherNotes;
-            this.categroyId = categroyId;
+            this.categoryId = categoryId;
         }
 
 
@@ -76,14 +76,16 @@ namespace ET
             return this.otherNotes;
         }
 
-        //Get Categroy Id
-        public int getCategroyId()
+        //Get category Id
+        public int getCategoryId()
         {
-            return this.categroyId;
+            return this.categoryId;
         }
 
+        //Abstract function to be implemented by the child classes of the transaction parent
         public abstract string getType();
 
+        //This function is used to sort the Transactions Overriding the IComparable Interface
         public int CompareTo(Transaction compareTransaction) {
 
             if (compareTransaction == null)

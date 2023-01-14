@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace ET
 {
-    //Categroy Class
+    //category Class
     public class Category
     {
 
         private int categoryId;
-        private string categroyName;
+        private string categoryName;
         private double budgetAmount;
         private static int CID = 1000;
 
         //Constractor
-        public Category(string categroyName, double budgetAmount)
+        public Category(string categoryName, double budgetAmount)
         {
             this.categoryId = CID++;
-            this.categroyName = categroyName;
+            this.categoryName = categoryName;
             this.budgetAmount = budgetAmount;
 
             categoryId++;
@@ -29,7 +29,7 @@ namespace ET
         //Update category name
         public void changeName(string name)
         {
-            this.categroyName = name;
+            this.categoryName = name;
         }
            
         
@@ -39,19 +39,19 @@ namespace ET
             this.budgetAmount = amount;
         }
 
-        //Get categroy name
+        //Get category name
         public string getCategoryName()
         {
-            return this.categroyName;
+            return this.categoryName;
         }
 
-         //Get categroy ID
+         //Get category ID
         public int getId()
         {
             return this.categoryId;
         }        
         
-        //Get categroy budget
+        //Get category budget
         public double getBudget()
         {
             return this.budgetAmount;
