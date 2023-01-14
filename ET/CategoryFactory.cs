@@ -15,7 +15,7 @@ namespace ET
         {
 
             //Predefined categories
-            currentCategories.Add(new Category("Salary", 100000));
+            currentCategories.Add(new Category("Salary", 0));
             currentCategories.Add(new Category("Cloths", 20000));
             currentCategories.Add(new Category("Fuel", 10000));
             currentCategories.Add(new Category("Shopping", 30000));

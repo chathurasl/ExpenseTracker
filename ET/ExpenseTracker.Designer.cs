@@ -504,14 +504,14 @@
             // 
             // group_tr_list
             // 
-            this.group_tr_list.Controls.Add(this.flowLayoutPanel2);
             this.group_tr_list.Controls.Add(this.panel9);
             this.group_tr_list.Controls.Add(this.panel8);
+            this.group_tr_list.Controls.Add(this.flowLayoutPanel2);
             this.group_tr_list.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_tr_list.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_tr_list.Location = new System.Drawing.Point(176, 17);
+            this.group_tr_list.Location = new System.Drawing.Point(177, 17);
             this.group_tr_list.Name = "group_tr_list";
-            this.group_tr_list.Size = new System.Drawing.Size(673, 425);
+            this.group_tr_list.Size = new System.Drawing.Size(672, 425);
             this.group_tr_list.TabIndex = 7;
             this.group_tr_list.TabStop = false;
             this.group_tr_list.Text = "Budget Overview - Current Month";
@@ -927,9 +927,9 @@
             this.group_cat_add.Controls.Add(this.label8);
             this.group_cat_add.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_cat_add.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_cat_add.Location = new System.Drawing.Point(175, 15);
+            this.group_cat_add.Location = new System.Drawing.Point(176, 15);
             this.group_cat_add.Name = "group_cat_add";
-            this.group_cat_add.Size = new System.Drawing.Size(674, 423);
+            this.group_cat_add.Size = new System.Drawing.Size(673, 423);
             this.group_cat_add.TabIndex = 3;
             this.group_cat_add.TabStop = false;
             this.group_cat_add.Text = "Manage Categories";
@@ -1358,9 +1358,9 @@
             this.group_home.Controls.Add(this.groupBox2);
             this.group_home.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_home.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_home.Location = new System.Drawing.Point(175, 15);
+            this.group_home.Location = new System.Drawing.Point(177, 15);
             this.group_home.Name = "group_home";
-            this.group_home.Size = new System.Drawing.Size(674, 427);
+            this.group_home.Size = new System.Drawing.Size(672, 427);
             this.group_home.TabIndex = 8;
             this.group_home.TabStop = false;
             // 
@@ -1690,9 +1690,9 @@
             this.group_abt.Controls.Add(this.groupBox5);
             this.group_abt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_abt.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.group_abt.Location = new System.Drawing.Point(169, 17);
+            this.group_abt.Location = new System.Drawing.Point(177, 17);
             this.group_abt.Name = "group_abt";
-            this.group_abt.Size = new System.Drawing.Size(680, 422);
+            this.group_abt.Size = new System.Drawing.Size(672, 425);
             this.group_abt.TabIndex = 12;
             this.group_abt.TabStop = false;
             this.group_abt.Text = "About Expense Tracker";
@@ -1816,8 +1816,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(856, 448);
-            this.Controls.Add(this.group_home);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.group_home);
             this.Controls.Add(this.group_tr_view);
             this.Controls.Add(this.group_tr_add);
             this.Controls.Add(this.group_tr_edit);
