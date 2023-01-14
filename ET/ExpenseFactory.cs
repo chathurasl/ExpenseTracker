@@ -83,7 +83,7 @@ namespace ET
 
             foreach (Transaction transaction in currentTransactions) {
 
-                if (transaction.getcategoryId() == categoryId &&
+                if (transaction.getCategoryId() == categoryId &&
                 (DateTime.Parse(transaction.getDate()).Year == DateTime.Now.Year && DateTime.Parse(transaction.getDate()).Month == DateTime.Now.Month)) 
                 {
                     spentAmount += transaction.getAmount();
