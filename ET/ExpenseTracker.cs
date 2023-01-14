@@ -936,7 +936,7 @@ namespace ET
             }, 1, 0);
             budgetPanel.Controls.Add(new Label()
             {
-                Text = "Spent Amount (" + currency + ")",
+                Text = "Spent (" + currency + ")",
                 Font = new Font("Segoe UI", 10, FontStyle.Bold),
                 TextAlign = ContentAlignment.TopRight
 
