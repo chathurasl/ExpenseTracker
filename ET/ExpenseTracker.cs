@@ -7,8 +7,6 @@ namespace ET
     public partial class ExpenseTracker : Form
     {
 
-        List<Transaction> currentTransactions = new List<Transaction>();
-
         DataTable dt = new DataTable();
         DataTable catData = new DataTable();
 
@@ -1283,6 +1281,8 @@ namespace ET
             MessageBox.Show("Application settings sucessfully updated.", "Save Settings", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+
+        //Update relevant 
         private void changeTransactionType(Transaction tr)
         {
             if (tr.getType() == "Income")
