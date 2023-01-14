@@ -594,7 +594,6 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(323, 100);
             this.panel9.TabIndex = 3;
-            this.panel9.Paint += new System.Windows.Forms.PaintEventHandler(this.panel9_Paint);
             // 
             // lblOverallBudget
             // 
@@ -1019,7 +1018,6 @@
             this.cat_data.RowTemplate.Height = 25;
             this.cat_data.Size = new System.Drawing.Size(666, 219);
             this.cat_data.TabIndex = 9;
-            this.cat_data.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cat_data_CellContentClick);
             this.cat_data.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cat_data_CellDoubleClick);
             // 
             // cat_add_budget
@@ -1295,7 +1293,7 @@
             this.fb_tr_edit_category.Name = "fb_tr_edit_category";
             this.fb_tr_edit_category.Size = new System.Drawing.Size(196, 25);
             this.fb_tr_edit_category.TabIndex = 4;
-            this.fb_tr_edit_category.SelectedIndexChanged += new System.EventHandler(this.fb_tr_edit_category_SelectedIndexChanged_1);
+            this.fb_tr_edit_category.SelectedIndexChanged += new System.EventHandler(this.fb_tr_edit_category_SelectedIndexChanged);
             // 
             // label20
             // 

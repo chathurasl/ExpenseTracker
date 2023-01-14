@@ -4,15 +4,18 @@ namespace ET
     public class IncomeFactory:TransactionFactory
     {
 
-        private List<Transaction> currentTransactions;
+        private List<Transaction> currentTransactions = new List<Transaction>();
 
 
-        public IncomeFactory(List<Transaction>  currentTransactions)
+        public IncomeFactory()
         {
 
-            this.currentTransactions = currentTransactions;
         }
 
+        public List<Transaction> getList()
+        {
+            return currentTransactions;
+        }
 
         //Create Transaction method
         public bool createTransaction(Transaction t)

@@ -24,8 +24,18 @@ namespace ET
         public ExpenseTracker()
         {
             InitializeComponent();
-            incomeFactory = new IncomeFactory(currentTransactions);
-            expenseFactory = new ExpenseFactory(currentTransactions);
+            incomeFactory = new IncomeFactory();
+            expenseFactory = new ExpenseFactory();
+        }
+
+        //LoadAllTransaction into 1 list
+        public List<Transaction> loadTransaction() 
+        {
+            List<Transaction> list = new List<Transaction>();
+            list.AddRange(incomeFactory.getList());
+            list.AddRange(expenseFactory.getList());
+            return list;
+            
         }
 
         //Main Function of the program
@@ -103,7 +113,7 @@ namespace ET
             //Clear the details
             dt.Rows.Clear();
 
-            foreach (Transaction currTr in currentTransactions)
+            foreach (Transaction currTr in loadTransaction())
             {
                 DataRow dr = dt.NewRow();
                 dr[0] = currTr.getId();
@@ -310,10 +320,6 @@ namespace ET
             fb_tr_edit_notes.Text = "";
             fb_tr_edit_recurring.Checked = false;
 
-
-
-
-
             fb_tr_edit_type.SelectedIndex = 0;
             fb_tr_edit_category.SelectedIndex = 0;
 
@@ -325,10 +331,9 @@ namespace ET
             fb_tr_add_rec_count.Hide();
             fb_tr_add_rec_type.Hide();
             fb_tr_add_rec_untill.Hide();
-
-
         }
 
+        //Reset the category forms
         public void resetCategoryForm()
         {
 
@@ -370,7 +375,7 @@ namespace ET
             group_cat_add.Show();
         }
 
-
+        //Click on the Add Transaction Button to add a new transaction to the system
         private void btn_add_tr_Click(object sender, EventArgs e)
         {
             string mzg = "";
@@ -378,6 +383,7 @@ namespace ET
             int catKey = (fb_tr_add_category.SelectedItem as dynamic).Value;
             string type = (fb_tr_add_type.SelectedItem as dynamic).Value;
 
+            //Validate mandatory details
             if (fb_tr_add_description.Text == "")
             {
                 mzg = "Please enter the transaction description";
@@ -404,6 +410,7 @@ namespace ET
                 bool response = false;
                 int id = Math.Abs((int) DateTime.Now.ToFileTime());
 
+                //Add the transaction to the respective factory
                 if (type == "Income")
                 {
                     response = incomeFactory.createTransaction(new Income(id, fb_tr_add_description.Text, currAmount, fb_tr_add_recurring.Checked, fb_tr_add_date.Value, fb_tr_add_notes.Text, catKey));
@@ -444,14 +451,12 @@ namespace ET
 
                     }
                     resetTrForms();
-
-                   
-
                 }
             }
 
         }
 
+        //Click on the Edit Transaction Button to update a  transaction in the system
         private void btn_tr_update_Click(object sender, EventArgs e)
         {
 
@@ -460,7 +465,7 @@ namespace ET
             int catKey = (fb_tr_edit_category.SelectedItem as dynamic).Value;
             string type = (fb_tr_edit_type.SelectedItem as dynamic).Value;
 
-
+            //Mandatory Validation
             if (fb_tr_edit_description.Text == "")
             {
                 mzg = "Please enter the transaction description";
@@ -490,20 +495,31 @@ namespace ET
 
                 if (type == "Income")
                 {
+                    if (incomeFactory.getTransaction(int.Parse(fb_tr_edit_id.Text)) == null)
+                    {
+                        changeTransactionType(new Income(int.Parse(fb_tr_edit_id.Text), fb_tr_edit_description.Text, currAmount, fb_tr_edit_recurring.Checked, fb_tr_edit_date.Value, fb_tr_edit_notes.Text, catKey));
+                        response = true;
+                    }
+                    else {
 
-                    response = incomeFactory.editTransaction(new Income(int.Parse(fb_tr_edit_id.Text), fb_tr_edit_description.Text, currAmount, fb_tr_edit_recurring.Checked, fb_tr_edit_date.Value, fb_tr_edit_notes.Text, catKey));
-
+                        response = incomeFactory.editTransaction(new Income(int.Parse(fb_tr_edit_id.Text), fb_tr_edit_description.Text, currAmount, fb_tr_edit_recurring.Checked, fb_tr_edit_date.Value, fb_tr_edit_notes.Text, catKey));
+                    }
                 }
                 else
                 {
-                    response = expenseFactory.editTransaction(new Expense(int.Parse(fb_tr_edit_id.Text), fb_tr_edit_description.Text, currAmount, fb_tr_edit_recurring.Checked, fb_tr_edit_date.Value, fb_tr_edit_notes.Text, catKey));
+                    if (expenseFactory.getTransaction(int.Parse(fb_tr_edit_id.Text)) == null)
+                    {
+                        changeTransactionType(new Expense(int.Parse(fb_tr_edit_id.Text), fb_tr_edit_description.Text, currAmount, fb_tr_edit_recurring.Checked, fb_tr_edit_date.Value, fb_tr_edit_notes.Text, catKey));
+                        response = true;
+                    }
+                    else {
+                        response = expenseFactory.editTransaction(new Expense(int.Parse(fb_tr_edit_id.Text), fb_tr_edit_description.Text, currAmount, fb_tr_edit_recurring.Checked, fb_tr_edit_date.Value, fb_tr_edit_notes.Text, catKey));
+                    }
                 }
 
+                //Response is false if the relevant factories do not have the tansaction
                 if (response)
                 {
-                    //List Transaction Data;
-                    //fillTransactionData();
-                    
 
                     MessageBox.Show("Transaction successfully updated.", "Update Transaction", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -514,8 +530,6 @@ namespace ET
                     hidePanels();
                     group_tr_view.Show();
                     btn_view_transactions_Click(sender, e);
-
-
                 }
                 else
                 {
@@ -525,6 +539,7 @@ namespace ET
 
         }
 
+        //Click on the Delete Transaction Button to delete a  transaction in the system
         private void btn_tr_delete_Click(object sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show("Are you sure you want to delete this transaction?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -542,6 +557,7 @@ namespace ET
                     response = expenseFactory.deleteTransaction(int.Parse(fb_tr_edit_id.Text));
                 }
 
+                //Response is false if the relevant factories do not have the tansaction
                 if (response)
                 {
 
@@ -566,12 +582,14 @@ namespace ET
         }
 
 
+        //This function allows a category to be added to the system
         private void btn_cat_add_Click(object sender, EventArgs e)
         {
 
             string mzg = "";
             double currBudget = 0;
 
+            //Mandatory validation
             if (cat_add_name.Text == "")
             {
                 mzg = "Please enter a name";
@@ -595,6 +613,7 @@ namespace ET
             }
             else
             {
+                //Duplicate validation
                 bool response = categoryFactory.addCategory(cat_add_name.Text, currBudget);
                 if (response)
                 {
@@ -612,6 +631,7 @@ namespace ET
            
         }
 
+        //Open an existing category to edit its details
         private void cat_data_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && cat_data.Rows[e.RowIndex].Cells[0].Value.ToString() != "")
@@ -622,6 +642,7 @@ namespace ET
 
                 string budget = cat_data.Rows[e.RowIndex].Cells[2].Value.ToString();
 
+                //Unlimited budget should be displayed as saved as ""
                 if (budget == "Unlimited")
                 {
                     cat_add_budget.Text = "";
@@ -642,11 +663,13 @@ namespace ET
             }
         }
 
+        //Update a category successfully in the system
         private void btn_cat_update_Click(object sender, EventArgs e)
         {
             string mzg = "";
             double currBudget = 0;
 
+            //Mandatory validation
             if (cat_add_name.Text == "")
             {
                 mzg = "Please enter a name";
@@ -672,6 +695,7 @@ namespace ET
             }
             else
             {
+                //Response is false if the category factory does not have the category
                 bool response = categoryFactory.updateCategory(int.Parse(cat_id.Text), cat_add_name.Text, currBudget);
                 if (response)
                 {
@@ -690,17 +714,20 @@ namespace ET
             }
         }
 
+        //Cancel update
         private void btn_cat_update_cancel_Click(object sender, EventArgs e)
         {
             //Reset category form data.
             resetCategoryForm();
         }
 
+        //Delete a category in the system
         private void btn_cat_delete_Click(object sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show("Are you sure you want to delete this category?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirmResult == DialogResult.Yes)
             {
+                //Response is false if the category factory does not have the category
                 bool response = categoryFactory.deleteCategory(int.Parse(cat_id.Text));
                 if (response)
                 {
@@ -721,16 +748,21 @@ namespace ET
 
         }
 
+        //Navigate to edit from view transactions
         private void btn_view_transactions_Click(object sender, EventArgs e)
         {
+            //Populate the category drop down
             fillCategoryData();
 
+            //Populate the transaction type
             fb_tr_search_type.Items.Clear();
             fillTransactionTypes();
 
+            //Clear all the drop downs and Controls
             fb_tr_search_category.SelectedIndex = 0;
             fb_tr_search_type.SelectedIndex = 0;
 
+            //Set Date time picker for month and year
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "MMMM";
             dateTimePicker1.ShowUpDown = true;
@@ -750,11 +782,14 @@ namespace ET
 
             DateTime filteredDate = new DateTime(year.Year, month.Month, 1);
 
+            //On Load get the transactions of the given details
             List<Transaction> list = getTransactionsOfGivenMonth(filteredDate, 0, "");
 
+            //Populate the details in the panel
             updatePanel(list);
         }
 
+        //Cancel transaction update
         private void btn_tr_update_cancle_Click(object sender, EventArgs e)
         {
             //Show transaction list
@@ -762,12 +797,13 @@ namespace ET
             group_tr_view.Show();
         }
 
-
+        //Load Edit Transaction details
         private void loadEditTransaction(Transaction tr)
         {
             hidePanels();
             group_tr_edit.Show();
 
+            //Populate the details in the edit page constrols
             fb_tr_edit_id.Text = tr.getId().ToString();
 
             fb_tr_edit_description.Text = tr.getDescription();
@@ -779,12 +815,14 @@ namespace ET
 
             string category = categoryFactory.getCategoryById(tr.getCategoryId()).getCategoryName();
 
+            //Fill the transaction type and category drop downs
             fillCategoryData();
             fillTransactionTypes();
 
-                fb_tr_edit_category.SelectedIndex = fb_tr_edit_category.FindString(category);
+            fb_tr_edit_category.SelectedIndex = fb_tr_edit_category.FindString(category);
             fb_tr_edit_type.SelectedIndex = fb_tr_edit_type.FindString(tr.getType());
 
+            //Apply validate budget principle
             double budget = categoryFactory.getCategoryById(tr.getCategoryId()).getBudget();
 
             int catKey = (fb_tr_add_category.SelectedItem as dynamic).Value;
@@ -802,10 +840,10 @@ namespace ET
                     budgetEditCategory.Text = "Unlimited Budget";
                     budgetEditCategory.ForeColor = Color.FromArgb(56, 142, 60);
 
-            }
-
+                }
         }
 
+        //Return a list of transactions depending on the filters
         private List<Transaction> getTransactionsOfGivenMonth(DateTime date, int categoryId, string transactionType)
         {
 
@@ -819,31 +857,33 @@ namespace ET
             //Get all the expenses matching this year
             List<Transaction> filteredTransaction = new List<Transaction>();
 
-            foreach (Transaction tr in currentTransactions)
+            //Navigate through current transaction and get the lists based on the filters 
+            foreach (Transaction tr in loadTransaction())
             {
+                //Date filteration
                 if (DateTime.Parse(tr.getDate()) >= firstDate && DateTime.Parse(tr.getDate()) <= lastDate)
                 {
-
+                    //Category Filterations if category is selected
                     if (categoryId != 0 && tr.getCategoryId() == categoryId)
                     {
-
+                        //Transaction type filteration if type is selected
                         if (transactionType != "" && tr.getType() == transactionType)
                         {
                             filteredTransaction.Add(tr);
                         }
-                        else if (transactionType == "") 
+                        else if (transactionType == "") //if type is not selected
                         {
                             filteredTransaction.Add(tr);
 
                         }
                     }
-                    else if (categoryId == 0)
+                    else if (categoryId == 0) // if category is not selected
                     {
-                        if (transactionType != "" && tr.getType() == transactionType)
+                        if (transactionType != "" && tr.getType() == transactionType) // but type is selected
                         {
                             filteredTransaction.Add(tr);
                         }
-                        else if (transactionType == "")
+                        else if (transactionType == "") // type is also not selected
                         {
                             filteredTransaction.Add(tr);
                         }
@@ -851,14 +891,15 @@ namespace ET
                 }
             }
 
+            //Sort transaction list with IComparable implementation and reverse the sort
             filteredTransaction.Sort();
             filteredTransaction.Reverse();
 
             return filteredTransaction;
 
-
         }
 
+        //Click on the budget overview to load all the budgets of categories
         private void btn_tr_list_Click(object sender, EventArgs e)
         {
             hidePanels();
@@ -900,6 +941,7 @@ namespace ET
 
             }, 3, 0);
 
+            //Navigate through categories to display there budget
             int count = 1;
             foreach (Category cat in categoryFactory.getCategories())
             {
@@ -966,20 +1008,22 @@ namespace ET
 
             }
 
+            //Set the overall budget details
             lblOverallBudget.Text = currency + " " +  overAllBudget;
             lblOverallSpending.Text = currency + " " + overAllSpending;
 
         }
 
+        //Get the Expense Sum of a Category
         private double getMonthExpenditureOfBudget(int categoryId) {
 
-            //Get the sum of expenses from the list
             double sumExpense = expenseFactory.getSpentAmountOfACategory(categoryId);
 
             return sumExpense;
         
         }
 
+        //Enable/Disable recurring controls on selecting recurrence 
         private void fb_tr_add_recurring_CheckedChanged(object sender, EventArgs e)
         {
             if (fb_tr_add_recurring.Checked)
@@ -1001,6 +1045,7 @@ namespace ET
            
         }
 
+        //Navigate to home page
         private void button2_Click_1(object sender, EventArgs e)
         {
             //Update summary
@@ -1010,6 +1055,7 @@ namespace ET
             group_home.Show();
         }
 
+        //Navigate to view transactions page
         private void button1_Click_1(object sender, EventArgs e)
         {
             hidePanels();
@@ -1038,6 +1084,8 @@ namespace ET
             updatePanel(list);
         }
 
+
+        //Update the transaction list panel
         private void updatePanel(List<Transaction> list) {
             totalIncome = 0;
             totalExpense = 0;
@@ -1159,6 +1207,7 @@ namespace ET
             });
         }
 
+        //Validate budget when the add category drop down index changes
         private void fb_tr_add_category_SelectedIndexChanged(object sender, EventArgs e)
         {
             int catKey = (fb_tr_add_category.SelectedItem as dynamic).Value;
@@ -1173,7 +1222,7 @@ namespace ET
                     bool isExpenseExceeded = expenseFactory.isExpenseExceedBudget(categoryFactory.getCategoryById(catKey));
                     budgetAddCategory.Text = "You have spent " + currency + " " + spentAmount.ToString("N0") + " and your budget is " + currency + " " + budget.ToString("N0") +
                     ".";
-                    budgetAddCategory.ForeColor = isExpenseExceeded ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
+                    budgetAddCategory.ForeColor = !isExpenseExceeded ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
 
                 }
                 else
@@ -1184,6 +1233,7 @@ namespace ET
             }
         }
 
+        //Validate budget when the edit category drop down index changes
         private void fb_tr_edit_category_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -1199,7 +1249,7 @@ namespace ET
                 bool isExpenseExceeded = expenseFactory.isExpenseExceedBudget(categoryFactory.getCategoryById(catKey));
                 budgetEditCategory.Text = "You have spent " + currency + " " + spentAmount.ToString("N0") + " and your budget is " + currency + " " + budget.ToString("N0") +
                 ".";
-                budgetEditCategory.ForeColor = isExpenseExceeded ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
+                budgetEditCategory.ForeColor = !isExpenseExceeded ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
 
             }
             else
@@ -1209,18 +1259,21 @@ namespace ET
             }
         }
 
+        //Navigate to General Page
         private void btn_general_Click(object sender, EventArgs e)
         {
             hidePanels();
             group_general.Show();
         }
 
+        //Navigate to About Page
         private void btn_about_Click_1(object sender, EventArgs e)
         {
             hidePanels();
             group_abt.Show();
         }
 
+        //Navigate to Settings page
         private void btn_save_settings_Click(object sender, EventArgs e)
         {
             currency = fb_currency.Text;
@@ -1230,38 +1283,18 @@ namespace ET
             MessageBox.Show("Application settings sucessfully updated.", "Save Settings", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void fb_tr_edit_category_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void changeTransactionType(Transaction tr)
         {
-            int catKey = (fb_tr_edit_category.SelectedItem as dynamic).Value;
-
-
-            double budget = categoryFactory.getCategoryById(catKey).getBudget();
-
-
-            if (budget > 0)
+            if (tr.getType() == "Income")
             {
-                double spentAmount = getMonthExpenditureOfBudget(catKey);
-                bool isExpenseExceeded = expenseFactory.isExpenseExceedBudget(categoryFactory.getCategoryById(catKey));
-                budgetEditCategory.Text = "You have spent " + currency + " " + spentAmount.ToString("N0") + " and your budget is " + currency + " " + budget.ToString("N0") +
-                ".";
-                budgetEditCategory.ForeColor = isExpenseExceeded ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
-
+                incomeFactory.createTransaction(tr);
+                expenseFactory.deleteTransaction(tr.getId());
             }
-            else
-            {
-                budgetEditCategory.Text = "Unlimited Budget";
-                budgetEditCategory.ForeColor = Color.FromArgb(56, 142, 60);
+            else {
+                expenseFactory.createTransaction(tr);
+                incomeFactory.deleteTransaction(tr.getId());
             }
         }
 
-        private void cat_data_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void panel9_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

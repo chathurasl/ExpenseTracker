@@ -6,13 +6,17 @@ namespace ET
     public class ExpenseFactory : TransactionFactory
     {
 
-        private List<Transaction> currentTransactions;
+        private List<Transaction> currentTransactions = new List<Transaction>();
 
 
-        public ExpenseFactory(List<Transaction> currentTransactions)
+        public ExpenseFactory()
         {
 
-            this.currentTransactions = currentTransactions;
+        }
+
+        public List<Transaction> getList()
+        {
+            return currentTransactions;
         }
 
 
@@ -83,7 +87,7 @@ namespace ET
 
             foreach (Transaction transaction in currentTransactions) {
 
-                if (transaction.getcategoryId() == categoryId &&
+                if (transaction.getCategoryId() == categoryId &&
                 (DateTime.Parse(transaction.getDate()).Year == DateTime.Now.Year && DateTime.Parse(transaction.getDate()).Month == DateTime.Now.Month)) 
                 {
                     spentAmount += transaction.getAmount();
