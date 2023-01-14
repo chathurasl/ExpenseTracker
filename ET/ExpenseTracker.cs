@@ -352,6 +352,10 @@ namespace ET
             hidePanels();
             group_tr_add.Show();
 
+            fillCategoryData();
+            fillTransactionTypes();
+            budgetAddCategory.Text = "";
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -448,6 +452,8 @@ namespace ET
                         }
 
                     }
+
+                    budgetAddCategory.Text = "";
                     resetTrForms();
                 }
             }
@@ -827,7 +833,7 @@ namespace ET
 
                 if (budget > 0)
                 {
-                    double spentAmount = getMonthExpenditureOfBudget(catKey);
+                    double spentAmount = getMonthExpenditureOfBudget(tr.getCategoryId());
                     budgetEditCategory.Text = "You have spent " + currency + " " + spentAmount.ToString("N0") + " and your budget is " + currency + " " + budget.ToString("N0") +
                     ".";
                     budgetEditCategory.ForeColor = (budget > spentAmount) ? Color.FromArgb(56, 142, 60) : Color.FromArgb(244, 67, 54);
